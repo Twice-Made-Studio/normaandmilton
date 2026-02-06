@@ -189,8 +189,9 @@
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* Hero Section */
-        .hero {
-            min-height: calc(100% - 60px);
+       .hero {
+  min-height: 90vh; /* makes hero feel full, elegant, and intentional */
+}
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -215,7 +216,7 @@
             background-image: var(--hero-image);
             background-size: cover;
             background-position: center;
-            opacity: 0.18; /* subtle */
+            opacity: 0.28; /* subtle */
             filter: saturate(1.05) contrast(1.02);
             pointer-events: none;
         }
