@@ -1,1859 +1,975 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Norma & Milton - Wedding</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Wedding website for Norma & Milton - September 12, 2026 in Buffalo, New York." />
-  <!-- Google Font: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Norma & Milton • 09.12.26</title>
+
+  <!-- Fonts: Structure + Elegant Accent -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    :root {
-      --emerald: #0b5b46;
-      --emerald-soft: #0f6f56;
-      --champagne: #d9c6a3;
-      --champagne-soft: #efe2c8;
-      --champagne-deep: #b89b6a;
-      --white: #ffffff;
-      --offwhite: #f7f5f1;
-      --text-main: #1f1f1f;
-      --text-muted: #666666;
-      --border-gold: #d1b27a;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.08);
-      --radius-card: 18px;
-      --transition-fast: 0.2s ease;
-      --transition-med: 0.35s ease;
-      --max-width: 1120px;
+    :root{
+      /* Palette (emerald + champagne + warm ivory) */
+      --bg: #fbf8f2;
+      --ink: #1f1f1f;
+      --muted: rgba(31,31,31,.68);
+
+      --emerald: #0f4d3f;
+      --emerald-2: #0b3f33;
+      --champagne: #d7b57a;
+
+      --card: #ffffff;
+      --line: rgba(15,77,63,.18);
+      --shadow: 0 18px 55px rgba(0,0,0,.08);
+      --radius: 18px;
+
+      --sans: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+
+      --max: 1100px;
     }
 
-    * {
-      box-sizing: border-box;
+    *{ box-sizing: border-box; }
+    html, body{ margin:0; padding:0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
+    a{ color: inherit; text-decoration: none; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* Top Nav */
+    .nav{
+      position: sticky; top:0; z-index: 50;
+      background: rgba(251,248,242,.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
     }
-
-    html {
-      scroll-behavior: smooth;
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
     }
-
-    body {
-      margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background-color: var(--offwhite);
-      color: var(--text-main);
-      line-height: 1.6;
+    .brand{
+      display:flex; gap:12px; align-items:baseline;
+      letter-spacing: .08em;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    /* Layout */
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      padding: 4.5rem 0;
-      position: relative;
-    }
-
-    section:not(:first-of-type) {
-      border-top: 1px solid var(--border-gold);
-    }
-
-    .section-header {
-      margin-bottom: 2.5rem;
-      text-align: left;
-    }
-
-    .section-kicker {
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
+    .brand .names{
+      font-weight:600;
+      font-size: 12px;
+      color: var(--emerald);
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
     }
-
-    .section-title {
-      font-size: 1.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .brand .date{
+      font-size: 12px;
+      color: rgba(0,0,0,.55);
       font-weight: 500;
     }
-
-    .section-subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-width: 520px;
+    .nav-links{
+      display:flex; gap: 18px; flex-wrap: wrap; justify-content:flex-end;
+      font-size: 12px; color: rgba(0,0,0,.62);
     }
-
-    /* Sticky Nav */
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(18px);
-      background: rgba(247, 245, 241, 0.92);
-      border-bottom: 1px solid rgba(209, 178, 122, 0.4);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.5rem;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      gap: 1rem;
-    }
-
-    .nav-brand {
-      font-size: 1rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    .nav-brand span {
-      color: var(--emerald);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: flex-end;
-    }
-
-    .nav-link {
-      font-size: 0.8rem;
-      padding: 0.35rem 0.8rem;
+    .nav-links a{
+      padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      background: transparent;
-      cursor: pointer;
-      transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
     }
-
-    .nav-link:hover,
-    .nav-link:focus-visible {
-      color: var(--emerald);
-      border-color: rgba(11, 91, 70, 0.2);
-      background: rgba(255, 255, 255, 0.9);
-      outline: none;
-      transform: translateY(-1px);
-    }
-
-    .nav-link:focus-visible {
-      box-shadow: 0 0 0 2px rgba(11, 91, 70, 0.4);
-    }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: 1px solid rgba(11, 91, 70, 0.3);
-      border-radius: 999px;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-      color: var(--emerald);
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-
-    @media (max-width: 768px) {
-      .nav-inner {
-        flex-wrap: wrap;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
-
-      .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height var(--transition-med);
-      }
-
-      .nav-links.open {
-        max-height: 400px;
-      }
-    }
-
-    /* Buttons */
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      padding: 0.7rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color var(--transition-med), color var(--transition-med), border-color var(--transition-med), transform var(--transition-fast), box-shadow var(--transition-fast);
-      background-color: var(--emerald);
-      color: var(--white);
-    }
-
-    .btn:hover,
-    .btn:focus-visible {
-      background-color: var(--emerald-soft);
-      box-shadow: 0 10px 25px rgba(11, 91, 70, 0.25);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      color: var(--emerald);
-      border-color: rgba(11, 91, 70, 0.4);
-    }
-
-    .btn-outline:hover,
-    .btn-outline:focus-visible {
-      background-color: rgba(11, 91, 70, 0.06);
-      box-shadow: 0 10px 25px rgba(11, 91, 70, 0.15);
-    }
-
-    .btn-ghost {
-      background-color: transparent;
-      color: var(--text-main);
-      border-color: rgba(209, 178, 122, 0.7);
-    }
-
-    .btn-ghost:hover,
-    .btn-ghost:focus-visible {
-      background-color: rgba(247, 245, 241, 0.9);
-      color: var(--emerald);
-    }
-
-    .btn-small {
-      padding: 0.45rem 0.9rem;
-      font-size: 0.75rem;
-    }
-
-    .btn-full {
-      width: 100%;
-      justify-content: center;
+    .nav-links a:hover{
+      background: rgba(15,77,63,.07);
+      color: rgba(0,0,0,.82);
     }
 
     /* Hero */
-
-    .hero {
-      padding: 4.5rem 0 4rem;
-      background: radial-gradient(circle at top left, rgba(239, 226, 200, 0.7), transparent 55%), radial-gradient(circle at bottom right, rgba(11, 91, 70, 0.12), transparent 55%);
+    .hero{
+      position: relative;
+      padding: 44px 0 40px;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      overflow:hidden;
     }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 3rem;
+    .hero-bg{
+      position:absolute; inset:0;
+      /* ✅ INSERT HERO PHOTO HERE:
+         Put your image at /assets/hero.jpg (or update this URL) */
+      background:
+        linear-gradient(0deg, rgba(15,77,63,.38), rgba(15,77,63,.38)),
+        url("assets/hero.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.02);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 55%);
+      pointer-events:none;
+    }
+    .hero-content{
+      position: relative;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 26px;
       align-items: center;
+      padding: 34px;
+      border-radius: calc(var(--radius) + 8px);
+      background: rgba(251,248,242,.90);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.45);
     }
-
-    @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hero-tagline {
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
+    .kicker{
+      letter-spacing: .22em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
+      font-size: 11px;
+      color: rgba(0,0,0,.55);
+      margin-bottom: 12px;
     }
+    h1{
+      margin: 0 0 10px;
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing: .03em;
+      font-size: clamp(34px, 4.3vw, 54px);
+      line-height: 1.05;
+    }
+    .sub{
+      margin: 0 0 14px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 56ch;
+    }
+    .date-line{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      font-size: 13px;
+      color: rgba(0,0,0,.66);
+      margin: 10px 0 16px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,77,63,.18);
+      background: rgba(255,255,255,.65);
+    }
+    .pill strong{ color: var(--emerald); }
 
-    .hero-title {
-      font-size: clamp(2.4rem, 4vw, 3.1rem);
-      letter-spacing: 0.18em;
+    .cta-row{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .btn{
+      appearance:none; border: 1px solid rgba(15,77,63,.18);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      margin: 0 0 0.75rem;
-      font-weight: 500;
+      font-weight: 600;
+      cursor: pointer;
+      background: rgba(255,255,255,.75);
     }
-
-    .hero-subtitle {
-      font-size: 1.05rem;
-      margin-bottom: 1.2rem;
+    .btn.primary{
+      background: var(--emerald);
+      border-color: rgba(15,77,63,.35);
+      color: #fff;
     }
+    .btn.primary:hover{ background: var(--emerald-2); }
+    .btn:hover{ background: rgba(15,77,63,.07); }
 
-    .hero-line {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
+    .hero-card{
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.06);
     }
-
-    .hero-line span {
-      color: var(--emerald);
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .hero-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .hero-meta-label {
-      letter-spacing: 0.16em;
+    .hero-card .label{
+      font-size: 10px;
       text-transform: uppercase;
-      font-size: 0.7rem;
+      letter-spacing: .22em;
+      color: rgba(0,0,0,.55);
+      margin-bottom: 6px;
     }
-
-    .hero-meta-value {
-      font-weight: 500;
+    .hero-card .when{
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 2px;
     }
-
-    .hero-card {
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 26px;
-      padding: 1.8rem 1.6rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(209, 178, 122, 0.5);
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+    .hero-card .where{
+      font-size: 12px; color: rgba(0,0,0,.60);
+      margin: 0 0 10px;
     }
-
-    .hero-card-label {
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
+    .hero-card p{
+      margin: 0;
+      font-size: 13px;
+      color: rgba(0,0,0,.68);
+      line-height: 1.6;
+    }
+    .meta-row{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .meta{
+      font-size: 11px;
+      color: rgba(0,0,0,.62);
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    .meta .t{
+      font-size: 10px;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: rgba(0,0,0,.48);
+      margin-bottom: 4px;
+    }
+    .meta .v{
+      font-weight: 600;
+      color: rgba(0,0,0,.74);
     }
 
-    .hero-card-date {
-      font-size: 1.1rem;
-      font-weight: 500;
+    /* Sections */
+    section{ padding: 62px 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+    .section-title{
+      font-family: var(--serif);
+      font-size: 34px;
+      margin: 0 0 8px;
+      letter-spacing: .02em;
+    }
+    .section-sub{
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 70ch;
     }
 
-    .hero-card-location {
-      font-size: 0.95rem;
-      color: var(--text-muted);
+    .grid-2{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card{
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.05);
+    }
+    .card h3{
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(0,0,0,.84);
+    }
+    .card p{
+      margin: 0;
+      color: rgba(0,0,0,.68);
+      line-height: 1.7;
+      font-size: 13px;
     }
 
-    .hero-card-divider {
-      height: 1px;
-      background: linear-gradient(to right, rgba(209, 178, 122, 0.1), rgba(209, 178, 122, 0.9), rgba(209, 178, 122, 0.1));
+    /* Photo placeholders */
+    .photo-slot{
+      margin-top: 14px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px dashed rgba(15,77,63,.28);
+      background: linear-gradient(135deg, rgba(15,77,63,.12), rgba(215,181,122,.10));
+      min-height: 180px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 14px;
+      color: rgba(0,0,0,.62);
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
-
-    .hero-card-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
+    .photo-slot img{ width:100%; height:100%; object-fit: cover; display:block; }
 
     /* Countdown */
-
-    .countdown-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
+    .countdown-row{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 18px;
+      max-width: 680px;
     }
-
-    @media (max-width: 640px) {
-      .countdown-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .stat{
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 16px;
+      padding: 14px 12px;
+      text-align:center;
+      box-shadow: 0 10px 26px rgba(0,0,0,.05);
     }
-
-    .countdown-item {
-      background-color: var(--white);
-      border-radius: var(--radius-card);
-      padding: 1.1rem 0.9rem;
-      text-align: center;
-      border: 1px solid rgba(209, 178, 122, 0.5);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    .countdown-number {
-      font-size: 1.4rem;
+    .stat .n{
+      font-family: var(--serif);
       font-weight: 600;
-      margin-bottom: 0.2rem;
+      font-size: 26px;
+      margin-bottom: 4px;
     }
-
-    .countdown-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.16em;
+    .stat .l{
+      font-size: 10px;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: rgba(0,0,0,.55);
     }
 
-    .countdown-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 1rem;
-    }
-
-    /* Stories */
-
-    .stories-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 900px) {
-      .stories-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .story-card {
-      background-color: var(--white);
-      border-radius: var(--radius-card);
-      padding: 1.6rem 1.5rem;
-      border: 1px solid rgba(209, 178, 122, 0.4);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    .story-title {
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.6rem;
-    }
-
-    .story-body {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .he-she-said {
-      margin-top: 2.5rem;
-      padding: 1.4rem 1.5rem;
-      border-radius: var(--radius-card);
-      border: 1px dashed rgba(209, 178, 122, 0.9);
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .he-she-title {
-      font-size: 0.9rem;
-      letter-spacing: 0.16em;
+    /* Details blocks (NO ICONS) */
+    .details-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .detail-block .label{
+      font-size: 10px;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      margin-bottom: 0.6rem;
+      color: rgba(0,0,0,.54);
+      margin-bottom: 8px;
     }
-
-    .he-she-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 0.9rem;
+    .detail-block .title{
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 18px;
+      margin: 0 0 6px;
     }
-
-    .he-she-list li + li {
-      margin-top: 0.35rem;
+    .detail-block .line{
+      font-size: 13px;
+      color: rgba(0,0,0,.68);
+      line-height: 1.6;
     }
+    .detail-actions{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
 
-    .he-she-label {
-      font-weight: 500;
-      color: var(--emerald);
+    /* Important dates list */
+    .list{
+      display:grid; gap: 10px; max-width: 820px;
     }
-
-    /* Event Details */
-
-    .details-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 2rem;
+    .list-item{
+      display:flex; justify-content:space-between; align-items:center; gap: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 10px 24px rgba(0,0,0,.04);
     }
-
-    @media (max-width: 900px) {
-      .details-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    .list-item .left{
+      display:grid; gap: 3px;
     }
-
-    .details-card {
-      background-color: var(--white);
-      border-radius: var(--radius-card);
-      padding: 1.6rem 1.5rem;
-      border: 1px solid rgba(209, 178, 122, 0.5);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    .details-label {
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
+    .list-item .small{
+      font-size: 10px;
+      letter-spacing: .20em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
+      color: rgba(0,0,0,.50);
+    }
+    .list-item .big{
+      font-weight: 600;
+      color: rgba(0,0,0,.80);
     }
 
-    .details-heading {
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
+    /* RSVP / Registry / Guestbook */
+    .center-card{
+      max-width: 760px;
+      margin: 18px auto 0;
+      text-align:center;
+      padding: 22px;
     }
-
-    .details-address {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 0.7rem;
-    }
-
-    .details-meta {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .details-meta p {
-      margin: 0.2rem 0;
-    }
-
-    .details-actions {
-      margin-top: 0.9rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    /* Important Dates */
-
-    .dates-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 1rem;
-    }
-
-    .dates-table {
+    .input{
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.92);
+      font-family: var(--sans);
+      margin-top: 10px;
+      outline: none;
     }
+    textarea.input{ min-height: 120px; resize: vertical; }
 
-    .dates-table tr {
-      background-color: var(--white);
-      border-radius: var(--radius-card);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-    }
-
-    .dates-table tr + tr {
-      margin-top: 0.75rem;
-    }
-
-    .dates-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-      gap: 1.2rem;
-      padding: 1rem 1.1rem;
-      align-items: center;
-      border-radius: var(--radius-card);
-      border: 1px solid rgba(209, 178, 122, 0.4);
-    }
-
-    @media (max-width: 768px) {
-      .dates-row {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .dates-label {
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.25rem;
-    }
-
-    .dates-name {
-      font-weight: 500;
-      margin-bottom: 0.1rem;
-    }
-
-    .dates-when {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .dates-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: flex-start;
-    }
-
-    /* Photos */
-
-    .photos-wrapper {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid rgba(209, 178, 122, 0.6);
-      background: linear-gradient(135deg, rgba(11, 91, 70, 0.06), rgba(239, 226, 200, 0.4));
-      box-shadow: var(--shadow-soft);
-      padding: 1.2rem 0.8rem;
-    }
-
-    .photos-carousel {
-      display: flex;
-      gap: 1rem;
-      animation: scrollCarousel 40s linear infinite;
-      will-change: transform;
-    }
-
-    .photos-wrapper:hover .photos-carousel {
-      animation-play-state: paused;
-    }
-
-    @keyframes scrollCarousel {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .photo-item {
-      min-width: 220px;
-      max-width: 260px;
-      flex: 0 0 auto;
-      border-radius: 18px;
-      overflow: hidden;
-      background-color: var(--white);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-      cursor: pointer;
-      border: 1px solid rgba(209, 178, 122, 0.6);
-    }
-
-    .photo-img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      background: linear-gradient(135deg, #0b5b46, #d9c6a3);
-    }
-
-    .photo-caption {
-      padding: 0.7rem 0.8rem 0.8rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    /* Lightbox */
-
-    .lightbox {
+    /* Music Toggle */
+    .music-toggle{
       position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      display:flex;
+      gap: 10px;
+      align-items:center;
     }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox-dialog {
-      background-color: #111;
-      border-radius: 18px;
-      max-width: 900px;
-      width: 92%;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    }
-
-    .lightbox-img-wrapper {
-      flex: 1;
-      background-color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-img {
-      max-width: 100%;
-      max-height: 70vh;
-      object-fit: contain;
-    }
-
-    .lightbox-caption {
-      padding: 0.8rem 1rem 1rem;
-      font-size: 0.85rem;
-      color: #f5f5f5;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 0.6rem;
-      right: 0.7rem;
-      background: rgba(0, 0, 0, 0.6);
+    .chip{
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      color: #fff;
-      width: 32px;
-      height: 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.1rem;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
+      font-size: 12px;
+      cursor:pointer;
+      user-select:none;
+      letter-spacing: .06em;
     }
+    .chip strong{ color: var(--emerald); }
 
-    .lightbox-nav {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-
-    .lightbox-arrow {
-      pointer-events: auto;
-      background: rgba(0, 0, 0, 0.55);
+    .tap-to-play{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 72px;
+      z-index: 60;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      color: #fff;
-      width: 36px;
-      height: 36px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      margin: 0 0.7rem;
+      padding: 10px 14px;
+      font-size: 12px;
+      display:none;
+      cursor:pointer;
     }
 
-    /* Travel & Hotel */
-
-    .travel-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 2rem;
-      align-items: flex-start;
+    footer{
+      padding: 28px 0 48px;
+      color: rgba(0,0,0,.56);
+      font-size: 12px;
     }
 
-    @media (max-width: 900px) {
-      .travel-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hotel-card {
-      background-color: var(--white);
-      border-radius: var(--radius-card);
-      padding: 1.6rem 1.5rem;
-      border: 1px solid rgba(209, 178, 122, 0.5);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    .hotel-name {
-      font-size: 1.05rem;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-    }
-
-    .hotel-address,
-    .hotel-phone {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .hotel-meta {
-      margin-top: 0.8rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .hotel-meta p {
-      margin: 0.2rem 0;
-    }
-
-    .hotel-images {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 1rem;
-    }
-
-    @media (max-width: 640px) {
-      .hotel-images {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .hotel-image {
-      border-radius: 20px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #0b5b46, #d9c6a3);
-      min-height: 180px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-      position: relative;
-    }
-
-    .hotel-image::after {
-      content: "Hotel Image";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 0.8rem 1rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.9);
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
-    }
-
-    .hotel-image.room::after {
-      content: "Room Image";
-    }
-
-    /* RSVP / Registry */
-
-    .card-simple {
-      background-color: var(--white);
-      border-radius: var(--radius-card);
-      padding: 1.8rem 1.6rem;
-      border: 1px solid rgba(209, 178, 122, 0.5);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-      max-width: 640px;
-    }
-
-    .card-simple p {
-      margin-top: 0.4rem;
-      margin-bottom: 1.2rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .registry-address {
-      margin-top: 1.2rem;
-      padding: 0.9rem 1rem;
-      border-radius: 12px;
-      background-color: var(--offwhite);
-      border: 1px dashed rgba(209, 178, 122, 0.8);
-      font-size: 0.9rem;
-      white-space: pre-line;
-    }
-
-    /* Guestbook */
-
-    .guestbook-card {
-      background-color: var(--white);
-      border-radius: var(--radius-card);
-      padding: 1.8rem 1.6rem 1.6rem;
-      border: 1px solid rgba(209, 178, 122, 0.5);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    .guestbook-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .guestbook-helper {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .guestbook-embed-wrapper {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(209, 178, 122, 0.6);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-      background-color: var(--offwhite);
-    }
-
-    .guestbook-embed {
-      width: 100%;
-      border: 0;
-      min-height: 420px;
-    }
-
-    .guestbook-fallback {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      pointer-events: none;
-      text-align: center;
-    }
-
-    /* Footer */
-
-    .footer {
-      border-top: 1px solid var(--border-gold);
-      padding: 1.8rem 0 2.2rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    /* Fade-in on scroll */
-
-    .fade-section {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Utility */
-
-    .mt-small {
-      margin-top: 0.6rem;
-    }
-
-    .mt-medium {
-      margin-top: 1.2rem;
-    }
-
-    .align-center {
-      text-align: center;
-    }
-
-    .text-muted {
-      color: var(--text-muted);
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-content{ grid-template-columns: 1fr; }
+      .meta-row{ grid-template-columns: 1fr; }
+      .grid-2, .details-grid{ grid-template-columns: 1fr; }
+      .countdown-row{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .nav-links{ display:none; }
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <!-- Sticky Navigation -->
-    <header class="nav" aria-label="Main navigation">
-      <div class="nav-inner">
-        <div class="nav-brand">
-          <span>Norma &amp; Milton</span> • 09.12.26
-        </div>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
-          Menu
-        </button>
-        <nav class="nav-links" id="nav-links">
-          <button class="nav-link" data-scroll-target="#hero">Hero</button>
-          <button class="nav-link" data-scroll-target="#countdown">Countdown</button>
-          <button class="nav-link" data-scroll-target="#stories">Stories</button>
-          <button class="nav-link" data-scroll-target="#details">Details</button>
-          <button class="nav-link" data-scroll-target="#dates">Important Dates</button>
-          <button class="nav-link" data-scroll-target="#photos">Photos</button>
-          <button class="nav-link" data-scroll-target="#travel">Travel &amp; Hotel</button>
-          <button class="nav-link" data-scroll-target="#rsvp">RSVP</button>
-          <button class="nav-link" data-scroll-target="#registry">Registry</button>
-          <button class="nav-link" data-scroll-target="#guestbook">Guestbook</button>
-        </nav>
+  <!-- Background music (place your file at /assets/music.mp3) -->
+  <!-- NOTE: Autoplay with sound is often blocked; we handle it in JS. -->
+  <audio id="bgMusic" src="assets/music.mp3" preload="auto" loop></audio>
+
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="names">NORMA & MILTON</div>
+        <div class="date">09.12.26</div>
       </div>
-    </header>
+      <div class="nav-links">
+        <a href="#hero">Hero</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#story">Stories</a>
+        <a href="#details">Details</a>
+        <a href="#dates">Important Dates</a>
+        <a href="#photos">Photos</a>
+        <a href="#travel">Travel & Hotel</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#registry">Registry</a>
+        <a href="#guestbook">Guestbook</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- HERO -->
-    <main>
-      <section id="hero" class="hero fade-section" aria-labelledby="hero-title">
-        <div class="container">
-          <div class="hero-inner">
-            <div>
-              <div class="hero-tagline">Buffalo, New York</div>
-              <h1 id="hero-title" class="hero-title">Norma &amp; Milton</h1>
-              <p class="hero-subtitle">We’re getting married!</p>
-              <p class="hero-line">
-                <span>September 12, 2026</span> • Buffalo, New York
-              </p>
-              <div class="hero-actions">
-                <button class="btn" data-scroll-target="#rsvp">RSVP</button>
-                <button class="btn btn-outline" data-scroll-target="#dates">Important Dates</button>
-                <button class="btn btn-outline" data-scroll-target="#travel">Travel</button>
-                <button class="btn btn-outline" data-scroll-target="#guestbook">Guestbook</button>
-              </div>
-              <div class="hero-meta" aria-label="Key details">
-                <div class="hero-meta-item">
-                  <span class="hero-meta-label">Date</span>
-                  <span class="hero-meta-value">Saturday, September 12, 2026</span>
-                </div>
-                <div class="hero-meta-item">
-                  <span class="hero-meta-label">Location</span>
-                  <span class="hero-meta-value">Buffalo, New York</span>
-                </div>
-                <div class="hero-meta-item">
-                  <span class="hero-meta-label">They met</span>
-                  <span class="hero-meta-value">November 15, 2024 • Target</span>
-                </div>
-              </div>
-            </div>
-            <aside class="hero-card" aria-label="Ceremony snapshot">
-              <div>
-                <div class="hero-card-label">The Day</div>
-                <div class="hero-card-date">September 12, 2026</div>
-                <div class="hero-card-location">Buffalo, New York</div>
-              </div>
-              <div class="hero-card-divider" aria-hidden="true"></div>
-              <div class="hero-card-note">
-                A modern, intimate celebration with the people who have loved us, cheered for us, and watched our story unfold.
-              </div>
-              <div class="hero-card-divider" aria-hidden="true"></div>
-              <div class="hero-card-note">
-                We can’t wait to share this day with you—thank you for being part of our forever.
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
 
-      <!-- COUNTDOWN -->
-      <section id="countdown" class="fade-section" aria-labelledby="countdown-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Countdown</div>
-            <h2 id="countdown-title" class="section-title">The Countdown to “I Do”</h2>
-            <p class="section-subtitle">
-              We’re counting down the days until we say our vows surrounded by our favorite people.
-            </p>
-          </header>
-          <div class="countdown-grid" aria-live="polite">
-            <div class="countdown-item">
-              <div class="countdown-number" id="count-days">--</div>
-              <div class="countdown-label">Days</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-number" id="count-hours">--</div>
-              <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-number" id="count-minutes">--</div>
-              <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-number" id="count-seconds">--</div>
-              <div class="countdown-label">Seconds</div>
-            </div>
-          </div>
-          <p class="countdown-note">
-            Ceremony begins at 4:00 PM Eastern Time.
-            <!-- UPDATE: Ceremony start time -->
+    <div class="wrap">
+      <div class="hero-content">
+
+        <div>
+          <div class="kicker">Buffalo, New York</div>
+
+          <!-- ✅ HERO COPY (rewritten, elevated) -->
+          <h1>Norma & Milton</h1>
+          <p class="sub">
+            With grateful hearts, we’re inviting you to celebrate the beginning of our forever.
+            We can’t wait to share this day—full of love, laughter, and the people who mean the most.
           </p>
-        </div>
-      </section>
 
-      <!-- STORIES -->
-      <section id="stories" class="fade-section" aria-labelledby="stories-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Stories</div>
-            <h2 id="stories-title" class="section-title">Our Story</h2>
-            <p class="section-subtitle">
-              Two people, one Target line, and a holiday rush that turned into a lifetime of inside jokes.
-            </p>
-          </header>
-          <div class="stories-grid">
-            <article class="story-card">
-              <h3 class="story-title">Norma’s Story</h3>
-              <p class="story-body">
-                It was November 15, 2024, and Target was in full holiday chaos. I was at my register,
-                doing my best to keep the line moving and the spirits bright, when I noticed the same
-                face popping up again and again. Milton kept choosing my line—no matter how long it was.
-              </p>
-              <p class="story-body mt-small">
-                At first, I thought it was a coincidence. Then I realized he was absolutely doing it on
-                purpose, armed with a new joke or comment every time. Somewhere between the gift wrap,
-                the peppermint mochas, and his terrible-but-charming one-liners, something shifted.
-              </p>
-              <p class="story-body mt-small">
-                What started as quick moments at checkout turned into real conversations, then into
-                dates, and eventually into a love that felt both brand new and like it had always been
-                there. Looking back, I’m so glad he kept getting “just one more thing.”
-              </p>
-            </article>
-            <article class="story-card">
-              <h3 class="story-title">Milton’s Story</h3>
-              <p class="story-body">
-                Milton insists he noticed her first—and that he was definitely not “shopping” at Target
-                that often on purpose. His full version is coming soon, but for now, he would like it
-                on record that he had a plan, even if it looked a lot like wandering the seasonal aisle
-                for the fifth time that week.
-              </p>
-              <p class="story-body mt-small">
-                What he will admit is this: every trip felt worth it the moment he saw her smile.
-              </p>
-            </article>
+          <div class="date-line">
+            <span class="pill"><strong>September 12, 2026</strong> • Buffalo, New York</span>
+            <span class="pill">Ceremony begins <strong>4:00 PM ET</strong></span>
           </div>
-          <div class="he-she-said" aria-label="He said / She said">
-            <div class="he-she-title">He said / She said</div>
-            <ul class="he-she-list">
-              <li>
-                <span class="he-she-label">Who fell first:</span>
-                <!-- UPDATE: He said / She said - who fell first -->
-                [PLACEHOLDER]
-              </li>
-              <li>
-                <span class="he-she-label">Who was googly-eyed first:</span>
-                <!-- UPDATE: He said / She said - who was googly-eyed first -->
-                [PLACEHOLDER]
-              </li>
-              <li>
-                <span class="he-she-label">Who made the first move:</span>
-                <!-- UPDATE: He said / She said - who made the first move -->
-                [PLACEHOLDER]
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
 
-      <!-- EVENT DETAILS -->
-      <section id="details" class="fade-section" aria-labelledby="details-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Details</div>
-            <h2 id="details-title" class="section-title">Event Details</h2>
-            <p class="section-subtitle">
-              Everything you need to know for the day-of—where to be, what to wear, and how to arrive with ease.
-            </p>
-          </header>
-          <div class="details-grid">
-            <div class="details-card">
-              <div class="details-label">Ceremony</div>
-              <div class="details-heading">
-                <!-- UPDATE: Ceremony Venue -->
-                [CEREMONY VENUE NAME]
-              </div>
-              <div class="details-address" id="ceremony-address">
-                <!-- UPDATE: Ceremony Full Address -->
-                [FULL CEREMONY ADDRESS]
-              </div>
-              <div class="details-meta">
-                <p><strong>Dress code:</strong> <!-- UPDATE: Dress code --> [PLACEHOLDER]</p>
-                <p><strong>Parking &amp; arrival:</strong> <!-- UPDATE: Parking/arrival notes --> [PLACEHOLDER]</p>
-              </div>
-              <div class="details-actions">
-                <button class="btn btn-small btn-ghost" data-copy-target="#ceremony-address">
-                  Copy Address
-                </button>
-              </div>
+          <div class="cta-row">
+            <a class="btn primary" href="#rsvp">RSVP</a>
+            <a class="btn" href="#dates">Important Dates</a>
+            <a class="btn" href="#travel">Travel</a>
+            <a class="btn" href="#guestbook">Guestbook</a>
+          </div>
+
+          <div class="meta-row">
+            <div class="meta">
+              <div class="t">Date</div>
+              <div class="v">Saturday, September 12, 2026</div>
             </div>
-            <div class="details-card">
-              <div class="details-label">Reception</div>
-              <div class="details-heading">
-                <!-- UPDATE: Reception Venue -->
-                [RECEPTION VENUE NAME]
-              </div>
-              <div class="details-address" id="reception-address">
-                <!-- UPDATE: Reception Full Address -->
-                [FULL RECEPTION ADDRESS]
-              </div>
-              <div class="details-meta">
-                <p><strong>Dress code:</strong> <!-- UPDATE: Dress code --> [PLACEHOLDER]</p>
-                <p><strong>Parking &amp; arrival:</strong> <!-- UPDATE: Parking/arrival notes --> [PLACEHOLDER]</p>
-              </div>
-              <div class="details-actions">
-                <button class="btn btn-small btn-ghost" data-copy-target="#reception-address">
-                  Copy Address
-                </button>
-              </div>
+            <div class="meta">
+              <div class="t">Location</div>
+              <div class="v">Buffalo, New York</div>
+            </div>
+            <div class="meta">
+              <div class="t">They Met</div>
+              <div class="v">November 15, 2024 • Target</div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- IMPORTANT DATES -->
-      <section id="dates" class="fade-section" aria-labelledby="dates-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Timeline</div>
-            <h2 id="dates-title" class="section-title">Important Dates</h2>
-            <p class="section-subtitle">
-              Mark your calendars for the key moments leading up to and following our wedding day.
-            </p>
-          </header>
-
-          <div class="dates-table" role="list">
-            <div class="dates-row" role="listitem">
-              <div>
-                <div class="dates-label">RSVP Deadline</div>
-                <div class="dates-name">Kindly let us know if you’ll be joining us</div>
-                <div class="dates-when">
-                  <!-- UPDATE: RSVP Deadline Date -->
-                  [RSVP DEADLINE DATE PLACEHOLDER]
-                </div>
-              </div>
-              <div class="dates-actions">
-                <a class="btn btn-small btn-outline" href="[RSVP_GOOGLE_FORM_LINK]" target="_blank" rel="noopener noreferrer">
-                  <!-- UPDATE: RSVP Google Form Link -->
-                  RSVP Now
-                </a>
-              </div>
-            </div>
-
-            <div class="dates-row" role="listitem">
-              <div>
-                <div class="dates-label">Hotel Block Deadline</div>
-                <div class="dates-name">Reserve your room in our wedding block</div>
-                <div class="dates-when">
-                  <!-- UPDATE: Hotel Block Deadline Date -->
-                  [HOTEL BLOCK DEADLINE DATE PLACEHOLDER]
-                </div>
-              </div>
-              <div class="dates-actions">
-                <a class="btn btn-small btn-outline" href="[HOTEL_BLOCK_LINK]" target="_blank" rel="noopener noreferrer">
-                  <!-- UPDATE: Hotel Block Link -->
-                  Reserve Your Room
-                </a>
-              </div>
-            </div>
-
-            <div class="dates-row" role="listitem">
-              <div>
-                <div class="dates-label">Rehearsal / Welcome Event</div>
-                <div class="dates-name">An evening to gather, hug, and say hello</div>
-                <div class="dates-when">
-                  <!-- UPDATE: Rehearsal / Welcome Event Date + Time + Location -->
-                  [DATE + TIME + LOCATION PLACEHOLDER]
-                </div>
-              </div>
-              <div class="dates-actions">
-                <button
-                  class="btn btn-small btn-outline"
-                  data-ics="rehearsal"
-                  data-title="Rehearsal / Welcome Event - Norma & Milton"
-                  data-description="Rehearsal / welcome gathering for Norma &amp; Milton’s wedding."
-                  data-location="[REHEARSAL LOCATION PLACEHOLDER]"
-                  data-start="[20260911T180000]"
-                  data-end="[20260911T210000]"
-                >
-                  Add to Calendar
-                </button>
-              </div>
-            </div>
-
-            <div class="dates-row" role="listitem">
-              <div>
-                <div class="dates-label">Wedding Day</div>
-                <div class="dates-name">Norma &amp; Milton’s Wedding</div>
-                <div class="dates-when">September 12, 2026</div>
-              </div>
-              <div class="dates-actions">
-                <button
-                  class="btn btn-small btn-outline"
-                  data-ics="wedding"
-                  data-title="Wedding Day - Norma & Milton"
-                  data-description="Wedding ceremony and celebration for Norma &amp; Milton."
-                  data-location="[CEREMONY + RECEPTION LOCATION PLACEHOLDER]"
-                  data-start="20260912T160000"
-                  data-end="20260912T230000"
-                >
-                  Add to Calendar
-                </button>
-              </div>
-            </div>
-
-            <div class="dates-row" role="listitem">
-              <div>
-                <div class="dates-label">Post-wedding Brunch</div>
-                <div class="dates-name">One more chance to hug you goodbye</div>
-                <div class="dates-when">
-                  <!-- UPDATE: Post-wedding Brunch Date -->
-                  [POST-WEDDING BRUNCH DATE PLACEHOLDER]
-                </div>
-              </div>
-              <div class="dates-actions">
-                <button
-                  class="btn btn-small btn-outline"
-                  data-ics="brunch"
-                  data-title="Post-wedding Brunch - Norma & Milton"
-                  data-description="Post-wedding brunch with Norma &amp; Milton."
-                  data-location="[BRUNCH LOCATION PLACEHOLDER]"
-                  data-start="[20260913T110000]"
-                  data-end="[20260913T130000]"
-                >
-                  Add to Calendar
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <p class="dates-note">
-            Dates may be updated—please check back.
+        <aside class="hero-card">
+          <div class="label">The Day</div>
+          <div class="when">September 12, 2026</div>
+          <div class="where">Buffalo, New York</div>
+          <p>
+            A modern, intimate celebration with the people who have loved us, cheered for us,
+            and watched our story unfold. Thank you for being part of our forever.
           </p>
-        </div>
-      </section>
+        </aside>
 
-      <!-- PHOTOS -->
-      <section id="photos" class="fade-section" aria-labelledby="photos-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Photos</div>
-            <h2 id="photos-title" class="section-title">Photo Album</h2>
-            <p class="section-subtitle">
-              A glimpse into our story so far—engagement moments, everyday joy, and everything in between.
-            </p>
-          </header>
+      </div>
+    </div>
+  </header>
 
-          <div class="photos-wrapper" aria-label="Photo carousel">
-            <div class="photos-carousel" id="photo-carousel">
-              <!-- UPDATE: Replace /images/photo-01.jpg ... with your own images -->
-              <div class="photo-item" data-index="0">
-                <img class="photo-img" src="/images/photo-01.jpg" alt="Photo 1 placeholder" />
-                <div class="photo-caption">A quiet moment before the laughter starts.</div>
-              </div>
-              <div class="photo-item" data-index="1">
-                <img class="photo-img" src="/images/photo-02.jpg" alt="Photo 2 placeholder" />
-                <div class="photo-caption">Holiday lights, Target runs, and new beginnings.</div>
-              </div>
-              <div class="photo-item" data-index="2">
-                <img class="photo-img" src="/images/photo-03.jpg" alt="Photo 3 placeholder" />
-                <div class="photo-caption">The look that says “you’re my person.”</div>
-              </div>
-              <div class="photo-item" data-index="3">
-                <img class="photo-img" src="/images/photo-04.jpg" alt="Photo 4 placeholder" />
-                <div class="photo-caption">Buffalo evenings and shared playlists.</div>
-              </div>
-              <div class="photo-item" data-index="4">
-                <img class="photo-img" src="/images/photo-05.jpg" alt="Photo 5 placeholder" />
-                <div class="photo-caption">The moment everything felt very, very real.</div>
-              </div>
-              <div class="photo-item" data-index="5">
-                <img class="photo-img" src="/images/photo-06.jpg" alt="Photo 6 placeholder" />
-                <div class="photo-caption">Goofy smiles, zero regrets.</div>
-              </div>
-              <div class="photo-item" data-index="6">
-                <img class="photo-img" src="/images/photo-07.jpg" alt="Photo 7 placeholder" />
-                <div class="photo-caption">The in-between moments we never want to forget.</div>
-              </div>
-              <div class="photo-item" data-index="7">
-                <img class="photo-img" src="/images/photo-08.jpg" alt="Photo 8 placeholder" />
-                <div class="photo-caption">A future we can’t wait to build.</div>
-              </div>
-              <div class="photo-item" data-index="8">
-                <img class="photo-img" src="/images/photo-09.jpg" alt="Photo 9 placeholder" />
-                <div class="photo-caption">Friends, family, and found family.</div>
-              </div>
-              <div class="photo-item" data-index="9">
-                <img class="photo-img" src="/images/photo-10.jpg" alt="Photo 10 placeholder" />
-                <div class="photo-caption">Two hearts, one very good decision.</div>
-              </div>
+  <!-- COUNTDOWN -->
+  <section id="countdown">
+    <div class="wrap">
+      <div class="kicker">Countdown</div>
+      <h2 class="section-title">The Countdown to “I Do”</h2>
+      <p class="section-sub">
+        We’re counting down the days until we say our vows surrounded by our favorite people.
+      </p>
 
-              <!-- Duplicate set for seamless loop illusion -->
-              <div class="photo-item" data-index="10">
-                <img class="photo-img" src="/images/photo-01.jpg" alt="Photo 1 placeholder duplicate" />
-                <div class="photo-caption">A quiet moment before the laughter starts.</div>
-              </div>
-              <div class="photo-item" data-index="11">
-                <img class="photo-img" src="/images/photo-02.jpg" alt="Photo 2 placeholder duplicate" />
-                <div class="photo-caption">Holiday lights, Target runs, and new beginnings.</div>
-              </div>
-            </div>
+      <div class="countdown-row" aria-label="Countdown timer">
+        <div class="stat"><div class="n" id="cdDays">—</div><div class="l">Days</div></div>
+        <div class="stat"><div class="n" id="cdHours">—</div><div class="l">Hours</div></div>
+        <div class="stat"><div class="n" id="cdMinutes">—</div><div class="l">Minutes</div></div>
+        <div class="stat"><div class="n" id="cdSeconds">—</div><div class="l">Seconds</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section id="story">
+    <div class="wrap">
+      <div class="kicker">Stories</div>
+      <h2 class="section-title">Our Story</h2>
+      <p class="section-sub">
+        Two people, one Target line, and a holiday rush that turned into a lifetime of inside jokes.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Norma’s Story</h3>
+          <p>
+            It was November 15, 2024 — the middle of the holiday rush at Target. I was working the register,
+            trying to keep up with the endless line of shoppers, when I noticed him. Milton.
+            He kept coming back… always in my line, even when others were shorter.
+            <br><br>
+            At first, I thought he was just indecisive about his shopping. But then I realized
+            he was trying to make me laugh — and somewhere between gift wrap and peppermint mochas,
+            something shifted.
+          </p>
+
+          <!-- ✅ INSERT STORY PHOTO #1 HERE (Norma / early moment) -->
+          <!-- Option A: replace the placeholder div with an <img> inside .photo-slot -->
+          <div class="photo-slot">
+            INSERT PHOTO HERE: Norma / early moment (assets/story-norma.jpg)
           </div>
         </div>
-      </section>
 
-      <!-- LIGHTBOX MODAL -->
-      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-        <div class="lightbox-dialog">
-          <button class="lightbox-close" type="button" aria-label="Close photo viewer">&times;</button>
-          <div class="lightbox-nav" aria-hidden="true">
-            <button class="lightbox-arrow" type="button" data-direction="prev" aria-label="Previous photo">&#8249;</button>
-            <button class="lightbox-arrow" type="button" data-direction="next" aria-label="Next photo">&#8250;</button>
+        <div class="card">
+          <h3>Milton’s Story</h3>
+          <p>
+            Milton insists he noticed her first — and that he was definitely not “shopping” at Target on purpose.
+            His full version is coming soon… once he finishes arguing that he made the first move.
+            <br><br>
+            What he will admit: every trip felt worth it the moment he saw her smile.
+          </p>
+
+          <!-- ✅ INSERT STORY PHOTO #2 HERE (Milton / early moment) -->
+          <div class="photo-slot">
+            INSERT PHOTO HERE: Milton / early moment (assets/story-milton.jpg)
           </div>
-          <div class="lightbox-img-wrapper">
-            <img class="lightbox-img" id="lightbox-img" src="" alt="" />
-          </div>
-          <div class="lightbox-caption" id="lightbox-caption"></div>
         </div>
       </div>
 
-      <!-- TRAVEL & HOTEL -->
-      <section id="travel" class="fade-section" aria-labelledby="travel-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Travel</div>
-            <h2 id="travel-title" class="section-title">Travel &amp; Hotel</h2>
-            <p class="section-subtitle">
-              Whether you’re coming from across town or across the country, here are a few helpful details for your stay.
-            </p>
-          </header>
+      <div class="card" style="margin-top:18px;">
+        <h3>He Said / She Said</h3>
+        <p>
+          <strong>Who fell first:</strong> [PLACEHOLDER] <br>
+          <strong>Who was googly-eyed first:</strong> [PLACEHOLDER] <br>
+          <strong>Who made the first move:</strong> [PLACEHOLDER]
+        </p>
 
-          <div class="travel-grid">
-            <div class="hotel-card">
-              <div class="hotel-name">The Westin Buffalo</div>
-              <div class="hotel-address">
-                250 Delaware Avenue<br />
-                Buffalo, NY 14202
-              </div>
-              <div class="hotel-phone mt-small">
-                (716) 854-9000
-              </div>
-              <div class="hotel-meta">
-                <p><strong>Booking / Block link:</strong> <!-- UPDATE: Hotel booking link --> [HOTEL BLOCK LINK PLACEHOLDER]</p>
-                <p><strong>Block code:</strong> <!-- UPDATE: Block code --> [BLOCK CODE PLACEHOLDER]</p>
-                <p><strong>Check-in / Check-out:</strong> <!-- UPDATE: Check-in/out --> [CHECK-IN / CHECK-OUT PLACEHOLDER]</p>
-                <p><strong>Parking:</strong> <!-- UPDATE: Parking details --> [PARKING DETAILS PLACEHOLDER]</p>
-              </div>
-              <div class="details-actions mt-medium">
-                <a class="btn btn-small btn-outline" href="[HOTEL_BLOCK_LINK]" target="_blank" rel="noopener noreferrer">
-                  <!-- UPDATE: Hotel Block Link -->
-                  Reserve Room
-                </a>
-              </div>
-            </div>
-            <div class="hotel-images" aria-hidden="true">
-              <div class="hotel-image"></div>
-              <div class="hotel-image room"></div>
-            </div>
-          </div>
+        <!-- ✅ OPTIONAL INSERT PHOTO HERE (shared candid) -->
+        <div class="photo-slot" style="min-height:160px;">
+          OPTIONAL PHOTO: shared candid (assets/story-shared.jpg)
         </div>
-      </section>
-
-      <!-- RSVP -->
-      <section id="rsvp" class="fade-section" aria-labelledby="rsvp-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">RSVP</div>
-            <h2 id="rsvp-title" class="section-title">RSVP</h2>
-            <p class="section-subtitle">
-              Your presence means the world to us—please let us know if you’ll be joining the celebration.
-            </p>
-          </header>
-
-          <div class="card-simple">
-            <p>
-              Let us know you’re coming — we can’t wait to celebrate with you!
-            </p>
-            <a class="btn btn-full" href="[RSVP_GOOGLE_FORM_LINK]" target="_blank" rel="noopener noreferrer">
-              <!-- UPDATE: RSVP Google Form Link -->
-              RSVP Now
-            </a>
-            <p class="mt-medium">
-              Please RSVP by
-              <!-- UPDATE: RSVP Deadline -->
-              <strong>[RSVP DEADLINE PLACEHOLDER]</strong>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- REGISTRY -->
-      <section id="registry" class="fade-section" aria-labelledby="registry-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Registry</div>
-            <h2 id="registry-title" class="section-title">Registry</h2>
-            <p class="section-subtitle">
-              Your love and support are the greatest gifts. If you’d like to bless us with something more, we’ve created a registry.
-            </p>
-          </header>
-
-          <div class="card-simple">
-            <p>
-              Your presence is the greatest gift. If you’d like to bless us with something more, we’ve created a registry below.
-            </p>
-            <a class="btn btn-full btn-outline" href="[REGISTRY_LINK]" target="_blank" rel="noopener noreferrer">
-              <!-- UPDATE: Registry Link -->
-              View Registry
-            </a>
-            <div class="registry-address">
-              <!-- UPDATE: Mailing address -->
-              [NAME(S)]<br />
-              [STREET]<br />
-              [CITY, STATE ZIP]
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- GUESTBOOK -->
-      <section id="guestbook" class="fade-section" aria-labelledby="guestbook-title">
-        <div class="container">
-          <header class="section-header">
-            <div class="section-kicker">Guestbook</div>
-            <h2 id="guestbook-title" class="section-title">Guestbook</h2>
-            <p class="section-subtitle">
-              Share a note, a memory, or a blessing—your words will become part of our keepsake.
-            </p>
-          </header>
-
-          <div class="guestbook-card">
-            <div class="guestbook-actions">
-              <a class="btn btn-outline" href="[AIRTABLE_FORM_LINK]" target="_blank" rel="noopener noreferrer">
-                <!-- UPDATE: Airtable Form Link -->
-                Leave a Well Wish
-              </a>
-            </div>
-            <p class="guestbook-helper">
-              Leave a note for Norma &amp; Milton — your message may be included in a keepsake.
-            </p>
-            <div class="guestbook-embed-wrapper">
-              <iframe
-                class="guestbook-embed"
-                title="Guestbook messages"
-                src="[AIRTABLE_GALLERY_EMBED_URL]"
-                loading="lazy"
-              >
-                <!-- UPDATE: Airtable Gallery Embed URL -->
-              </iframe>
-              <div class="guestbook-fallback">
-                If you’re unable to view the guestbook, please use the “Leave a Well Wish” button above to share your message.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div>With love, Norma &amp; Milton</div>
-        <div>Buffalo, New York • September 12, 2026</div>
       </div>
-    </footer>
+    </div>
+  </section>
+
+  <!-- EVENT DETAILS (NO ICONS) -->
+  <section id="details">
+    <div class="wrap">
+      <div class="kicker">Details</div>
+      <h2 class="section-title">Event Details</h2>
+      <p class="section-sub">
+        Everything you need for the day—ceremony, reception, and the little details that help it all flow smoothly.
+      </p>
+
+      <div class="details-grid">
+        <div class="card detail-block">
+          <div class="label">Ceremony</div>
+          <div class="title">[CEREMONY VENUE NAME]</div>
+          <div class="line">[FULL CEREMONY ADDRESS]</div>
+          <div class="line"><strong>Dress code:</strong> [PLACEHOLDER]</div>
+          <div class="line"><strong>Parking & arrival:</strong> [PLACEHOLDER]</div>
+          <div class="detail-actions">
+            <button class="btn" type="button" onclick="copyText('[FULL CEREMONY ADDRESS]')">Copy Address</button>
+          </div>
+
+          <!-- ✅ OPTIONAL INSERT PHOTO HERE (venue or meaningful photo) -->
+          <div class="photo-slot" style="min-height:160px;">
+            OPTIONAL PHOTO: ceremony venue / meaningful image (assets/ceremony.jpg)
+          </div>
+        </div>
+
+        <div class="card detail-block">
+          <div class="label">Reception</div>
+          <div class="title">[RECEPTION VENUE NAME]</div>
+          <div class="line">[FULL RECEPTION ADDRESS]</div>
+          <div class="line"><strong>Dress code:</strong> [PLACEHOLDER]</div>
+          <div class="line"><strong>Parking & arrival:</strong> [PLACEHOLDER]</div>
+          <div class="detail-actions">
+            <button class="btn" type="button" onclick="copyText('[FULL RECEPTION ADDRESS]')">Copy Address</button>
+          </div>
+
+          <!-- ✅ OPTIONAL INSERT PHOTO HERE (reception venue) -->
+          <div class="photo-slot" style="min-height:160px;">
+            OPTIONAL PHOTO: reception venue (assets/reception.jpg)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPORTANT DATES -->
+  <section id="dates">
+    <div class="wrap">
+      <div class="kicker">Timeline</div>
+      <h2 class="section-title">Important Dates</h2>
+      <p class="section-sub">
+        Mark your calendars for the key moments leading up to and following our wedding day.
+      </p>
+
+      <div class="list">
+        <div class="list-item">
+          <div class="left">
+            <div class="small">RSVP Deadline</div>
+            <div class="big">Kindly let us know if you’ll be joining us</div>
+            <div class="small">[RSVP DEADLINE DATE]</div>
+          </div>
+          <a class="btn" href="#rsvp">RSVP Now</a>
+        </div>
+
+        <div class="list-item">
+          <div class="left">
+            <div class="small">Hotel Block Deadline</div>
+            <div class="big">Reserve your room in our wedding block</div>
+            <div class="small">[HOTEL BLOCK DEADLINE DATE]</div>
+          </div>
+          <a class="btn" href="#travel">Reserve Room</a>
+        </div>
+
+        <div class="list-item">
+          <div class="left">
+            <div class="small">Rehearsal / Welcome Event</div>
+            <div class="big">An evening to gather, hug, and say hello</div>
+            <div class="small">[DATE + TIME + LOCATION]</div>
+          </div>
+          <button class="btn" type="button">Add to Calendar</button>
+        </div>
+
+        <div class="list-item">
+          <div class="left">
+            <div class="small">Wedding Day</div>
+            <div class="big">We can’t wait to celebrate with you</div>
+            <div class="small">September 12, 2026 • 4:00 PM ET</div>
+          </div>
+          <button class="btn" type="button">Add to Calendar</button>
+        </div>
+
+        <div class="list-item">
+          <div class="left">
+            <div class="small">Post-Wedding Brunch (Optional)</div>
+            <div class="big">A relaxed farewell + one more hug</div>
+            <div class="small">[DATE + TIME + LOCATION]</div>
+          </div>
+          <button class="btn" type="button">Add to Calendar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOS -->
+  <section id="photos">
+    <div class="wrap">
+      <div class="kicker">Photos</div>
+      <h2 class="section-title">Photo Album</h2>
+      <p class="section-sub">
+        A glimpse into our story so far—engagement moments, everyday joy, and everything in between.
+      </p>
+
+      <!-- ✅ INSERT PHOTO GRID HERE -->
+      <!-- For now: placeholders. Replace each with <img src="assets/photo-1.jpg" alt="..."> -->
+      <div class="grid-2">
+        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-1.jpg)</div>
+        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-2.jpg)</div>
+        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-3.jpg)</div>
+        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-4.jpg)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL & HOTEL -->
+  <section id="travel">
+    <div class="wrap">
+      <div class="kicker">Travel</div>
+      <h2 class="section-title">Travel & Hotel</h2>
+      <p class="section-sub">
+        Whether you’re coming from across town or across the country, here are a few helpful details for your stay.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>The Westin Buffalo</h3>
+          <p>
+            250 Delaware Avenue<br>
+            Buffalo, NY 14202<br>
+            (716) 854-9000<br><br>
+            <strong>Booking / Block link:</strong> [HOTEL BLOCK LINK]<br>
+            <strong>Group code:</strong> [BLOCK CODE]<br>
+            <strong>Check-in / Check-out:</strong> [DATES]<br>
+            <strong>Parking:</strong> [PARKING DETAILS]
+          </p>
+
+          <div class="detail-actions">
+            <a class="btn" href="[HOTEL BLOCK LINK]" target="_blank" rel="noopener">Reserve Room</a>
+          </div>
+        </div>
+
+        <div>
+          <!-- ✅ INSERT HOTEL IMAGE HERE -->
+          <div class="photo-slot" style="min-height:220px;">INSERT PHOTO HERE: Hotel image (assets/hotel.jpg)</div>
+          <!-- ✅ INSERT ROOM IMAGE HERE -->
+          <div class="photo-slot" style="min-height:220px; margin-top:14px;">INSERT PHOTO HERE: Room image (assets/room.jpg)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <div class="wrap">
+      <div class="kicker">RSVP</div>
+      <h2 class="section-title">RSVP</h2>
+      <p class="section-sub">
+        Your presence means the world to us—please let us know if you’ll be joining the celebration.
+      </p>
+
+      <div class="card center-card">
+        <p style="margin:0 0 12px; color: rgba(0,0,0,.70);">
+          Let us know you’re coming — we can’t wait to celebrate with you!
+        </p>
+        <a class="btn primary" href="[RSVP LINK]" target="_blank" rel="noopener">RSVP Now</a>
+        <p style="margin:10px 0 0; font-size:12px; color: rgba(0,0,0,.60);">
+          Please RSVP by <strong>[RSVP DEADLINE]</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRY -->
+  <section id="registry">
+    <div class="wrap">
+      <div class="kicker">Registry</div>
+      <h2 class="section-title">Registry</h2>
+      <p class="section-sub">
+        Your love and support are the greatest gifts. If you’d like to bless us with something more, we’ve created a registry.
+      </p>
+
+      <div class="card center-card">
+        <a class="btn" href="[REGISTRY LINK]" target="_blank" rel="noopener">View Registry</a>
+
+        <!-- ✅ OPTIONAL INSERT PHOTO HERE (small detail photo / florals / engagement ring shot) -->
+        <div class="photo-slot" style="min-height:180px; margin-top:16px;">
+          OPTIONAL PHOTO: registry section image (assets/registry.jpg)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUESTBOOK -->
+  <section id="guestbook">
+    <div class="wrap">
+      <div class="kicker">Guestbook</div>
+      <h2 class="section-title">Guestbook</h2>
+      <p class="section-sub">
+        Share a note, a memory, or a blessing—your words will become part of our keepsake.
+      </p>
+
+      <div class="card center-card" style="text-align:left;">
+        <!-- If you want a simple guestbook: easiest is embed a Google Form link -->
+        <p style="margin:0 0 12px; color: rgba(0,0,0,.70); text-align:center;">
+          Leave a note for Norma & Milton — your message may be included in a keepsake.
+        </p>
+
+        <div style="display:flex; justify-content:center;">
+          <a class="btn" href="[GUESTBOOK LINK]" target="_blank" rel="noopener">Leave a Well Wish</a>
+        </div>
+
+        <p style="margin:14px 0 0; font-size:12px; color: rgba(0,0,0,.58); text-align:center;">
+          (Tip: Use a Google Form or Jotform for guestbook messages, then you can export them later.)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+      <div>With love, <strong>Norma & Milton</strong></div>
+      <div>Buffalo, New York • September 12, 2026</div>
+    </div>
+  </footer>
+
+  <!-- Music Controls -->
+  <div class="music-toggle" aria-label="Music controls">
+    <div id="musicStatus" class="chip" role="button" tabindex="0" aria-pressed="false">
+      Music: <strong>Off</strong>
+    </div>
+  </div>
+  <div id="tapToPlay" class="tap-to-play" role="button" tabindex="0">
+    Tap to play music ♫
   </div>
 
   <script>
-    // Smooth scroll for buttons and nav links
-    document.querySelectorAll("[data-scroll-target]").forEach(function (el) {
-      el.addEventListener("click", function () {
-        var target = document.querySelector(el.getAttribute("data-scroll-target"));
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+    // ========= Helpers =========
+    function copyText(text){
+      if(!text || text.includes("[") || text.includes("PLACEHOLDER")){
+        alert("Update the address text first, then this button will copy it.");
+        return;
+      }
+      navigator.clipboard.writeText(text)
+        .then(() => alert("Copied to clipboard."))
+        .catch(() => alert("Copy failed. You can manually select and copy."));
+    }
+
+    // ========= Countdown =========
+    // Update target time here (ET). We'll use local conversion.
+    // Sep 12, 2026 4:00 PM Eastern Time.
+    // Safer: store as ISO with offset. During DST that date is likely EDT (-04:00).
+    const weddingISO = "2026-09-12T16:00:00-04:00";
+    const target = new Date(weddingISO);
+
+    const elDays = document.getElementById("cdDays");
+    const elHours = document.getElementById("cdHours");
+    const elMinutes = document.getElementById("cdMinutes");
+    const elSeconds = document.getElementById("cdSeconds");
+
+    function tick(){
+      const now = new Date();
+      let diff = target - now;
+      if(diff < 0) diff = 0;
+
+      const s = Math.floor(diff / 1000);
+      const days = Math.floor(s / 86400);
+      const hours = Math.floor((s % 86400) / 3600);
+      const minutes = Math.floor((s % 3600) / 60);
+      const seconds = s % 60;
+
+      elDays.textContent = days;
+      elHours.textContent = String(hours).padStart(2,"0");
+      elMinutes.textContent = String(minutes).padStart(2,"0");
+      elSeconds.textContent = String(seconds).padStart(2,"0");
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // ========= Music (autoplay + toggle, with browser restrictions) =========
+    const audio = document.getElementById("bgMusic");
+    const musicStatus = document.getElementById("musicStatus");
+    const tapToPlay = document.getElementById("tapToPlay");
+
+    // Start muted to improve autoplay odds (many browsers still block, but this helps).
+    audio.muted = true;
+    audio.volume = 0.65;
+
+    let isPlaying = false;
+
+    function setUI(){
+      musicStatus.innerHTML = `Music: <strong>${isPlaying ? "On" : "Off"}</strong>`;
+      musicStatus.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+    }
+
+    async function tryAutoplay(){
+      try{
+        await audio.play();
+        // If play succeeds, keep it muted until user toggles on (polite default).
+        isPlaying = true;
+        setUI();
+      }catch(e){
+        // Autoplay blocked. Show prompt.
+        tapToPlay.style.display = "block";
+        isPlaying = false;
+        setUI();
+      }
+    }
+
+    function toggleMusic(){
+      if(!isPlaying){
+        // Turn on (unmute + play)
+        audio.muted = false;
+        audio.play().then(() => {
+          isPlaying = true;
+          tapToPlay.style.display = "none";
+          setUI();
+        }).catch(() => {
+          // Still blocked (needs a direct click). Keep prompt visible.
+          tapToPlay.style.display = "block";
+          isPlaying = false;
+          setUI();
+        });
+      }else{
+        // Turn off
+        audio.pause();
+        isPlaying = false;
+        setUI();
+      }
+    }
+
+    // Clicking status toggles music
+    musicStatus.addEventListener("click", toggleMusic);
+    musicStatus.addEventListener("keydown", (e) => {
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); toggleMusic(); }
+    });
+
+    // If autoplay blocked, this button will start it
+    tapToPlay.addEventListener("click", () => {
+      audio.muted = false;
+      audio.play().then(() => {
+        isPlaying = true;
+        tapToPlay.style.display = "none";
+        setUI();
+      }).catch(() => {
+        alert("Your browser blocked audio. Try tapping the Music button again.");
       });
     });
 
-    // Mobile nav toggle
-    (function () {
-      var toggle = document.querySelector(".nav-toggle");
-      var links = document.getElementById("nav-links");
-      if (!toggle || !links) return;
+    // Autoplay attempt on load (muted)
+    window.addEventListener("load", tryAutoplay);
 
-      toggle.addEventListener("click", function () {
-        var isOpen = links.classList.toggle("open");
-        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      });
-
-      links.addEventListener("click", function (e) {
-        if (e.target.matches(".nav-link")) {
-          links.classList.remove("open");
-          toggle.setAttribute("aria-expanded", "false");
-        }
-      });
-    })();
-
-    // Countdown to wedding date
-    (function () {
-      // Target: September 12, 2026 at 4:00 PM America/New_York
-      // NOTE: Adjust if ceremony time changes.
-      var targetDate = new Date("2026-09-12T16:00:00-04:00"); // Eastern Time
-      var daysEl = document.getElementById("count-days");
-      var hoursEl = document.getElementById("count-hours");
-      var minutesEl = document.getElementById("count-minutes");
-      var secondsEl = document.getElementById("count-seconds");
-
-      function updateCountdown() {
-        var now = new Date();
-        var diff = targetDate.getTime() - now.getTime();
-
-        if (diff <= 0) {
-          daysEl.textContent = "0";
-          hoursEl.textContent = "0";
-          minutesEl.textContent = "0";
-          secondsEl.textContent = "0";
-          return;
-        }
-
-        var seconds = Math.floor(diff / 1000);
-        var days = Math.floor(seconds / (60 * 60 * 24));
-        seconds -= days * 60 * 60 * 24;
-        var hours = Math.floor(seconds / (60 * 60));
-        seconds -= hours * 60 * 60;
-        var minutes = Math.floor(seconds / 60);
-        seconds -= minutes * 60;
-
-        daysEl.textContent = String(days);
-        hoursEl.textContent = String(hours).padStart(2, "0");
-        minutesEl.textContent = String(minutes).padStart(2, "0");
-        secondsEl.textContent = String(seconds).padStart(2, "0");
+    // Bonus: first user interaction anywhere can enable audio reliably
+    window.addEventListener("pointerdown", () => {
+      if(!isPlaying && tapToPlay.style.display === "block"){
+        // Don't force it; just make the toggle succeed after first interaction
+        // (User can tap Music button.)
       }
+    }, { once: true });
 
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    })();
-
-    // Fade-in on scroll using IntersectionObserver
-    (function () {
-      var sections = document.querySelectorAll(".fade-section");
-      if (!("IntersectionObserver" in window)) {
-        sections.forEach(function (sec) {
-          sec.classList.add("visible");
-        });
-        return;
-      }
-
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-
-      sections.forEach(function (sec) {
-        observer.observe(sec);
-      });
-    })();
-
-    // Copy address buttons
-    (function () {
-      document.querySelectorAll("[data-copy-target]").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var selector = btn.getAttribute("data-copy-target");
-          var target = document.querySelector(selector);
-          if (!target) return;
-          var text = target.innerText.trim();
-
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(
-              function () {
-                var original = btn.textContent;
-                btn.textContent = "Copied!";
-                setTimeout(function () {
-                  btn.textContent = original;
-                }, 1500);
-              },
-              function () {
-                alert("Copy not supported in this browser.");
-              }
-            );
-          } else {
-            // Fallback
-            var textarea = document.createElement("textarea");
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-              document.execCommand("copy");
-              var original = btn.textContent;
-              btn.textContent = "Copied!";
-              setTimeout(function () {
-                btn.textContent = original;
-              }, 1500);
-            } catch (e) {
-              alert("Copy not supported in this browser.");
-            }
-            document.body.removeChild(textarea);
-          }
-        });
-      });
-    })();
-
-    // .ics calendar file generation
-    (function () {
-      function createICS(options) {
-        // options: { title, description, location, start, end }
-        // start/end format: YYYYMMDDTHHMMSS (local time)
-        var dtStamp = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-        var uid = "norma-milton-" + Math.random().toString(36).slice(2) + "@wedding";
-        var lines = [
-          "BEGIN:VCALENDAR",
-          "VERSION:2.0",
-          "PRODID:-//Norma & Milton Wedding//EN",
-          "CALSCALE:GREGORIAN",
-          "METHOD:PUBLISH",
-          "BEGIN:VEVENT",
-          "DTSTAMP:" + dtStamp,
-          "UID:" + uid,
-          "SUMMARY:" + (options.title || "Wedding Event"),
-          "DESCRIPTION:" + (options.description || "").replace(/\n/g, "\\n"),
-          "LOCATION:" + (options.location || "").replace(/\n/g, "\\n"),
-          "DTSTART:" + options.start,
-          "DTEND:" + options.end,
-          "END:VEVENT",
-          "END:VCALENDAR"
-        ];
-        return lines.join("\r\n");
-      }
-
-      document.querySelectorAll("[data-ics]").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var title = btn.getAttribute("data-title") || "Wedding Event";
-          var description = btn.getAttribute("data-description") || "";
-          var location = btn.getAttribute("data-location") || "";
-          var start = btn.getAttribute("data-start") || "";
-          var end = btn.getAttribute("data-end") || "";
-
-          // NOTE: Update start/end values above as needed when finalizing times.
-          var icsContent = createICS({
-            title: title,
-            description: description,
-            location: location,
-            start: start,
-            end: end
-          });
-
-          var blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
-          var url = URL.createObjectURL(blob);
-          var link = document.createElement("a");
-          link.href = url;
-          link.download = (title || "event") + ".ics";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(url);
-        });
-      });
-    })();
-
-    // Photo lightbox
-    (function () {
-      var lightbox = document.getElementById("lightbox");
-      var lightboxImg = document.getElementById("lightbox-img");
-      var lightboxCaption = document.getElementById("lightbox-caption");
-      var closeBtn = lightbox.querySelector(".lightbox-close");
-      var arrows = lightbox.querySelectorAll(".lightbox-arrow");
-      var photoItems = Array.prototype.slice.call(document.querySelectorAll(".photo-item"));
-      var currentIndex = 0;
-
-      function openLightbox(index) {
-        var item = photoItems[index];
-        if (!item) return;
-        var img = item.querySelector("img");
-        var caption = item.querySelector(".photo-caption");
-        lightboxImg.src = img.getAttribute("src");
-        lightboxImg.alt = img.getAttribute("alt") || "";
-        lightboxCaption.textContent = caption ? caption.textContent : "";
-        currentIndex = index;
-        lightbox.classList.add("open");
-        lightbox.focus();
-      }
-
-      function closeLightbox() {
-        lightbox.classList.remove("open");
-        lightboxImg.src = "";
-        lightboxCaption.textContent = "";
-      }
-
-      function showNext(delta) {
-        if (!photoItems.length) return;
-        currentIndex = (currentIndex + delta + photoItems.length) % photoItems.length;
-        openLightbox(currentIndex);
-      }
-
-      photoItems.forEach(function (item, index) {
-        item.addEventListener("click", function () {
-          openLightbox(index);
-        });
-        item.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openLightbox(index);
-          }
-        });
-        item.setAttribute("tabindex", "0");
-      });
-
-      closeBtn.addEventListener("click", closeLightbox);
-
-      lightbox.addEventListener("click", function (e) {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-
-      arrows.forEach(function (arrow) {
-        arrow.addEventListener("click", function () {
-          var dir = arrow.getAttribute("data-direction") === "next" ? 1 : -1;
-          showNext(dir);
-        });
-      });
-
-      document.addEventListener("keydown", function (e) {
-        if (!lightbox.classList.contains("open")) return;
-        if (e.key === "Escape") {
-          // ESC closes lightbox
-          closeLightbox();
-        } else if (e.key === "ArrowRight") {
-          showNext(1);
-        } else if (e.key === "ArrowLeft") {
-          showNext(-1);
-        }
-      });
-    })();
+    setUI();
   </script>
 </body>
 </html>
