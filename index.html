@@ -1,975 +1,1828 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Norma & Milton • 09.12.26</title>
-
-  <!-- Fonts: Structure + Elegant Accent -->
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norma &amp; Milton - Wedding</title><!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"><!-- Element SDK -->
+  <script src="/_sdk/element_sdk.js"></script>
   <style>
-    :root{
-      /* Palette (emerald + champagne + warm ivory) */
-      --bg: #fbf8f2;
-      --ink: #1f1f1f;
-      --muted: rgba(31,31,31,.68);
-
-      --emerald: #0f4d3f;
-      --emerald-2: #0b3f33;
-      --champagne: #d7b57a;
-
-      --card: #ffffff;
-      --line: rgba(15,77,63,.18);
-      --shadow: 0 18px 55px rgba(0,0,0,.08);
-      --radius: 18px;
-
-      --sans: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
-
-      --max: 1100px;
-    }
-
-    *{ box-sizing: border-box; }
-    html, body{ margin:0; padding:0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
-    a{ color: inherit; text-decoration: none; }
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-
-    /* Top Nav */
-    .nav{
-      position: sticky; top:0; z-index: 50;
-      background: rgba(251,248,242,.86);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0,0,0,.06);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-    }
-    .brand{
-      display:flex; gap:12px; align-items:baseline;
-      letter-spacing: .08em;
-    }
-    .brand .names{
-      font-weight:600;
-      font-size: 12px;
-      color: var(--emerald);
-      text-transform: uppercase;
-    }
-    .brand .date{
-      font-size: 12px;
-      color: rgba(0,0,0,.55);
-      font-weight: 500;
-    }
-    .nav-links{
-      display:flex; gap: 18px; flex-wrap: wrap; justify-content:flex-end;
-      font-size: 12px; color: rgba(0,0,0,.62);
-    }
-    .nav-links a{
-      padding: 8px 10px;
-      border-radius: 999px;
-    }
-    .nav-links a:hover{
-      background: rgba(15,77,63,.07);
-      color: rgba(0,0,0,.82);
-    }
-
-    /* Hero */
-    .hero{
-      position: relative;
-      padding: 44px 0 40px;
-      border-bottom: 1px solid rgba(0,0,0,.06);
-      overflow:hidden;
-    }
-    .hero-bg{
-      position:absolute; inset:0;
-      /* ✅ INSERT HERO PHOTO HERE:
-         Put your image at /assets/hero.jpg (or update this URL) */
-      background:
-        linear-gradient(0deg, rgba(15,77,63,.38), rgba(15,77,63,.38)),
-        url("assets/hero.jpg");
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05) contrast(1.02);
-      transform: scale(1.02);
-    }
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 55%);
-      pointer-events:none;
-    }
-    .hero-content{
-      position: relative;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 26px;
-      align-items: center;
-      padding: 34px;
-      border-radius: calc(var(--radius) + 8px);
-      background: rgba(251,248,242,.90);
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,.45);
-    }
-    .kicker{
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      font-size: 11px;
-      color: rgba(0,0,0,.55);
-      margin-bottom: 12px;
-    }
-    h1{
-      margin: 0 0 10px;
-      font-family: var(--serif);
-      font-weight: 600;
-      letter-spacing: .03em;
-      font-size: clamp(34px, 4.3vw, 54px);
-      line-height: 1.05;
-    }
-    .sub{
-      margin: 0 0 14px;
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 56ch;
-    }
-    .date-line{
-      display:flex; gap: 10px; flex-wrap: wrap;
-      font-size: 13px;
-      color: rgba(0,0,0,.66);
-      margin: 10px 0 16px;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(15,77,63,.18);
-      background: rgba(255,255,255,.65);
-    }
-    .pill strong{ color: var(--emerald); }
-
-    .cta-row{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-    .btn{
-      appearance:none; border: 1px solid rgba(15,77,63,.18);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      cursor: pointer;
-      background: rgba(255,255,255,.75);
-    }
-    .btn.primary{
-      background: var(--emerald);
-      border-color: rgba(15,77,63,.35);
-      color: #fff;
-    }
-    .btn.primary:hover{ background: var(--emerald-2); }
-    .btn:hover{ background: rgba(15,77,63,.07); }
-
-    .hero-card{
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: var(--radius);
-      padding: 18px 18px 16px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.06);
-    }
-    .hero-card .label{
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .22em;
-      color: rgba(0,0,0,.55);
-      margin-bottom: 6px;
-    }
-    .hero-card .when{
-      font-family: var(--serif);
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 2px;
-    }
-    .hero-card .where{
-      font-size: 12px; color: rgba(0,0,0,.60);
-      margin: 0 0 10px;
-    }
-    .hero-card p{
-      margin: 0;
-      font-size: 13px;
-      color: rgba(0,0,0,.68);
-      line-height: 1.6;
-    }
-    .meta-row{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .meta{
-      font-size: 11px;
-      color: rgba(0,0,0,.62);
-      background: rgba(255,255,255,.62);
-      border: 1px solid rgba(0,0,0,.05);
-      border-radius: 14px;
-      padding: 10px 12px;
-    }
-    .meta .t{
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.48);
-      margin-bottom: 4px;
-    }
-    .meta .v{
-      font-weight: 600;
-      color: rgba(0,0,0,.74);
-    }
-
-    /* Sections */
-    section{ padding: 62px 0; border-bottom: 1px solid rgba(0,0,0,.06); }
-    .section-title{
-      font-family: var(--serif);
-      font-size: 34px;
-      margin: 0 0 8px;
-      letter-spacing: .02em;
-    }
-    .section-sub{
-      margin: 0 0 22px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 70ch;
-    }
-
-    .grid-2{ display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .card{
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.05);
-    }
-    .card h3{
-      margin: 0 0 10px;
-      font-size: 16px;
-      font-weight: 600;
-      color: rgba(0,0,0,.84);
-    }
-    .card p{
-      margin: 0;
-      color: rgba(0,0,0,.68);
-      line-height: 1.7;
-      font-size: 13px;
-    }
-
-    /* Photo placeholders */
-    .photo-slot{
-      margin-top: 14px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px dashed rgba(15,77,63,.28);
-      background: linear-gradient(135deg, rgba(15,77,63,.12), rgba(215,181,122,.10));
-      min-height: 180px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding: 14px;
-      color: rgba(0,0,0,.62);
-      font-size: 12px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-    .photo-slot img{ width:100%; height:100%; object-fit: cover; display:block; }
-
-    /* Countdown */
-    .countdown-row{
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 18px;
-      max-width: 680px;
-    }
-    .stat{
-      background: rgba(255,255,255,.85);
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius: 16px;
-      padding: 14px 12px;
-      text-align:center;
-      box-shadow: 0 10px 26px rgba(0,0,0,.05);
-    }
-    .stat .n{
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 26px;
-      margin-bottom: 4px;
-    }
-    .stat .l{
-      font-size: 10px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.55);
-    }
-
-    /* Details blocks (NO ICONS) */
-    .details-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
-    .detail-block .label{
-      font-size: 10px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.54);
-      margin-bottom: 8px;
-    }
-    .detail-block .title{
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 18px;
-      margin: 0 0 6px;
-    }
-    .detail-block .line{
-      font-size: 13px;
-      color: rgba(0,0,0,.68);
-      line-height: 1.6;
-    }
-    .detail-actions{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
-
-    /* Important dates list */
-    .list{
-      display:grid; gap: 10px; max-width: 820px;
-    }
-    .list-item{
-      display:flex; justify-content:space-between; align-items:center; gap: 14px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 10px 24px rgba(0,0,0,.04);
-    }
-    .list-item .left{
-      display:grid; gap: 3px;
-    }
-    .list-item .small{
-      font-size: 10px;
-      letter-spacing: .20em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,.50);
-    }
-    .list-item .big{
-      font-weight: 600;
-      color: rgba(0,0,0,.80);
-    }
-
-    /* RSVP / Registry / Guestbook */
-    .center-card{
-      max-width: 760px;
-      margin: 18px auto 0;
-      text-align:center;
-      padding: 22px;
-    }
-    .input{
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.92);
-      font-family: var(--sans);
-      margin-top: 10px;
-      outline: none;
-    }
-    textarea.input{ min-height: 120px; resize: vertical; }
-
-    /* Music Toggle */
-    .music-toggle{
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 60;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-    }
-    .chip{
-      border-radius: 999px;
-      padding: 10px 12px;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 12px 30px rgba(0,0,0,.08);
-      font-size: 12px;
-      cursor:pointer;
-      user-select:none;
-      letter-spacing: .06em;
-    }
-    .chip strong{ color: var(--emerald); }
-
-    .tap-to-play{
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 72px;
-      z-index: 60;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 12px 30px rgba(0,0,0,.08);
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 12px;
-      display:none;
-      cursor:pointer;
-    }
-
-    footer{
-      padding: 28px 0 48px;
-      color: rgba(0,0,0,.56);
-      font-size: 12px;
-    }
-
-    /* Responsive */
-    @media (max-width: 920px){
-      .hero-content{ grid-template-columns: 1fr; }
-      .meta-row{ grid-template-columns: 1fr; }
-      .grid-2, .details-grid{ grid-template-columns: 1fr; }
-      .countdown-row{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .nav-links{ display:none; }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Background music (place your file at /assets/music.mp3) -->
-  <!-- NOTE: Autoplay with sound is often blocked; we handle it in JS. -->
-  <audio id="bgMusic" src="assets/music.mp3" preload="auto" loop></audio>
-
-  <div class="nav">
-    <div class="wrap nav-inner">
-      <div class="brand">
-        <div class="names">NORMA & MILTON</div>
-        <div class="date">09.12.26</div>
-      </div>
-      <div class="nav-links">
-        <a href="#hero">Hero</a>
-        <a href="#countdown">Countdown</a>
-        <a href="#story">Stories</a>
-        <a href="#details">Details</a>
-        <a href="#dates">Important Dates</a>
-        <a href="#photos">Photos</a>
-        <a href="#travel">Travel & Hotel</a>
-        <a href="#rsvp">RSVP</a>
-        <a href="#registry">Registry</a>
-        <a href="#guestbook">Guestbook</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <header class="hero" id="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-
-    <div class="wrap">
-      <div class="hero-content">
-
-        <div>
-          <div class="kicker">Buffalo, New York</div>
-
-          <!-- ✅ HERO COPY (rewritten, elevated) -->
-          <h1>Norma & Milton</h1>
-          <p class="sub">
-            With grateful hearts, we’re inviting you to celebrate the beginning of our forever.
-            We can’t wait to share this day—full of love, laughter, and the people who mean the most.
-          </p>
-
-          <div class="date-line">
-            <span class="pill"><strong>September 12, 2026</strong> • Buffalo, New York</span>
-            <span class="pill">Ceremony begins <strong>4:00 PM ET</strong></span>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn primary" href="#rsvp">RSVP</a>
-            <a class="btn" href="#dates">Important Dates</a>
-            <a class="btn" href="#travel">Travel</a>
-            <a class="btn" href="#guestbook">Guestbook</a>
-          </div>
-
-          <div class="meta-row">
-            <div class="meta">
-              <div class="t">Date</div>
-              <div class="v">Saturday, September 12, 2026</div>
-            </div>
-            <div class="meta">
-              <div class="t">Location</div>
-              <div class="v">Buffalo, New York</div>
-            </div>
-            <div class="meta">
-              <div class="t">They Met</div>
-              <div class="v">November 15, 2024 • Target</div>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="label">The Day</div>
-          <div class="when">September 12, 2026</div>
-          <div class="where">Buffalo, New York</div>
-          <p>
-            A modern, intimate celebration with the people who have loved us, cheered for us,
-            and watched our story unfold. Thank you for being part of our forever.
-          </p>
-        </aside>
-
-      </div>
-    </div>
+        /* CSS Variables for easy customization */
+        :root {
+            --emerald: #0d5c4b;
+            --emerald-light: #1a7a66;
+            --champagne: #d4af37;
+            --champagne-light: #e6c55a;
+            --white: #ffffff;
+            --off-white: #faf9f7;
+            --text-dark: #2c2c2c;
+            --text-light: #666666;
+            --divider: rgba(212, 175, 55, 0.3);
+        }
+        
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100%;
+        }
+        
+        /* Sticky Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--divider);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .nav-wrapper.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--emerald);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--champagne);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--emerald);
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--emerald);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 1rem;
+            border-bottom: 1px solid var(--divider);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid var(--divider);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-menu a:hover,
+        .mobile-menu a:focus {
+            background: var(--off-white);
+            color: var(--emerald);
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 60px;
+        }
+        
+        section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Section Divider */
+        .section-divider {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+            margin: 0 auto 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--emerald);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: calc(100% - 60px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 50%, var(--off-white) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 1.5rem;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-names {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 300;
+            color: var(--emerald);
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-names .ampersand {
+            color: var(--champagne);
+            font-weight: 400;
+        }
+        
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+        }
+        
+        .hero-date {
+            font-size: 1rem;
+            color: var(--champagne);
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 2rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: var(--emerald);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: var(--emerald-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(13, 92, 75, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--emerald);
+            border: 1.5px solid var(--emerald);
+        }
+        
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background: var(--emerald);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        
+        .btn-gold {
+            background: var(--champagne);
+            color: var(--text-dark);
+        }
+        
+        .btn-gold:hover,
+        .btn-gold:focus {
+            background: var(--champagne-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Countdown Section */
+        .countdown-section {
+            background: var(--emerald);
+            color: var(--white);
+            padding: 4rem 1.5rem;
+            max-width: 100%;
+        }
+        
+        .countdown-section .section-title {
+            color: var(--white);
+        }
+        
+        .countdown-section .section-divider {
+            background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--champagne);
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+        
+        /* Stories Section */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .stories-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .story-card {
+            background: var(--off-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            right: 2rem;
+            height: 3px;
+            background: linear-gradient(90deg, var(--champagne), var(--emerald));
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .story-card h3 {
+            font-size: 1.25rem;
+            color: var(--emerald);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .story-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        /* He Said She Said */
+        .he-said-she-said {
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+        }
+        
+        .he-said-she-said h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--champagne);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .comparison-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .comparison-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .comparison-question {
+            grid-column: 1 / -1;
+            font-weight: 500;
+            font-size: 0.875rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        
+        .comparison-answer {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+        
+        .comparison-answer strong {
+            display: block;
+            color: var(--champagne);
+            font-size: 0.75rem;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Event Details */
+        .events-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .event-card {
+            background: var(--white);
+            border: 1px solid var(--divider);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .event-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .event-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: var(--off-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .event-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--emerald);
+        }
+        
+        .event-card h3 {
+            font-size: 1.25rem;
+            color: var(--emerald);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .event-card .venue-name {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-card .venue-address {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .event-card .event-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--off-white);
+            border: 1px solid var(--divider);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .copy-btn:hover,
+        .copy-btn:focus {
+            background: var(--champagne);
+            border-color: var(--champagne);
+        }
+        
+        .copy-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* Important Dates Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--divider);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline-date {
+            min-width: 140px;
+            font-weight: 500;
+            color: var(--emerald);
+            font-size: 0.9rem;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .timeline-content h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .timeline-action {
+            flex-shrink: 0;
+        }
+        
+        .timeline-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+        
+        /* Photo Album */
+        .album-section {
+            background: var(--off-white);
+            padding: 4rem 0;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        .album-section .section-title,
+        .album-section .section-divider,
+        .album-section .section-subtitle {
+            padding: 0 1.5rem;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+        }
+        
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .carousel-item {
+            flex-shrink: 0;
+            width: 300px;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+        
+        .carousel-placeholder svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+        
+        .carousel-placeholder span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+        
+        .lightbox-placeholder {
+            width: 600px;
+            height: 400px;
+            max-width: 90%;
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+        
+        .lightbox-caption {
+            text-align: center;
+            color: var(--white);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 1rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .lightbox-prev { left: -60px; }
+        .lightbox-next { right: -60px; }
+        
+        @media (max-width: 768px) {
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+        }
+        
+        /* Travel & Hotel */
+        .hotel-section {
+            background: var(--off-white);
+        }
+        
+        .hotel-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        @media (min-width: 768px) {
+            .hotel-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .hotel-info {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--divider);
+        }
+        
+        .hotel-info h3 {
+            font-size: 1.5rem;
+            color: var(--emerald);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .hotel-address {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hotel-details {
+            margin-bottom: 2rem;
+        }
+        
+        .hotel-detail-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--divider);
+        }
+        
+        .hotel-detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .hotel-detail-item strong {
+            min-width: 100px;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .hotel-detail-item span {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .hotel-images {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .hotel-image-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+        
+        .hotel-image-placeholder svg {
+            width: 40px;
+            height: 40px;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hotel-image-placeholder span {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* RSVP Section */
+        .rsvp-section {
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+            text-align: center;
+            padding: 5rem 1.5rem;
+            max-width: 100%;
+        }
+        
+        .rsvp-section .section-title {
+            color: var(--white);
+        }
+        
+        .rsvp-section .section-divider {
+            background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+        }
+        
+        .rsvp-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+        
+        .rsvp-deadline {
+            color: var(--champagne);
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Registry Section */
+        .registry-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .registry-content p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .mailing-address {
+            background: var(--off-white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 1px solid var(--divider);
+        }
+        
+        .mailing-address h4 {
+            color: var(--emerald);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .mailing-address address {
+            font-style: normal;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        /* Guestbook Section */
+        .guestbook-section {
+            background: var(--off-white);
+        }
+        
+        .guestbook-content {
+            text-align: center;
+        }
+        
+        .guestbook-content p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .guestbook-embed {
+            margin-top: 3rem;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--divider);
+        }
+        
+        .guestbook-embed iframe {
+            width: 100%;
+            min-height: 500px;
+            border: none;
+        }
+        
+        .guestbook-embed-placeholder {
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .guestbook-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+        
+        .footer-names {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .footer-names .ampersand {
+            color: var(--champagne);
+        }
+        
+        .footer-details {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .footer-love {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 3000;
+        }
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
+        /* Focus styles for accessibility */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--champagne);
+            outline-offset: 2px;
+        }
+        
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--emerald);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 0 0 8px 8px;
+            z-index: 9999;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body class="h-full"><!-- Skip Link for Accessibility --> <a href="#main-content" class="skip-link">Skip to main content</a> <!-- Sticky Navigation -->
+  <header class="nav-wrapper" role="banner">
+   <nav role="navigation" aria-label="Main navigation"><!-- UPDATE: Couple names in navigation --> <a href="#hero" class="nav-logo">N &amp; M</a>
+    <ul class="nav-links">
+     <li><a href="#our-story">Our Story</a></li>
+     <li><a href="#event-details">Details</a></li>
+     <li><a href="#important-dates">Dates</a></li>
+     <li><a href="#photos">Photos</a></li>
+     <li><a href="#travel">Travel</a></li>
+     <li><a href="#rsvp">RSVP</a></li>
+     <li><a href="#registry">Registry</a></li>
+     <li><a href="#guestbook">Guestbook</a></li>
+    </ul><button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false"> <span></span> <span></span> <span></span> </button>
+   </nav>
+   <div class="mobile-menu" role="navigation" aria-label="Mobile navigation"><a href="#our-story">Our Story</a> <a href="#event-details">Details</a> <a href="#important-dates">Important Dates</a> <a href="#photos">Photos</a> <a href="#travel">Travel &amp; Hotel</a> <a href="#rsvp">RSVP</a> <a href="#registry">Registry</a> <a href="#guestbook">Guestbook</a>
+   </div>
   </header>
-
-  <!-- COUNTDOWN -->
-  <section id="countdown">
-    <div class="wrap">
-      <div class="kicker">Countdown</div>
-      <h2 class="section-title">The Countdown to “I Do”</h2>
-      <p class="section-sub">
-        We’re counting down the days until we say our vows surrounded by our favorite people.
-      </p>
-
-      <div class="countdown-row" aria-label="Countdown timer">
-        <div class="stat"><div class="n" id="cdDays">—</div><div class="l">Days</div></div>
-        <div class="stat"><div class="n" id="cdHours">—</div><div class="l">Hours</div></div>
-        <div class="stat"><div class="n" id="cdMinutes">—</div><div class="l">Minutes</div></div>
-        <div class="stat"><div class="n" id="cdSeconds">—</div><div class="l">Seconds</div></div>
+  <main id="main-content"><!-- HERO SECTION -->
+   <section id="hero" class="hero" aria-labelledby="hero-title">
+    <div class="hero-content fade-in"><!-- UPDATE: Couple names -->
+     <h1 id="hero-title" class="hero-names">Norma <span class="ampersand">&amp;</span> Milton</h1>
+     <p class="hero-tagline">We're getting married!</p><!-- UPDATE: Wedding date and location -->
+     <p class="hero-date">September 12, 2026 • Buffalo, New York</p>
+     <div class="hero-buttons"><a href="#rsvp" class="btn btn-primary">RSVP</a> <a href="#important-dates" class="btn btn-secondary">Important Dates</a> <a href="#travel" class="btn btn-secondary">Travel</a> <a href="#guestbook" class="btn btn-gold">Guestbook</a>
+     </div>
+    </div>
+   </section><!-- COUNTDOWN SECTION -->
+   <section class="countdown-section" aria-labelledby="countdown-title">
+    <h2 id="countdown-title" class="section-title">Counting Down</h2>
+    <div class="section-divider"></div>
+    <div class="countdown-container" role="timer" aria-live="polite">
+     <div class="countdown-item">
+      <div class="countdown-number" id="days">
+       000
       </div>
-    </div>
-  </section>
-
-  <!-- OUR STORY -->
-  <section id="story">
-    <div class="wrap">
-      <div class="kicker">Stories</div>
-      <h2 class="section-title">Our Story</h2>
-      <p class="section-sub">
-        Two people, one Target line, and a holiday rush that turned into a lifetime of inside jokes.
-      </p>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>Norma’s Story</h3>
-          <p>
-            It was November 15, 2024 — the middle of the holiday rush at Target. I was working the register,
-            trying to keep up with the endless line of shoppers, when I noticed him. Milton.
-            He kept coming back… always in my line, even when others were shorter.
-            <br><br>
-            At first, I thought he was just indecisive about his shopping. But then I realized
-            he was trying to make me laugh — and somewhere between gift wrap and peppermint mochas,
-            something shifted.
-          </p>
-
-          <!-- ✅ INSERT STORY PHOTO #1 HERE (Norma / early moment) -->
-          <!-- Option A: replace the placeholder div with an <img> inside .photo-slot -->
-          <div class="photo-slot">
-            INSERT PHOTO HERE: Norma / early moment (assets/story-norma.jpg)
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Milton’s Story</h3>
-          <p>
-            Milton insists he noticed her first — and that he was definitely not “shopping” at Target on purpose.
-            His full version is coming soon… once he finishes arguing that he made the first move.
-            <br><br>
-            What he will admit: every trip felt worth it the moment he saw her smile.
-          </p>
-
-          <!-- ✅ INSERT STORY PHOTO #2 HERE (Milton / early moment) -->
-          <div class="photo-slot">
-            INSERT PHOTO HERE: Milton / early moment (assets/story-milton.jpg)
-          </div>
-        </div>
+      <div class="countdown-label">
+       Days
       </div>
-
-      <div class="card" style="margin-top:18px;">
-        <h3>He Said / She Said</h3>
-        <p>
-          <strong>Who fell first:</strong> [PLACEHOLDER] <br>
-          <strong>Who was googly-eyed first:</strong> [PLACEHOLDER] <br>
-          <strong>Who made the first move:</strong> [PLACEHOLDER]
-        </p>
-
-        <!-- ✅ OPTIONAL INSERT PHOTO HERE (shared candid) -->
-        <div class="photo-slot" style="min-height:160px;">
-          OPTIONAL PHOTO: shared candid (assets/story-shared.jpg)
-        </div>
+     </div>
+     <div class="countdown-item">
+      <div class="countdown-number" id="hours">
+       00
       </div>
-    </div>
-  </section>
-
-  <!-- EVENT DETAILS (NO ICONS) -->
-  <section id="details">
-    <div class="wrap">
-      <div class="kicker">Details</div>
-      <h2 class="section-title">Event Details</h2>
-      <p class="section-sub">
-        Everything you need for the day—ceremony, reception, and the little details that help it all flow smoothly.
-      </p>
-
-      <div class="details-grid">
-        <div class="card detail-block">
-          <div class="label">Ceremony</div>
-          <div class="title">[CEREMONY VENUE NAME]</div>
-          <div class="line">[FULL CEREMONY ADDRESS]</div>
-          <div class="line"><strong>Dress code:</strong> [PLACEHOLDER]</div>
-          <div class="line"><strong>Parking & arrival:</strong> [PLACEHOLDER]</div>
-          <div class="detail-actions">
-            <button class="btn" type="button" onclick="copyText('[FULL CEREMONY ADDRESS]')">Copy Address</button>
-          </div>
-
-          <!-- ✅ OPTIONAL INSERT PHOTO HERE (venue or meaningful photo) -->
-          <div class="photo-slot" style="min-height:160px;">
-            OPTIONAL PHOTO: ceremony venue / meaningful image (assets/ceremony.jpg)
-          </div>
-        </div>
-
-        <div class="card detail-block">
-          <div class="label">Reception</div>
-          <div class="title">[RECEPTION VENUE NAME]</div>
-          <div class="line">[FULL RECEPTION ADDRESS]</div>
-          <div class="line"><strong>Dress code:</strong> [PLACEHOLDER]</div>
-          <div class="line"><strong>Parking & arrival:</strong> [PLACEHOLDER]</div>
-          <div class="detail-actions">
-            <button class="btn" type="button" onclick="copyText('[FULL RECEPTION ADDRESS]')">Copy Address</button>
-          </div>
-
-          <!-- ✅ OPTIONAL INSERT PHOTO HERE (reception venue) -->
-          <div class="photo-slot" style="min-height:160px;">
-            OPTIONAL PHOTO: reception venue (assets/reception.jpg)
-          </div>
-        </div>
+      <div class="countdown-label">
+       Hours
       </div>
-    </div>
-  </section>
-
-  <!-- IMPORTANT DATES -->
-  <section id="dates">
-    <div class="wrap">
-      <div class="kicker">Timeline</div>
-      <h2 class="section-title">Important Dates</h2>
-      <p class="section-sub">
-        Mark your calendars for the key moments leading up to and following our wedding day.
-      </p>
-
-      <div class="list">
-        <div class="list-item">
-          <div class="left">
-            <div class="small">RSVP Deadline</div>
-            <div class="big">Kindly let us know if you’ll be joining us</div>
-            <div class="small">[RSVP DEADLINE DATE]</div>
-          </div>
-          <a class="btn" href="#rsvp">RSVP Now</a>
-        </div>
-
-        <div class="list-item">
-          <div class="left">
-            <div class="small">Hotel Block Deadline</div>
-            <div class="big">Reserve your room in our wedding block</div>
-            <div class="small">[HOTEL BLOCK DEADLINE DATE]</div>
-          </div>
-          <a class="btn" href="#travel">Reserve Room</a>
-        </div>
-
-        <div class="list-item">
-          <div class="left">
-            <div class="small">Rehearsal / Welcome Event</div>
-            <div class="big">An evening to gather, hug, and say hello</div>
-            <div class="small">[DATE + TIME + LOCATION]</div>
-          </div>
-          <button class="btn" type="button">Add to Calendar</button>
-        </div>
-
-        <div class="list-item">
-          <div class="left">
-            <div class="small">Wedding Day</div>
-            <div class="big">We can’t wait to celebrate with you</div>
-            <div class="small">September 12, 2026 • 4:00 PM ET</div>
-          </div>
-          <button class="btn" type="button">Add to Calendar</button>
-        </div>
-
-        <div class="list-item">
-          <div class="left">
-            <div class="small">Post-Wedding Brunch (Optional)</div>
-            <div class="big">A relaxed farewell + one more hug</div>
-            <div class="small">[DATE + TIME + LOCATION]</div>
-          </div>
-          <button class="btn" type="button">Add to Calendar</button>
-        </div>
+     </div>
+     <div class="countdown-item">
+      <div class="countdown-number" id="minutes">
+       00
       </div>
-    </div>
-  </section>
-
-  <!-- PHOTOS -->
-  <section id="photos">
-    <div class="wrap">
-      <div class="kicker">Photos</div>
-      <h2 class="section-title">Photo Album</h2>
-      <p class="section-sub">
-        A glimpse into our story so far—engagement moments, everyday joy, and everything in between.
-      </p>
-
-      <!-- ✅ INSERT PHOTO GRID HERE -->
-      <!-- For now: placeholders. Replace each with <img src="assets/photo-1.jpg" alt="..."> -->
-      <div class="grid-2">
-        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-1.jpg)</div>
-        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-2.jpg)</div>
-        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-3.jpg)</div>
-        <div class="photo-slot">INSERT PHOTO HERE (assets/photo-4.jpg)</div>
+      <div class="countdown-label">
+       Minutes
       </div>
-    </div>
-  </section>
-
-  <!-- TRAVEL & HOTEL -->
-  <section id="travel">
-    <div class="wrap">
-      <div class="kicker">Travel</div>
-      <h2 class="section-title">Travel & Hotel</h2>
-      <p class="section-sub">
-        Whether you’re coming from across town or across the country, here are a few helpful details for your stay.
-      </p>
-
-      <div class="grid-2">
-        <div class="card">
-          <h3>The Westin Buffalo</h3>
-          <p>
-            250 Delaware Avenue<br>
-            Buffalo, NY 14202<br>
-            (716) 854-9000<br><br>
-            <strong>Booking / Block link:</strong> [HOTEL BLOCK LINK]<br>
-            <strong>Group code:</strong> [BLOCK CODE]<br>
-            <strong>Check-in / Check-out:</strong> [DATES]<br>
-            <strong>Parking:</strong> [PARKING DETAILS]
-          </p>
-
-          <div class="detail-actions">
-            <a class="btn" href="[HOTEL BLOCK LINK]" target="_blank" rel="noopener">Reserve Room</a>
-          </div>
-        </div>
-
-        <div>
-          <!-- ✅ INSERT HOTEL IMAGE HERE -->
-          <div class="photo-slot" style="min-height:220px;">INSERT PHOTO HERE: Hotel image (assets/hotel.jpg)</div>
-          <!-- ✅ INSERT ROOM IMAGE HERE -->
-          <div class="photo-slot" style="min-height:220px; margin-top:14px;">INSERT PHOTO HERE: Room image (assets/room.jpg)</div>
-        </div>
+     </div>
+     <div class="countdown-item">
+      <div class="countdown-number" id="seconds">
+       00
       </div>
-    </div>
-  </section>
-
-  <!-- RSVP -->
-  <section id="rsvp">
-    <div class="wrap">
-      <div class="kicker">RSVP</div>
-      <h2 class="section-title">RSVP</h2>
-      <p class="section-sub">
-        Your presence means the world to us—please let us know if you’ll be joining the celebration.
-      </p>
-
-      <div class="card center-card">
-        <p style="margin:0 0 12px; color: rgba(0,0,0,.70);">
-          Let us know you’re coming — we can’t wait to celebrate with you!
-        </p>
-        <a class="btn primary" href="[RSVP LINK]" target="_blank" rel="noopener">RSVP Now</a>
-        <p style="margin:10px 0 0; font-size:12px; color: rgba(0,0,0,.60);">
-          Please RSVP by <strong>[RSVP DEADLINE]</strong>.
-        </p>
+      <div class="countdown-label">
+       Seconds
       </div>
+     </div>
     </div>
-  </section>
-
-  <!-- REGISTRY -->
-  <section id="registry">
-    <div class="wrap">
-      <div class="kicker">Registry</div>
-      <h2 class="section-title">Registry</h2>
-      <p class="section-sub">
-        Your love and support are the greatest gifts. If you’d like to bless us with something more, we’ve created a registry.
-      </p>
-
-      <div class="card center-card">
-        <a class="btn" href="[REGISTRY LINK]" target="_blank" rel="noopener">View Registry</a>
-
-        <!-- ✅ OPTIONAL INSERT PHOTO HERE (small detail photo / florals / engagement ring shot) -->
-        <div class="photo-slot" style="min-height:180px; margin-top:16px;">
-          OPTIONAL PHOTO: registry section image (assets/registry.jpg)
-        </div>
+   </section><!-- OUR STORY SECTION -->
+   <section id="our-story" aria-labelledby="story-title">
+    <h2 id="story-title" class="section-title fade-in">Our Story</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle fade-in">How two hearts found each other</p>
+    <div class="stories-grid"><!-- UPDATE: Norma's story content -->
+     <article class="story-card fade-in">
+      <h3>Her Story</h3>
+      <p>It was November 15, 2024 – the height of holiday shopping madness at Target. I was working the register, exhausted from the endless stream of customers. Then Milton walked into my line. The first time, I thought nothing of it. The second time, I noticed his smile. By the third time that week, I realized he was specifically choosing my line just to make me laugh with his terrible dad jokes. What started as eye rolls at his corny humor slowly turned into genuine smiles, then exchanged numbers, then coffee dates, and before I knew it, I had fallen completely in love with the man who made Target's holiday rush the best season of my life.</p>
+     </article><!-- UPDATE: Milton's story content -->
+     <article class="story-card fade-in">
+      <h3>His Story</h3>
+      <p>He swears he noticed her first… and maybe he did. Milton claims it was love at first sight the moment he walked into Target that November day. "I only needed batteries," he says, "but I kept finding reasons to come back." Three shopping trips in one week? Suspicious. A cart full of random items just to have an excuse to stand in her line? Absolutely. He admits the jokes were a desperate attempt to see her smile. "I knew I had to make her laugh – it was the only way she'd remember me." Well, Milton, mission accomplished. She remembers everything.</p>
+     </article>
+    </div><!-- He Said / She Said -->
+    <div class="he-said-she-said fade-in">
+     <h3>He Said / She Said</h3>
+     <div class="comparison-grid"><!-- UPDATE: He Said / She Said answers -->
+      <div class="comparison-item">
+       <div class="comparison-question">
+        Who fell first?
+       </div>
+       <div class="comparison-answer"><strong>She says:</strong> "He was a goner by visit number two."
+       </div>
+       <div class="comparison-answer"><strong>He says:</strong> "Guilty as charged. Visit one, actually."
+       </div>
       </div>
-    </div>
-  </section>
-
-  <!-- GUESTBOOK -->
-  <section id="guestbook">
-    <div class="wrap">
-      <div class="kicker">Guestbook</div>
-      <h2 class="section-title">Guestbook</h2>
-      <p class="section-sub">
-        Share a note, a memory, or a blessing—your words will become part of our keepsake.
-      </p>
-
-      <div class="card center-card" style="text-align:left;">
-        <!-- If you want a simple guestbook: easiest is embed a Google Form link -->
-        <p style="margin:0 0 12px; color: rgba(0,0,0,.70); text-align:center;">
-          Leave a note for Norma & Milton — your message may be included in a keepsake.
-        </p>
-
-        <div style="display:flex; justify-content:center;">
-          <a class="btn" href="[GUESTBOOK LINK]" target="_blank" rel="noopener">Leave a Well Wish</a>
-        </div>
-
-        <p style="margin:14px 0 0; font-size:12px; color: rgba(0,0,0,.58); text-align:center;">
-          (Tip: Use a Google Form or Jotform for guestbook messages, then you can export them later.)
-        </p>
+      <div class="comparison-item">
+       <div class="comparison-question">
+        Who was googly-eyed?
+       </div>
+       <div class="comparison-answer"><strong>She says:</strong> "Him. Definitely him. I was professional."
+       </div>
+       <div class="comparison-answer"><strong>He says:</strong> "We were both googly-eyed. She just hid it better."
+       </div>
       </div>
+      <div class="comparison-item">
+       <div class="comparison-question">
+        Who made the first move?
+       </div>
+       <div class="comparison-answer"><strong>She says:</strong> "I wrote my number on his receipt. Bold, I know."
+       </div>
+       <div class="comparison-answer"><strong>He says:</strong> "She did – and I still have that receipt."
+       </div>
+      </div>
+     </div>
     </div>
-  </section>
-
-  <footer>
-    <div class="wrap" style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;">
-      <div>With love, <strong>Norma & Milton</strong></div>
-      <div>Buffalo, New York • September 12, 2026</div>
+   </section><!-- EVENT DETAILS SECTION -->
+   <section id="event-details" aria-labelledby="details-title">
+    <h2 id="details-title" class="section-title fade-in">Event Details</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle fade-in">Join us as we celebrate our love</p>
+    <div class="events-grid"><!-- UPDATE: Ceremony venue details -->
+     <article class="event-card fade-in">
+      <div class="event-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+       </svg>
+      </div>
+      <h3>Ceremony</h3><!-- UPDATE: CEREMONY VENUE NAME -->
+      <p class="venue-name">[Ceremony Venue Name]</p><!-- UPDATE: CEREMONY ADDRESS -->
+      <p class="venue-address" id="ceremony-address">[Street Address]<br>
+        Buffalo, NY [ZIP]</p><button class="copy-btn" data-address="ceremony-address" aria-label="Copy ceremony address">
+       <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+       </svg> Copy Address </button>
+      <p class="event-note">Ceremony begins at 4:00 PM</p>
+     </article><!-- UPDATE: Reception venue details -->
+     <article class="event-card fade-in">
+      <div class="event-icon">
+       <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+       </svg>
+      </div>
+      <h3>Reception</h3><!-- UPDATE: RECEPTION VENUE NAME -->
+      <p class="venue-name">[Reception Venue Name]</p><!-- UPDATE: RECEPTION ADDRESS -->
+      <p class="venue-address" id="reception-address">[Street Address]<br>
+        Buffalo, NY [ZIP]</p><button class="copy-btn" data-address="reception-address" aria-label="Copy reception address">
+       <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+       </svg> Copy Address </button>
+      <p class="event-note">Dinner &amp; dancing to follow</p>
+     </article>
+    </div><!-- Additional Details -->
+    <div class="events-grid" style="margin-top: 2rem;">
+     <article class="event-card fade-in">
+      <div class="event-icon">
+       <svg viewbox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+       </svg>
+      </div>
+      <h3>Dress Code</h3><!-- UPDATE: DRESS CODE -->
+      <p class="venue-address">[Formal / Semi-Formal / Cocktail Attire]</p>
+      <p class="event-note">Please dress to impress!</p>
+     </article>
+     <article class="event-card fade-in">
+      <div class="event-icon">
+       <svg viewbox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
+       </svg>
+      </div>
+      <h3>Parking</h3><!-- UPDATE: PARKING NOTES -->
+      <p class="venue-address">[Parking information and notes go here]</p>
+      <p class="event-note">Valet parking available</p>
+     </article>
     </div>
-  </footer>
-
-  <!-- Music Controls -->
-  <div class="music-toggle" aria-label="Music controls">
-    <div id="musicStatus" class="chip" role="button" tabindex="0" aria-pressed="false">
-      Music: <strong>Off</strong>
+   </section><!-- IMPORTANT DATES SECTION -->
+   <section id="important-dates" aria-labelledby="dates-title">
+    <h2 id="dates-title" class="section-title fade-in">Important Dates</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle fade-in">Mark your calendars</p>
+    <div class="timeline fade-in"><!-- UPDATE: RSVP deadline date -->
+     <div class="timeline-item">
+      <div class="timeline-date">
+       August 1, 2026
+      </div>
+      <div class="timeline-content">
+       <h4>RSVP Deadline</h4>
+       <p>Please let us know if you can make it</p>
+      </div>
+      <div class="timeline-action"><!-- UPDATE: RSVP FORM LINK --> <a href="https://forms.google.com/your-rsvp-form" target="_blank" rel="noopener noreferrer" class="btn btn-primary">RSVP Now</a>
+      </div>
+     </div><!-- UPDATE: Hotel block deadline -->
+     <div class="timeline-item">
+      <div class="timeline-date">
+       August 15, 2026
+      </div>
+      <div class="timeline-content">
+       <h4>Hotel Block Deadline</h4>
+       <p>Reserve your room at our discounted rate</p>
+      </div>
+      <div class="timeline-action"><!-- UPDATE: HOTEL BOOKING LINK --> <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Reserve Your Room</a>
+      </div>
+     </div><!-- UPDATE: Rehearsal/Welcome event date -->
+     <div class="timeline-item">
+      <div class="timeline-date">
+       September 11, 2026
+      </div>
+      <div class="timeline-content">
+       <h4>Rehearsal &amp; Welcome Event</h4>
+       <p>Join us for drinks and mingling</p>
+      </div>
+      <div class="timeline-action"><!-- UPDATE: Calendar event details in the onclick --> <button class="btn btn-secondary" onclick="addToCalendar('Rehearsal &amp; Welcome Event', '2026-09-11T18:00:00', '2026-09-11T21:00:00', 'Buffalo, NY')">Add to Calendar</button>
+      </div>
+     </div><!-- Wedding Day -->
+     <div class="timeline-item">
+      <div class="timeline-date">
+       September 12, 2026
+      </div>
+      <div class="timeline-content">
+       <h4>Wedding Day</h4>
+       <p>The big day! Ceremony at 4:00 PM</p>
+      </div>
+      <div class="timeline-action"><button class="btn btn-gold" onclick="addToCalendar('Norma &amp; Milton\'s Wedding', '2026-09-12T16:00:00', '2026-09-12T23:00:00', 'Buffalo, NY')">Add to Calendar</button>
+      </div>
+     </div><!-- UPDATE: Post-wedding brunch date (optional) -->
+     <div class="timeline-item">
+      <div class="timeline-date">
+       September 13, 2026
+      </div>
+      <div class="timeline-content">
+       <h4>Post-Wedding Brunch</h4>
+       <p>Optional farewell brunch with the newlyweds</p>
+      </div>
+      <div class="timeline-action"><button class="btn btn-secondary" onclick="addToCalendar('Post-Wedding Brunch', '2026-09-13T10:00:00', '2026-09-13T13:00:00', 'Buffalo, NY')">Add to Calendar</button>
+      </div>
+     </div>
     </div>
-  </div>
-  <div id="tapToPlay" class="tap-to-play" role="button" tabindex="0">
-    Tap to play music ♫
-  </div>
-
+    <p class="timeline-note">* Dates and times may be updated. Please check back for any changes.</p>
+   </section><!-- PHOTO ALBUM SECTION -->
+   <section id="photos" class="album-section" aria-labelledby="photos-title">
+    <h2 id="photos-title" class="section-title fade-in">Photo Album</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle fade-in">Moments we've shared together</p>
+    <div class="carousel-container">
+     <div class="carousel-track" id="carousel-track"><!-- 
+                        UPDATE: PHOTO GALLERY IMAGES
+                        Replace the placeholder divs below with actual images:
+                        <div class="carousel-item" data-caption="Your caption here" data-index="0">
+                            <img src="https://your-image-url.com/photo1.jpg" alt="Photo description" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'carousel-placeholder\'><svg>...</svg><span>Image unavailable</span></div>'">
+                        </div>
+                    -->
+      <div class="carousel-item" data-caption="Our first photo together" data-index="0">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 1</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 2</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="The proposal day" data-index="2">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 3</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="Celebrating with family" data-index="3">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 4</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 5</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="A special sunset moment" data-index="5">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 6</span>
+       </div>
+      </div><!-- Duplicate items for infinite scroll illusion -->
+      <div class="carousel-item" data-caption="Our first photo together" data-index="0">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 1</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 2</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="The proposal day" data-index="2">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 3</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="Celebrating with family" data-index="3">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 4</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 5</span>
+       </div>
+      </div>
+      <div class="carousel-item" data-caption="A special sunset moment" data-index="5">
+       <div class="carousel-placeholder">
+        <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+        </svg><span>Photo 6</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- LIGHTBOX MODAL -->
+   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-content"><button class="lightbox-close" aria-label="Close lightbox">×</button> <button class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>
+     <div id="lightbox-image-container">
+      <div class="lightbox-placeholder">
+       <svg viewbox="0 0 24 24" fill="currentColor" width="64" height="64"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+       </svg>
+      </div>
+     </div><button class="lightbox-nav lightbox-next" aria-label="Next image">›</button>
+     <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+   </div><!-- TRAVEL & HOTEL SECTION -->
+   <section id="travel" class="hotel-section" aria-labelledby="travel-title">
+    <h2 id="travel-title" class="section-title fade-in">Travel &amp; Hotel</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle fade-in">Where to stay during your visit</p>
+    <div class="hotel-grid fade-in">
+     <div class="hotel-info"><!-- UPDATE: HOTEL NAME -->
+      <h3>The Westin Buffalo</h3><!-- UPDATE: HOTEL ADDRESS -->
+      <p class="hotel-address">250 Delaware Ave<br>
+        Buffalo, NY 14202<br>
+        (716) 854-9000</p>
+      <div class="hotel-details"><!-- UPDATE: HOTEL BLOCK CODE -->
+       <div class="hotel-detail-item"><strong>Block Code:</strong> <span>[BLOCK CODE]</span>
+       </div><!-- UPDATE: CHECK-IN/OUT TIMES -->
+       <div class="hotel-detail-item"><strong>Check-in:</strong> <span>[3:00 PM]</span>
+       </div>
+       <div class="hotel-detail-item"><strong>Check-out:</strong> <span>[11:00 AM]</span>
+       </div><!-- UPDATE: PARKING INFO -->
+       <div class="hotel-detail-item"><strong>Parking:</strong> <span>[Valet available / Self-parking info]</span>
+       </div>
+      </div><!-- UPDATE: HOTEL BOOKING LINK --> <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reserve Your Room</a>
+     </div>
+     <div class="hotel-images"><!-- 
+                        UPDATE: HOTEL IMAGES
+                        Replace placeholders with actual hotel images:
+                        <img src="https://your-hotel-image.jpg" alt="Hotel exterior" loading="lazy" style="width:100%; height:200px; object-fit:cover; border-radius:12px;" onerror="...">
+                    -->
+      <div class="hotel-image-placeholder">
+       <svg viewbox="0 0 24 24" fill="currentColor"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
+       </svg><span>Hotel Exterior Image</span>
+      </div>
+      <div class="hotel-image-placeholder">
+       <svg viewbox="0 0 24 24" fill="currentColor"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z" />
+       </svg><span>Room Interior Image</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- RSVP SECTION -->
+   <section id="rsvp" class="rsvp-section" aria-labelledby="rsvp-title">
+    <h2 id="rsvp-title" class="section-title">RSVP</h2>
+    <div class="section-divider"></div>
+    <p class="rsvp-text">Let us know you're coming — we can't wait to celebrate with you!</p><!-- UPDATE: RSVP FORM LINK --> <a href="https://forms.google.com/your-rsvp-form" target="_blank" rel="noopener noreferrer" class="btn btn-gold">RSVP Now</a> <!-- UPDATE: RSVP DEADLINE -->
+    <p class="rsvp-deadline">Please RSVP by August 1, 2026</p>
+   </section><!-- REGISTRY SECTION -->
+   <section id="registry" aria-labelledby="registry-title">
+    <h2 id="registry-title" class="section-title fade-in">Registry</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle fade-in">Your presence is our present</p>
+    <div class="registry-content fade-in">
+     <p>Your love and support mean everything to us. If you'd like to honor us with a gift, we've created a registry for your convenience.</p><!-- UPDATE: REGISTRY LINK --> <a href="https://registry-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Registry</a>
+     <div class="mailing-address">
+      <h4>For Off-Registry Gifts</h4><!-- UPDATE: MAILING ADDRESS -->
+      <address>[Norma &amp; Milton's Names]<br>
+        [Street Address]<br>
+        [City, State ZIP]</address>
+     </div>
+    </div>
+   </section><!-- GUESTBOOK SECTION -->
+   <section id="guestbook" class="guestbook-section" aria-labelledby="guestbook-title">
+    <h2 id="guestbook-title" class="section-title fade-in">Guestbook</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle fade-in">Share your well wishes with us</p>
+    <div class="guestbook-content fade-in">
+     <p>Leave us a message — we'd love to hear your thoughts, memories, or advice for our journey together!</p><!-- UPDATE: AIRTABLE FORM LINK --> <a href="https://airtable.com/your-form-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Leave a Well Wish</a>
+     <p class="guestbook-note">Messages may be included in a keepsake book.</p>
+     <div class="guestbook-embed"><!-- 
+                        UPDATE: AIRTABLE GALLERY EMBED
+                        Replace this placeholder with your Airtable Gallery embed iframe:
+                        <iframe class="airtable-embed" src="https://airtable.com/embed/YOUR_EMBED_ID" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+                    -->
+      <div class="guestbook-embed-placeholder">
+       <p>Guestbook messages will appear here</p>
+       <p style="font-size: 0.8rem; margin-top: 1rem;">Replace this placeholder with your Airtable Gallery embed iframe</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main><!-- FOOTER -->
+  <footer role="contentinfo"><!-- UPDATE: Couple names -->
+   <p class="footer-names">With love, Norma <span class="ampersand">&amp;</span> Milton</p><!-- UPDATE: Location and date -->
+   <p class="footer-details">Buffalo, New York • September 12, 2026</p>
+   <p class="footer-love">💍</p>
+  </footer><!-- Toast Notification -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
   <script>
-    // ========= Helpers =========
-    function copyText(text){
-      if(!text || text.includes("[") || text.includes("PLACEHOLDER")){
-        alert("Update the address text first, then this button will copy it.");
-        return;
-      }
-      navigator.clipboard.writeText(text)
-        .then(() => alert("Copied to clipboard."))
-        .catch(() => alert("Copy failed. You can manually select and copy."));
-    }
-
-    // ========= Countdown =========
-    // Update target time here (ET). We'll use local conversion.
-    // Sep 12, 2026 4:00 PM Eastern Time.
-    // Safer: store as ISO with offset. During DST that date is likely EDT (-04:00).
-    const weddingISO = "2026-09-12T16:00:00-04:00";
-    const target = new Date(weddingISO);
-
-    const elDays = document.getElementById("cdDays");
-    const elHours = document.getElementById("cdHours");
-    const elMinutes = document.getElementById("cdMinutes");
-    const elSeconds = document.getElementById("cdSeconds");
-
-    function tick(){
-      const now = new Date();
-      let diff = target - now;
-      if(diff < 0) diff = 0;
-
-      const s = Math.floor(diff / 1000);
-      const days = Math.floor(s / 86400);
-      const hours = Math.floor((s % 86400) / 3600);
-      const minutes = Math.floor((s % 3600) / 60);
-      const seconds = s % 60;
-
-      elDays.textContent = days;
-      elHours.textContent = String(hours).padStart(2,"0");
-      elMinutes.textContent = String(minutes).padStart(2,"0");
-      elSeconds.textContent = String(seconds).padStart(2,"0");
-    }
-    tick();
-    setInterval(tick, 1000);
-
-    // ========= Music (autoplay + toggle, with browser restrictions) =========
-    const audio = document.getElementById("bgMusic");
-    const musicStatus = document.getElementById("musicStatus");
-    const tapToPlay = document.getElementById("tapToPlay");
-
-    // Start muted to improve autoplay odds (many browsers still block, but this helps).
-    audio.muted = true;
-    audio.volume = 0.65;
-
-    let isPlaying = false;
-
-    function setUI(){
-      musicStatus.innerHTML = `Music: <strong>${isPlaying ? "On" : "Off"}</strong>`;
-      musicStatus.setAttribute("aria-pressed", isPlaying ? "true" : "false");
-    }
-
-    async function tryAutoplay(){
-      try{
-        await audio.play();
-        // If play succeeds, keep it muted until user toggles on (polite default).
-        isPlaying = true;
-        setUI();
-      }catch(e){
-        // Autoplay blocked. Show prompt.
-        tapToPlay.style.display = "block";
-        isPlaying = false;
-        setUI();
-      }
-    }
-
-    function toggleMusic(){
-      if(!isPlaying){
-        // Turn on (unmute + play)
-        audio.muted = false;
-        audio.play().then(() => {
-          isPlaying = true;
-          tapToPlay.style.display = "none";
-          setUI();
-        }).catch(() => {
-          // Still blocked (needs a direct click). Keep prompt visible.
-          tapToPlay.style.display = "block";
-          isPlaying = false;
-          setUI();
+        // Default configuration
+        const defaultConfig = {
+            bride_name: 'Norma',
+            groom_name: 'Milton',
+            wedding_date: 'September 12, 2026',
+            wedding_location: 'Buffalo, New York',
+            primary_color: '#0d5c4b',
+            secondary_color: '#d4af37',
+            background_color: '#ffffff',
+            text_color: '#2c2c2c',
+            accent_color: '#faf9f7'
+        };
+        
+        let config = { ...defaultConfig };
+        
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange: async (newConfig) => {
+                    config = { ...defaultConfig, ...newConfig };
+                    updateUI();
+                },
+                mapToCapabilities: (cfg) => ({
+                    recolorables: [
+                        {
+                            get: () => cfg.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                cfg.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => cfg.accent_color || defaultConfig.accent_color,
+                            set: (value) => {
+                                cfg.accent_color = value;
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        },
+                        {
+                            get: () => cfg.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                cfg.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => cfg.primary_color || defaultConfig.primary_color,
+                            set: (value) => {
+                                cfg.primary_color = value;
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        },
+                        {
+                            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+                            set: (value) => {
+                                cfg.secondary_color = value;
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (cfg) => new Map([
+                    ['bride_name', cfg.bride_name || defaultConfig.bride_name],
+                    ['groom_name', cfg.groom_name || defaultConfig.groom_name],
+                    ['wedding_date', cfg.wedding_date || defaultConfig.wedding_date],
+                    ['wedding_location', cfg.wedding_location || defaultConfig.wedding_location]
+                ])
+            });
+        }
+        
+        // Update UI based on config
+        function updateUI() {
+            const bride = config.bride_name || defaultConfig.bride_name;
+            const groom = config.groom_name || defaultConfig.groom_name;
+            const date = config.wedding_date || defaultConfig.wedding_date;
+            const location = config.wedding_location || defaultConfig.wedding_location;
+            
+            // Update hero names
+            const heroNames = document.querySelector('.hero-names');
+            if (heroNames) {
+                heroNames.innerHTML = `${bride} <span class="ampersand">&</span> ${groom}`;
+            }
+            
+            // Update hero date
+            const heroDate = document.querySelector('.hero-date');
+            if (heroDate) {
+                heroDate.textContent = `${date} • ${location}`;
+            }
+            
+            // Update nav logo
+            const navLogo = document.querySelector('.nav-logo');
+            if (navLogo) {
+                navLogo.textContent = `${bride.charAt(0)} & ${groom.charAt(0)}`;
+            }
+            
+            // Update footer
+            const footerNames = document.querySelector('.footer-names');
+            if (footerNames) {
+                footerNames.innerHTML = `With love, ${bride} <span class="ampersand">&</span> ${groom}`;
+            }
+            
+            const footerDetails = document.querySelector('.footer-details');
+            if (footerDetails) {
+                footerDetails.textContent = `${location} • ${date}`;
+            }
+            
+            // Update colors
+            document.documentElement.style.setProperty('--emerald', config.primary_color || defaultConfig.primary_color);
+            document.documentElement.style.setProperty('--champagne', config.secondary_color || defaultConfig.secondary_color);
+            document.documentElement.style.setProperty('--white', config.background_color || defaultConfig.background_color);
+            document.documentElement.style.setProperty('--text-dark', config.text_color || defaultConfig.text_color);
+            document.documentElement.style.setProperty('--off-white', config.accent_color || defaultConfig.accent_color);
+        }
+        
+        // =====================
+        // COUNTDOWN TIMER
+        // =====================
+        // UPDATE: Change this date to match your wedding date and time
+        const weddingDate = new Date('September 12, 2026 16:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(3, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // =====================
+        // NAVIGATION
+        // =====================
+        const navWrapper = document.querySelector('.nav-wrapper');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        // Sticky nav shadow on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navWrapper.classList.add('scrolled');
+            } else {
+                navWrapper.classList.remove('scrolled');
+            }
         });
-      }else{
-        // Turn off
-        audio.pause();
-        isPlaying = false;
-        setUI();
-      }
-    }
-
-    // Clicking status toggles music
-    musicStatus.addEventListener("click", toggleMusic);
-    musicStatus.addEventListener("keydown", (e) => {
-      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); toggleMusic(); }
-    });
-
-    // If autoplay blocked, this button will start it
-    tapToPlay.addEventListener("click", () => {
-      audio.muted = false;
-      audio.play().then(() => {
-        isPlaying = true;
-        tapToPlay.style.display = "none";
-        setUI();
-      }).catch(() => {
-        alert("Your browser blocked audio. Try tapping the Music button again.");
-      });
-    });
-
-    // Autoplay attempt on load (muted)
-    window.addEventListener("load", tryAutoplay);
-
-    // Bonus: first user interaction anywhere can enable audio reliably
-    window.addEventListener("pointerdown", () => {
-      if(!isPlaying && tapToPlay.style.display === "block"){
-        // Don't force it; just make the toggle succeed after first interaction
-        // (User can tap Music button.)
-      }
-    }, { once: true });
-
-    setUI();
-  </script>
-</body>
+        
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            const isActive = mobileMenu.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isActive);
+        });
+        
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // =====================
+        // FADE-IN ANIMATION
+        // =====================
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        fadeElements.forEach(el => fadeObserver.observe(el));
+        
+        // =====================
+        // COPY ADDRESS
+        // =====================
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const addressId = btn.dataset.address;
+                const addressEl = document.getElementById(addressId);
+                const address = addressEl.textContent.replace(/\s+/g, ' ').trim();
+                
+                navigator.clipboard.writeText(address).then(() => {
+                    showToast('Address copied to clipboard!');
+                }).catch(() => {
+                    showToast('Failed to copy address');
+                });
+            });
+        });
+        
+        // =====================
+        // TOAST NOTIFICATION
+        // =====================
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // =====================
+        // ADD TO CALENDAR
+        // =====================
+        function addToCalendar(title, start, end, location) {
+            const startDate = start.replace(/[-:]/g, '').replace('T', 'T');
+            const endDate = end.replace(/[-:]/g, '').replace('T', 'T');
+            
+            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate.replace(/[-:]/g, '')}/${endDate.replace(/[-:]/g, '')}&location=${encodeURIComponent(location)}`;
+            
+            window.open(googleUrl, '_blank', 'noopener,noreferrer');
+        }
+        
+        // =====================
+        // LIGHTBOX
+        // =====================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImageContainer = document.getElementById('lightbox-image-container');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        let currentImageIndex = 0;
+        
+        // Get unique captions (first 6 items only)
+        const captions = [];
+        carouselItems.forEach((item, index) => {
+            if (index < 6) {
+                captions.push(item.dataset.caption);
+            }
+        });
+        
+        carouselItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = parseInt(item.dataset.index);
+                openLightbox();
+            });
+        });
+        
+        function openLightbox() {
+            lightbox.classList.add('active');
+            updateLightboxContent();
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function updateLightboxContent() {
+            lightboxCaption.textContent = captions[currentImageIndex] || '';
+            // Keep placeholder for now - would show actual image if available
+        }
+        
+        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        
+        document.querySelector('.lightbox-prev').addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + captions.length) % captions.length;
+            updateLightboxContent();
+        });
+        
+        document.querySelector('.lightbox-next').addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % captions.length;
+            updateLightboxContent();
+        });
+        
+        // Close on backdrop click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                currentImageIndex = (currentImageIndex - 1 + captions.length) % captions.length;
+                updateLightboxContent();
+            } else if (e.key === 'ArrowRight') {
+                currentImageIndex = (currentImageIndex + 1) % captions.length;
+                updateLightboxContent();
+            }
+        });
+        
+        // Initialize UI
+        updateUI();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c9a8e0a54c62e78',t:'MTc3MDM3OTkzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
