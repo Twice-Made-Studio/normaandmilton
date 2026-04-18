@@ -1,1780 +1,1543 @@
 <!doctype html>
 <html lang="en" class="h-full">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Norma &amp; Milton - Wedding</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Keep Poppins + add elegant serif for headings -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Element SDK -->
   <script src="/_sdk/element_sdk.js"></script>
 
   <style>
-        /* CSS Variables for easy customization */
-        :root {
-            --emerald: #0d5c4b;
-            --emerald-light: #1a7a66;
-            --champagne: #d4af37;
-            --champagne-light: #e6c55a;
-            --white: #ffffff;
-            --off-white: #faf9f7;
-            --text-dark: #2c2c2c;
-            --text-light: #666666;
-            --divider: rgba(212, 175, 55, 0.3);
+    :root {
+      --emerald: #0d5c4b;
+      --emerald-light: #1a7a66;
+      --champagne: #d4af37;
+      --champagne-light: #e6c55a;
+      --white: #ffffff;
+      --off-white: #faf9f7;
+      --text-dark: #2c2c2c;
+      --text-light: #666666;
+      --divider: rgba(212, 175, 55, 0.3);
 
-            /* NEW: typography */
-            --font-body: 'Poppins', sans-serif;
-            --font-elegant: 'Playfair Display', serif;
+      --font-body: 'Poppins', sans-serif;
+      --font-elegant: 'Playfair Display', serif;
 
-            /* NEW: hero image (optional) */
-            --hero-image: url('assets/hero.jpg'); /* TODO: add /assets/hero.jpg later */
-        }
+--hero-image: url("hero.jpg");    }
 
-        body { box-sizing: border-box; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; height: 100%; }
+    body { box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; height: 100%; }
 
-        body {
-            font-family: var(--font-body);
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-            min-height: 100%;
-        }
-
-        /* Sticky Navigation */
-        .nav-wrapper {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--divider);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .nav-wrapper.scrolled { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--emerald);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .nav-links { display: none; gap: 2rem; list-style: none; }
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0;
-            width: 0; height: 2px;
-            background: var(--champagne);
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover::after,
-        .nav-links a:focus::after { width: 100%; }
-        .nav-links a:hover, .nav-links a:focus { color: var(--emerald); }
-
-        .mobile-menu-btn {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-        .mobile-menu-btn span {
-            width: 25px;
-            height: 2px;
-            background: var(--emerald);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: var(--white);
-            padding: 1rem;
-            border-bottom: 1px solid var(--divider);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        .mobile-menu.active { display: block; }
-        .mobile-menu a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid var(--divider);
-            transition: all 0.3s ease;
-        }
-        .mobile-menu a:last-child { border-bottom: none; }
-        .mobile-menu a:hover, .mobile-menu a:focus {
-            background: var(--off-white);
-            color: var(--emerald);
-        }
-
-        @media (min-width: 768px) {
-            .nav-links { display: flex; }
-            .mobile-menu-btn { display: none; }
-        }
-
-        /* Main Content */
-        main { padding-top: 60px; }
-
-        section {
-            padding: 4rem 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Section Divider */
-        .section-divider {
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--champagne), transparent);
-            margin: 0 auto 2rem;
-        }
-
-        /* UPDATED: elegant titles (wedding feel) */
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 500;
-            font-family: var(--font-elegant);
-            color: var(--emerald);
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Fade-in Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* Hero Section */
-        .hero {
-            min-height: calc(100% - 60px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-
-            /* keep your base look */
-            background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 50%, var(--off-white) 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 6rem 1.5rem;
-        }
-:root {
-  --hero-image: url("hero-placeholder.jpg");
-}
-
-        /* NEW: optional hero photo overlay (falls back gracefully if file missing) */
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: var(--hero-image);
-            background-size: cover;
-            background-position: center;
-            opacity: 0.18; /* subtle */
-            filter: saturate(1.05) contrast(1.02);
-            pointer-events: none;
-        }
-
-        /* keep your subtle gold glow animation */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-            animation: rotate 45s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .hero-content { position: relative; z-index: 1; }
-
-        /* UPDATED: elegant name styling */
-        .hero-names {
-            font-size: clamp(2.8rem, 8vw, 5.2rem);
-            font-weight: 500;
-            font-family: var(--font-elegant);
-            color: var(--emerald);
-            letter-spacing: 2px;
-            margin-bottom: 0.75rem;
-            line-height: 1.1;
-        }
-        .hero-names .ampersand { color: var(--champagne); font-weight: 600; }
-
-        /* UPDATED: hero copy */
-        .hero-tagline {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            font-weight: 300;
-            margin-bottom: 0.75rem;
-            letter-spacing: 1.5px;
-            text-transform: none;
-        }
-        .hero-date {
-            font-size: 1rem;
-            color: var(--champagne);
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            margin-bottom: 1.25rem;
-        }
-
-        /* NEW: small hero message line (wedding tone) */
-        .hero-message {
-            max-width: 780px;
-            margin: 0 auto 2.25rem;
-            font-size: 1.02rem;
-            color: var(--text-light);
-            line-height: 1.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.875rem 2rem;
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            letter-spacing: 1px;
-        }
-        .btn-primary { background: var(--emerald); color: var(--white); }
-        .btn-primary:hover, .btn-primary:focus {
-            background: var(--emerald-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(13, 92, 75, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--emerald);
-            border: 1.5px solid var(--emerald);
-        }
-        .btn-secondary:hover, .btn-secondary:focus {
-            background: var(--emerald);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .btn-gold { background: var(--champagne); color: var(--text-dark); }
-        .btn-gold:hover, .btn-gold:focus {
-            background: var(--champagne-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Countdown Section */
-        .countdown-section {
-            background: var(--emerald);
-            color: var(--white);
-            padding: 4rem 1.5rem;
-            max-width: 100%;
-        }
-        .countdown-section .section-title { color: var(--white); }
-        .countdown-section .section-divider {
-            background: linear-gradient(90deg, transparent, var(--champagne), transparent);
-        }
-
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .countdown-item { text-align: center; min-width: 100px; }
-        .countdown-number {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--champagne);
-            line-height: 1;
-        }
-        .countdown-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-
-        /* Stories Section */
-        .stories-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        @media (min-width: 768px) {
-            .stories-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        .story-card {
-            background: var(--off-white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-        .story-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 2rem;
-            right: 2rem;
-            height: 3px;
-            background: linear-gradient(90deg, var(--champagne), var(--emerald));
-            border-radius: 3px 3px 0 0;
-        }
-
-        .story-card h3 {
-            font-size: 1.35rem;
-            font-family: var(--font-elegant);
-            color: var(--emerald);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .story-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
-
-        /* NEW: optional story photo placeholder block (doesn't break layout) */
-        .photo-slot {
-            margin-top: 1.5rem;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px dashed rgba(13, 92, 75, 0.25);
-            background: rgba(255, 255, 255, 0.6);
-        }
-       .photo-slot {
-    margin-top: 1.5rem;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px dashed rgba(13, 92, 75, 0.25);
-    background: rgba(255, 255, 255, 0.6);
-}
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.25rem;
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-        }
-    .photo-slot img {
-    width: 100%;
-    aspect-ratio: 3 / 4;  /* portrait frame */
-    object-fit: cover;
-    object-position: center top;
-}
-
-        /* He Said She Said */
-        .he-said-she-said {
-            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
-            color: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-        }
-        .he-said-she-said h3 {
-            text-align: center;
-            font-size: 1.6rem;
-            font-family: var(--font-elegant);
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--champagne);
-        }
-
-        .comparison-grid { display: grid; gap: 1.5rem; }
-        .comparison-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .comparison-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .comparison-question {
-            grid-column: 1 / -1;
-            font-weight: 500;
-            font-size: 0.875rem;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-        .comparison-answer {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            font-size: 0.875rem;
-        }
-        .comparison-answer strong {
-            display: block;
-            color: var(--champagne);
-            font-size: 0.75rem;
-            margin-bottom: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Event Details */
-.shared-venue-card {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.shared-venue-details {
-    margin-top: 1.5rem;
-    display: grid;
-    gap: 1rem;
-}
-
-.shared-venue-item {
-    padding: 1rem 1.25rem;
-    background: var(--off-white);
-    border: 1px solid var(--divider);
-    border-radius: 12px;
-}
-
-.shared-venue-item strong {
-    display: block;
-    color: var(--emerald);
-    font-size: 0.95rem;
-    margin-bottom: 0.35rem;
-    font-weight: 600;
-}
-
-.shared-venue-item span {
-    color: var(--text-light);
-    font-size: 0.95rem;
-}
-
-.shared-venue-photo {
-    margin-top: 2rem;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--divider);
-    background: var(--off-white);
-}
-
-.shared-venue-photo img {
-    display: block;
-    width: 100%;
-    height: 360px;
-    object-fit: cover;
-    object-position: center center;
-}
-
-@media (max-width: 768px) {
-    .shared-venue-photo img {
-        height: 240px;
+    body {
+      font-family: var(--font-body);
+      background-color: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100%;
     }
-}
-   
-        .events-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        @media (min-width: 768px) {
-            .events-grid { grid-template-columns: 1fr 1fr; }
-        }
 
-        .event-card {
-            background: var(--white);
-            border: 1px solid var(--divider);
-            padding: 2.5rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: box-shadow 0.3s ease;
-        }
-        .event-card:hover { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); }
+    .nav-wrapper {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--divider);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .nav-wrapper.scrolled { box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }
 
-        /* UPDATED: remove “Canva AI icons” feel by making icons simpler */
-        .event-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 1.25rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(212, 175, 55, 0.10);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-        }
-        .event-icon svg { width: 24px; height: 24px; fill: var(--emerald); opacity: 0.95; }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .event-card h3 {
-            font-size: 1.35rem;
-            font-family: var(--font-elegant);
-            color: var(--emerald);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--emerald);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
 
-        .event-card .venue-name { font-weight: 500; color: var(--text-dark); margin-bottom: 0.5rem; }
-        .event-card .venue-address { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6; }
-        .event-card .event-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1rem; font-style: italic; }
+    .nav-links { display: none; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--champagne);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus::after { width: 100%; }
+    .nav-links a:hover, .nav-links a:focus { color: var(--emerald); }
 
-        .copy-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--off-white);
-            border: 1px solid var(--divider);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: var(--font-body);
-        }
-        .copy-btn:hover, .copy-btn:focus { background: var(--champagne); border-color: var(--champagne); }
-        .copy-btn svg { width: 14px; height: 14px; }
+    .mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .mobile-menu-btn span {
+      width: 25px;
+      height: 2px;
+      background: var(--emerald);
+      transition: all 0.3s ease;
+    }
 
-        /* NEW: optional venue photo slot under ceremony/reception */
-        .venue-photo {
-            margin-top: 1.5rem;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px dashed rgba(212, 175, 55, 0.35);
-            background: rgba(250, 249, 247, 0.8);
-        }
-        .venue-photo .venue-photo-inner {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-        .venue-photo img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      padding: 1rem;
+      border-bottom: 1px solid var(--divider);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .mobile-menu.active { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--divider);
+      transition: all 0.3s ease;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover, .mobile-menu a:focus {
+      background: var(--off-white);
+      color: var(--emerald);
+    }
 
-        /* Important Dates Timeline */
-        .timeline { max-width: 800px; margin: 0 auto; }
-        .timeline-item {
-            display: flex;
-            gap: 1.5rem;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--divider);
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .timeline-item:last-child { border-bottom: none; }
-        .timeline-date { min-width: 140px; font-weight: 500; color: var(--emerald); font-size: 0.9rem; }
-        .timeline-content { flex: 1; min-width: 200px; }
-        .timeline-content h4 { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem; }
-        .timeline-content p { font-size: 0.85rem; color: var(--text-light); }
-        .timeline-action { flex-shrink: 0; }
-        .timeline-note { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 2rem; font-style: italic; }
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .mobile-menu-btn { display: none; }
+    }
 
-        /* Photo Album */
-        .album-section {
-            background: var(--off-white);
-            padding: 4rem 0;
-            max-width: 100%;
-            overflow: hidden;
-        }
-        .album-section .section-title,
-        .album-section .section-divider,
-        .album-section .section-subtitle { padding: 0 1.5rem; }
+    main { padding-top: 60px; }
 
-        .carousel-container { position: relative; overflow: hidden; padding: 1rem 0; }
-        .carousel-track {
-            display: flex;
-            gap: 1.5rem;
-            animation: scroll 45s linear infinite;
-            width: max-content;
-        }
-        .carousel-track:hover { animation-play-state: paused; }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .carousel-item {
-            flex-shrink: 0;
-            width: 300px;
-            height: 400px;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-        .carousel-item:hover { transform: scale(1.02); }
-        .carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center; /* THIS FIXES HEAD CUT-OFF */
-}
+    section {
+      padding: 4rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .carousel-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-        }
-        .carousel-placeholder svg { width: 48px; height: 48px; opacity: 0.6; margin-bottom: 1rem; }
-        .carousel-placeholder span { font-size: 0.85rem; opacity: 0.8; }
+    .section-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+      margin: 0 auto 2rem;
+    }
 
-        /* Lightbox Modal */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        .lightbox.active { display: flex; }
-        .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
-        .lightbox-image { max-width: 100%; max-height: 80%; border-radius: 8px; }
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 500;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
 
-        .lightbox-placeholder {
-            width: 600px; height: 400px; max-width: 90%;
-            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-        }
-        .lightbox-caption { text-align: center; color: var(--white); margin-top: 1rem; font-size: 0.95rem; }
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            line-height: 1;
-        }
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 1rem;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-        .lightbox-nav:hover { background: rgba(255, 255, 255, 0.2); }
-        .lightbox-prev { left: -60px; }
-        .lightbox-next { right: -60px; }
-        @media (max-width: 768px) {
-            .lightbox-prev { left: 10px; }
-            .lightbox-next { right: 10px; }
-        }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
 
-        /* Travel & Hotel */
-        .hotel-section { background: var(--off-white); }
-        .hotel-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-        @media (min-width: 768px) {
-            .hotel-grid { grid-template-columns: 1fr 1fr; }
-        }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .hotel-info {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--divider);
-        }
-        .hotel-info h3 {
-            font-size: 1.6rem;
-            font-family: var(--font-elegant);
-            color: var(--emerald);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .hotel-address { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+    .hero {
+      min-height: calc(100% - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 50%, var(--off-white) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 1.5rem;
+    }
 
-        .hotel-details { margin-bottom: 2rem; }
-        .hotel-detail-item {
-            display: flex;
-            gap: 1rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--divider);
-        }
-        .hotel-detail-item:last-child { border-bottom: none; }
-        .hotel-detail-item strong {
-            min-width: 100px;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-        .hotel-detail-item span { color: var(--text-light); font-size: 0.9rem; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: var(--hero-image);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+      filter: saturate(1.05) contrast(1.02);
+      pointer-events: none;
+    }
 
-        .hotel-images { display: grid; gap: 1rem; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+      animation: rotate 45s linear infinite;
+      pointer-events: none;
+    }
 
-        .hotel-image-placeholder {
-            height: 200px;
-            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-        }
-        .hotel-image-placeholder svg { width: 40px; height: 40px; opacity: 0.6; margin-bottom: 0.5rem; }
-        .hotel-image-placeholder span { font-size: 0.8rem; opacity: 0.8; }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-        /* RSVP Section */
-        .rsvp-section {
-            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
-            text-align: center;
-            padding: 5rem 1.5rem;
-            max-width: 100%;
-        }
-        .rsvp-section .section-title { color: var(--white); }
-        .rsvp-section .section-divider { background: linear-gradient(90deg, transparent, var(--champagne), transparent); }
-        .rsvp-text {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            max-width: 560px;
-            margin: 0 auto 2rem;
-        }
-        .rsvp-deadline { color: var(--champagne); font-size: 0.9rem; margin-top: 1.5rem; }
+    .hero-content { position: relative; z-index: 1; }
 
-        /* Registry Section */
-        .registry-content { text-align: center; max-width: 600px; margin: 0 auto; }
-        .registry-content p { color: var(--text-light); margin-bottom: 2rem; }
+    .hero-names {
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      font-weight: 500;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+    }
+    .hero-names .ampersand { color: var(--champagne); font-weight: 600; }
 
-        .mailing-address {
-            background: var(--off-white);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 3rem;
-            border: 1px solid var(--divider);
-        }
-        .mailing-address h4 {
-            color: var(--emerald);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .mailing-address address { font-style: normal; color: var(--text-dark); line-height: 1.8; }
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: none;
+    }
+    .hero-date {
+      font-size: 1rem;
+      color: var(--champagne);
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.25rem;
+    }
 
-        /* Guestbook Section */
-        .guestbook-section { background: var(--off-white); }
-        .guestbook-content { text-align: center; }
-        .guestbook-content p { color: var(--text-light); margin-bottom: 2rem; }
+    .hero-message {
+      max-width: 780px;
+      margin: 0 auto 2.25rem;
+      font-size: 1.02rem;
+      color: var(--text-light);
+      line-height: 1.9;
+    }
 
-        .guestbook-embed {
-            margin-top: 3rem;
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--divider);
-        }
-        .guestbook-embed iframe { width: 100%; min-height: 500px; border: none; }
-        .guestbook-embed-placeholder { padding: 4rem 2rem; text-align: center; color: var(--text-light); }
-        .guestbook-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.5rem; font-style: italic; }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
 
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 4rem 1.5rem;
-        }
-        .footer-names {
-            font-size: 1.7rem;
-            font-family: var(--font-elegant);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            letter-spacing: 1px;
-        }
-        .footer-names .ampersand { color: var(--champagne); }
-        .footer-details { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
-        .footer-love { margin-top: 2rem; font-size: 1.5rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 1px;
+    }
+    .btn-primary { background: var(--emerald); color: var(--white); }
+    .btn-primary:hover, .btn-primary:focus {
+      background: var(--emerald-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(13, 92, 75, 0.3);
+    }
 
-        /* Toast Notification */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--text-dark);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 3000;
-        }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--emerald);
+      border: 1.5px solid var(--emerald);
+    }
+    .btn-secondary:hover, .btn-secondary:focus {
+      background: var(--emerald);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
 
-        /* Focus styles for accessibility */
-        a:focus, button:focus { outline: 2px solid var(--champagne); outline-offset: 2px; }
+    .btn-gold { background: var(--champagne); color: var(--text-dark); }
+    .btn-gold:hover, .btn-gold:focus {
+      background: var(--champagne-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
 
-        /* Skip link */
-        .skip-link {
-            position: absolute;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--emerald);
-            color: var(--white);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 0 0 8px 8px;
-            z-index: 9999;
-            transition: top 0.3s ease;
-        }
-        .skip-link:focus { top: 0; }
+    .countdown-section {
+      background: var(--emerald);
+      color: var(--white);
+      padding: 4rem 1.5rem;
+      max-width: 100%;
+    }
+    .countdown-section .section-title { color: var(--white); }
+    .countdown-section .section-divider {
+      background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+    }
 
-        /* =========================
-           NEW: MUSIC UI (floating)
-           ========================= */
-        .music-toggle {
-            position: fixed;
-            right: 18px;
-            bottom: 18px;
-            z-index: 3500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.65rem 0.9rem;
-            border-radius: 999px;
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 28px rgba(0,0,0,0.10);
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            color: var(--text-dark);
-            cursor: pointer;
-            user-select: none;
-        }
-        .music-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #bbb;
-        }
-        .music-toggle[data-state="on"] .music-dot { background: var(--emerald); }
-        .music-toggle .music-label { font-weight: 500; }
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .countdown-item { text-align: center; min-width: 100px; }
+    .countdown-number {
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--champagne);
+      line-height: 1;
+    }
+    .countdown-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
 
-        /* First-visit prompt (tap to enable sound) */
-        .music-prompt {
-            position: fixed;
-            left: 50%;
-            bottom: 18px;
-            transform: translateX(-50%);
-            z-index: 3400;
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            border-radius: 999px;
-            padding: 0.7rem 1rem;
-            box-shadow: 0 10px 28px rgba(0,0,0,0.10);
-            backdrop-filter: blur(10px);
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            cursor: pointer;
-        }
-        .music-prompt.hidden { display: none; }
-    </style>
+    .stories-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      align-items: stretch;
+    }
+    @media (min-width: 768px) {
+      .stories-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .story-card {
+      background: var(--off-white);
+      padding: 2.5rem;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--champagne), var(--emerald));
+      border-radius: 3px 3px 0 0;
+    }
+
+    .story-card h3 {
+      font-size: 1.35rem;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .story-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .story-card .photo-slot {
+      margin-top: auto;
+      padding-top: 1.5rem;
+    }
+
+    .photo-slot {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px dashed rgba(13, 92, 75, 0.25);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .photo-slot img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .he-said-she-said {
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+      color: var(--white);
+      padding: 2.5rem;
+      border-radius: 12px;
+    }
+    .he-said-she-said h3 {
+      text-align: center;
+      font-size: 1.6rem;
+      font-family: var(--font-elegant);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--champagne);
+    }
+
+    .comparison-grid { display: grid; gap: 1.5rem; }
+    .comparison-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .comparison-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .comparison-question {
+      grid-column: 1 / -1;
+      font-weight: 500;
+      font-size: 0.875rem;
+      opacity: 0.9;
+      letter-spacing: 1px;
+    }
+    .comparison-answer {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 0.875rem;
+    }
+    .comparison-answer strong {
+      display: block;
+      color: var(--champagne);
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .shared-venue-card {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .shared-venue-details {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .shared-venue-item {
+      padding: 1rem 1.25rem;
+      background: var(--off-white);
+      border: 1px solid var(--divider);
+      border-radius: 12px;
+    }
+
+    .shared-venue-item strong {
+      display: block;
+      color: var(--emerald);
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .shared-venue-item span {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .shared-venue-photo {
+      margin-top: 2rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      background: var(--off-white);
+    }
+
+    .shared-venue-photo img {
+      display: block;
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    @media (max-width: 768px) {
+      .shared-venue-photo img { height: 240px; }
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .events-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      padding: 2.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+    .event-card:hover { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); }
+
+    .event-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(212, 175, 55, 0.10);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .event-icon svg { width: 24px; height: 24px; fill: var(--emerald); opacity: 0.95; }
+
+    .event-card h3 {
+      font-size: 1.35rem;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .event-card .venue-name { font-weight: 500; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .event-card .venue-address { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .event-card .event-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1rem; font-style: italic; }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--off-white);
+      border: 1px solid var(--divider);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: var(--font-body);
+    }
+    .copy-btn:hover, .copy-btn:focus { background: var(--champagne); border-color: var(--champagne); }
+    .copy-btn svg { width: 14px; height: 14px; }
+
+    .timeline { max-width: 800px; margin: 0 auto; }
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-date { min-width: 140px; font-weight: 500; color: var(--emerald); font-size: 0.9rem; }
+    .timeline-content { flex: 1; min-width: 200px; }
+    .timeline-content h4 { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem; }
+    .timeline-content p { font-size: 0.85rem; color: var(--text-light); }
+    .timeline-action { flex-shrink: 0; }
+    .timeline-note { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 2rem; font-style: italic; }
+
+    .album-section {
+      background: var(--off-white);
+      padding: 4rem 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .album-section .section-title,
+    .album-section .section-divider,
+    .album-section .section-subtitle { padding: 0 1.5rem; }
+
+    .carousel-container { position: relative; overflow: hidden; padding: 1rem 0; }
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: scroll 45s linear infinite;
+      width: max-content;
+    }
+    .carousel-track:hover { animation-play-state: paused; }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .carousel-item {
+      flex-shrink: 0;
+      width: 300px;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .carousel-item:hover { transform: scale(1.02); }
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
+    .lightbox-placeholder {
+      width: 600px; height: 400px; max-width: 90%;
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+    .lightbox-caption { text-align: center; color: var(--white); margin-top: 1rem; font-size: 0.95rem; }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    .lightbox-nav:hover { background: rgba(255, 255, 255, 0.2); }
+    .lightbox-prev { left: -60px; }
+    .lightbox-next { right: -60px; }
+    @media (max-width: 768px) {
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+    }
+
+    .hotel-section { background: var(--off-white); }
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .hotel-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .hotel-info {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--divider);
+    }
+    .hotel-info h3 {
+      font-size: 1.6rem;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .hotel-address { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+
+    .hotel-details { margin-bottom: 2rem; }
+    .hotel-detail-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--divider);
+    }
+    .hotel-detail-item:last-child { border-bottom: none; }
+    .hotel-detail-item strong {
+      min-width: 100px;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .hotel-detail-item span { color: var(--text-light); font-size: 0.9rem; }
+
+    .hotel-images { display: grid; gap: 1rem; }
+
+    .hotel-image-placeholder {
+      height: 200px;
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+    .hotel-image-placeholder svg { width: 40px; height: 40px; opacity: 0.6; margin-bottom: 0.5rem; }
+    .hotel-image-placeholder span { font-size: 0.8rem; opacity: 0.8; }
+
+    .rsvp-section {
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+      text-align: center;
+      padding: 5rem 1.5rem;
+      max-width: 100%;
+    }
+    .rsvp-section .section-title { color: var(--white); }
+    .rsvp-section .section-divider { background: linear-gradient(90deg, transparent, var(--champagne), transparent); }
+    .rsvp-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+    .rsvp-deadline { color: var(--champagne); font-size: 0.9rem; margin-top: 1.5rem; }
+
+    .registry-content { text-align: center; max-width: 600px; margin: 0 auto; }
+    .registry-content p { color: var(--text-light); margin-bottom: 2rem; }
+
+    .mailing-address {
+      background: var(--off-white);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 3rem;
+      border: 1px solid var(--divider);
+    }
+    .mailing-address h4 {
+      color: var(--emerald);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .mailing-address address { font-style: normal; color: var(--text-dark); line-height: 1.8; }
+
+    .guestbook-section { background: var(--off-white); }
+    .guestbook-content { text-align: center; }
+    .guestbook-content p { color: var(--text-light); margin-bottom: 2rem; }
+
+    .guestbook-embed {
+      margin-top: 3rem;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+    }
+    .guestbook-embed iframe { width: 100%; min-height: 500px; border: none; }
+    .guestbook-embed-placeholder { padding: 4rem 2rem; text-align: center; color: var(--text-light); }
+    .guestbook-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.5rem; font-style: italic; }
+
+    footer {
+      background: var(--text-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+    .footer-names {
+      font-size: 1.7rem;
+      font-family: var(--font-elegant);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    .footer-names .ampersand { color: var(--champagne); }
+    .footer-details { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
+    .footer-love { margin-top: 2rem; font-size: 1.5rem; }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 3000;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    a:focus, button:focus { outline: 2px solid var(--champagne); outline-offset: 2px; }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--emerald);
+      color: var(--white);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 0 0 8px 8px;
+      z-index: 9999;
+      transition: top 0.3s ease;
+    }
+    .skip-link:focus { top: 0; }
+
+    .music-toggle {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 3500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      user-select: none;
+    }
+    .music-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #bbb;
+    }
+    .music-toggle[data-state="on"] .music-dot { background: var(--emerald); }
+    .music-toggle .music-label { font-weight: 500; }
+
+    .music-prompt {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 3400;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 999px;
+      padding: 0.7rem 1rem;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+    .music-prompt.hidden { display: none; }
+  </style>
 
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
+</head>
 
- <body class="h-full">
-  <!-- Skip Link for Accessibility -->
+<body class="h-full">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Sticky Navigation -->
   <header class="nav-wrapper" role="banner">
-   <nav role="navigation" aria-label="Main navigation">
-    <a href="#hero" class="nav-logo">N &amp; M</a>
-    <ul class="nav-links">
-     <li><a href="#our-story">Our Story</a></li>
-     <li><a href="#event-details">Details</a></li>
-     <li><a href="#important-dates">Dates</a></li>
-     <li><a href="#photos">Photos</a></li>
-     <li><a href="#travel">Travel</a></li>
-     <li><a href="#rsvp">RSVP</a></li>
-     <li><a href="#registry">Registry</a></li>
-     <li><a href="#guestbook">Guestbook</a></li>
-    </ul>
-    <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
-     <span></span><span></span><span></span>
-    </button>
-   </nav>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#hero" class="nav-logo">N &amp; M</a>
+      <ul class="nav-links">
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#event-details">Details</a></li>
+        <li><a href="#important-dates">Dates</a></li>
+        <li><a href="#photos">Photos</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#registry">Registry</a></li>
+        <li><a href="#guestbook">Guestbook</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-   <div class="mobile-menu" role="navigation" aria-label="Mobile navigation">
-    <a href="#our-story">Our Story</a>
-    <a href="#event-details">Details</a>
-    <a href="#important-dates">Important Dates</a>
-    <a href="#photos">Photos</a>
-    <a href="#travel">Travel &amp; Hotel</a>
-    <a href="#rsvp">RSVP</a>
-    <a href="#registry">Registry</a>
-    <a href="#guestbook">Guestbook</a>
-   </div>
+    <div class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="#our-story">Our Story</a>
+      <a href="#event-details">Details</a>
+      <a href="#important-dates">Important Dates</a>
+      <a href="#photos">Photos</a>
+      <a href="#travel">Travel &amp; Hotel</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#registry">Registry</a>
+      <a href="#guestbook">Guestbook</a>
+    </div>
   </header>
 
   <main id="main-content">
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero-content fade-in">
+        <h1 id="hero-title" class="hero-names">Norma <span class="ampersand">&amp;</span> Milton</h1>
+        <p class="hero-tagline">Together with our families, we invite you to celebrate our wedding.</p>
+        <p class="hero-date">September 12, 2026 • Buffalo, New York</p>
 
-   <!-- HERO SECTION -->
-   <section id="hero" class="hero" aria-labelledby="hero-title">
-    <div class="hero-content fade-in">
-     <h1 id="hero-title" class="hero-names">Norma <span class="ampersand">&amp;</span> Milton</h1>
+        <p class="hero-message">
+          We’re so grateful for the love that has carried us here. We can’t wait to share a day of heartfelt vows,
+          joyful laughter, and the people who mean the most.
+        </p>
 
-     <!-- UPDATED HERO COPY -->
-     <p class="hero-tagline">Together with our families, we invite you to celebrate our wedding.</p>
-     <p class="hero-date">September 12, 2026 • Buffalo, New York</p>
+        <div class="hero-buttons">
+          <a href="#rsvp" class="btn btn-primary">RSVP</a>
+          <a href="#important-dates" class="btn btn-secondary">Important Dates</a>
+          <a href="#travel" class="btn btn-secondary">Travel</a>
+          <a href="#guestbook" class="btn btn-gold">Guestbook</a>
+        </div>
+      </div>
+    </section>
 
-     <p class="hero-message">
-      We’re so grateful for the love that has carried us here. We can’t wait to share a day of heartfelt vows,
-      joyful laughter, and the people who mean the most.
-     </p>
+    <section class="countdown-section" aria-labelledby="countdown-title">
+      <h2 id="countdown-title" class="section-title">Counting Down</h2>
+      <div class="section-divider"></div>
+      <div class="countdown-container" role="timer" aria-live="polite">
+        <div class="countdown-item"><div class="countdown-number" id="days">000</div><div class="countdown-label">Days</div></div>
+        <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div>
+        <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Minutes</div></div>
+        <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Seconds</div></div>
+      </div>
+    </section>
 
-     <!-- OPTIONAL: HERO PHOTO GUIDANCE -->
-     <!-- INSERT PHOTO HERE: Add /assets/hero.jpg (a favorite portrait of Norma & Milton). -->
-     <!-- Tip: choose a bright, high-quality photo. The site will apply it subtly as a background wash. -->
+    <section id="our-story" aria-labelledby="story-title">
+      <h2 id="story-title" class="section-title fade-in">Our Story</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">How two hearts found each other</p>
 
-     <div class="hero-buttons">
-      <a href="#rsvp" class="btn btn-primary">RSVP</a>
-      <a href="#important-dates" class="btn btn-secondary">Important Dates</a>
-      <a href="#travel" class="btn btn-secondary">Travel</a>
-      <a href="#guestbook" class="btn btn-gold">Guestbook</a>
-     </div>
+      <div class="stories-grid">
+        <article class="story-card fade-in">
+          <h3>Her Story</h3>
+          <p>
+            It was November 15, 2024 – the height of holiday shopping madness at Target. I was working the register, exhausted from the endless stream of customers.
+            Then Milton walked into my line. The first time, I thought nothing of it. The second time, I noticed his smile. By the third time that week,
+            I realized he was specifically choosing my line just to make me laugh with his terrible dad jokes. What started as eye rolls at his corny humor
+            slowly turned into genuine smiles, then exchanged numbers, then coffee dates, and before I knew it, I had fallen completely in love with the man
+            who made Target's holiday rush the best season of my life.
+          </p>
+
+          <div class="photo-slot">
+            <img src="story-norma.jpg" alt="Norma and Milton early moment">
+          </div>
+        </article>
+
+        <article class="story-card fade-in">
+          <h3>His Story</h3>
+          <p>
+            He swears he noticed her first… and maybe he did. Milton claims it was love at first sight the moment he walked into Target that November day.
+            "I only needed batteries," he says, "but I kept finding reasons to come back." Three shopping trips in one week? Suspicious.
+            A cart full of random items just to have an excuse to stand in her line? Absolutely. He admits the jokes were a desperate attempt to see her smile.
+            "I knew I had to make her laugh – it was the only way she'd remember me." Well, Milton, mission accomplished. She remembers everything.
+          </p>
+
+          <div class="photo-slot">
+            <img src="story-milton.jpg" alt="Milton and Norma early moment">
+          </div>
+        </article>
+      </div>
+
+      <div class="he-said-she-said fade-in">
+        <h3>He Said / She Said</h3>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <div class="comparison-question">Who fell first?</div>
+            <div class="comparison-answer"><strong>She says:</strong> "He was a goner by visit number two."</div>
+            <div class="comparison-answer"><strong>He says:</strong> "Guilty as charged. Visit one, actually."</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-question">Who was googly-eyed?</div>
+            <div class="comparison-answer"><strong>She says:</strong> "Him. Definitely him. I was professional."</div>
+            <div class="comparison-answer"><strong>He says:</strong> "We were both googly-eyed. She just hid it better."</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-question">Who made the first move?</div>
+            <div class="comparison-answer"><strong>She says:</strong> "I wrote my number on his receipt. Bold, I know."</div>
+            <div class="comparison-answer"><strong>He says:</strong> "She did — and I still have that receipt."</div>
+          </div>
+        </div>
+
+        <div class="photo-slot" style="margin-top:1.75rem; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08);">
+          <img src="story-shared.jpg" alt="Norma and Milton together">
+        </div>
+      </div>
+    </section>
+
+    <section id="event-details" aria-labelledby="details-title">
+      <h2 id="details-title" class="section-title fade-in">Event Details</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Everything you need for a smooth, joyful day</p>
+
+      <div class="event-card fade-in shared-venue-card">
+        <div class="event-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l9 6-9 6-9-6 9-6zm-7 8v7h14v-7" />
+          </svg>
+        </div>
+
+        <h3>Wedding Venue</h3>
+        <p class="venue-name">Ss. Columbia-Brigid Church</p>
+        <p class="venue-address" id="venue-address">75 Hickory Street<br>Buffalo, NY 14204</p>
+
+        <button class="copy-btn" data-address="venue-address" aria-label="Copy venue address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          Copy Address
+        </button>
+
+        <div class="shared-venue-details">
+          <div class="shared-venue-item">
+            <strong>Ceremony</strong>
+            <span>Begins at 6:00 PM</span>
+          </div>
+          <div class="shared-venue-item">
+            <strong>Reception</strong>
+            <span>Dinner &amp; dancing to follow at the same location</span>
+          </div>
+        </div>
+
+        <div class="shared-venue-photo">
+          <img src="ceremony.jpg" alt="Ss. Columbia-Brigid Church wedding venue">
+        </div>
+      </div>
+
+      <div class="events-grid" style="margin-top: 2rem;">
+        <article class="event-card fade-in">
+          <div class="event-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h3>Dress Code</h3>
+          <p class="venue-address">[Formal / Semi-Formal / Cocktail Attire]</p>
+          <p class="event-note">Thank you for dressing to celebrate with us.</p>
+        </article>
+
+        <article class="event-card fade-in">
+          <div class="event-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4.5h11L19 11H5zm1.5 5.5A1.5 1.5 0 1 1 8 15a1.5 1.5 0 0 1-1.5 1.5zm11 0A1.5 1.5 0 1 1 19 15a1.5 1.5 0 0 1-1.5 1.5zM3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8"/></svg>
+          </div>
+          <h3>Parking</h3>
+          <p class="venue-address">[Parking information and notes go here]</p>
+          <p class="event-note">If valet is available, feel free to use it.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="important-dates" aria-labelledby="dates-title">
+      <h2 id="dates-title" class="section-title fade-in">Important Dates</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Mark your calendars</p>
+
+      <div class="timeline fade-in">
+        <div class="timeline-item">
+          <div class="timeline-date">July 15, 2026</div>
+          <div class="timeline-content"><h4>RSVP Deadline</h4><p>Please let us know if you can make it</p></div>
+          <div class="timeline-action">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScqNrhgaT8Ey1tID1BLy4XOjdyQYDUMBrGFAcF0kbyfYe1iAg/viewform?usp=publish-editor" class="btn btn-primary">RSVP Now</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">August 15, 2026</div>
+          <div class="timeline-content"><h4>Hotel Block Deadline</h4><p>Reserve your room at our discounted rate</p></div>
+          <div class="timeline-action">
+            <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Reserve Your Room</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">September 11, 2026</div>
+          <div class="timeline-content"><h4>Rehearsal &amp; Welcome Event</h4><p>Join us for drinks and mingling</p></div>
+          <div class="timeline-action">
+            <button class="btn btn-secondary" onclick="addToCalendar('Rehearsal &amp; Welcome Event', '2026-09-11T18:00:00', '2026-09-11T21:00:00', 'Buffalo, NY')">Add to Calendar</button>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">September 12, 2026</div>
+          <div class="timeline-content"><h4>Wedding Day</h4><p>The big day! Ceremony at 4:00 PM</p></div>
+          <div class="timeline-action">
+            <button class="btn btn-gold" onclick="addToCalendar('Norma and Milton Wedding', '2026-09-12T16:00:00', '2026-09-12T23:00:00', 'Buffalo, NY')">Add to Calendar</button>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">September 13, 2026</div>
+          <div class="timeline-content"><h4>Post-Wedding Brunch</h4><p>Optional farewell brunch with the newlyweds</p></div>
+          <div class="timeline-action">
+            <button class="btn btn-secondary" onclick="addToCalendar('Post-Wedding Brunch', '2026-09-13T10:00:00', '2026-09-13T13:00:00', 'Buffalo, NY')">Add to Calendar</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="timeline-note">* Dates and times may be updated. Please check back for any changes.</p>
+    </section>
+
+    <section id="photos" class="album-section" aria-labelledby="photos-title">
+      <h2 id="photos-title" class="section-title fade-in">Photo Album</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Moments we've shared together</p>
+
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-item" data-caption="Our first photo together" data-index="0"><img src="photo-1.jpg" alt="Our first photo together"></div>
+          <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1"><img src="photo-2.jpg" alt="Coffee date"></div>
+          <div class="carousel-item" data-caption="The proposal day" data-index="2"><img src="photo-3.jpg" alt="Proposal"></div>
+          <div class="carousel-item" data-caption="Celebrating with family" data-index="3"><img src="photo-4.jpg" alt="Family"></div>
+          <div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4"><img src="photo-5.jpg" alt="Engagement shoot"></div>
+          <div class="carousel-item" data-caption="A special sunset moment" data-index="5"><img src="photo-6.jpg" alt="Sunset"></div>
+          <div class="carousel-item" data-caption="A beautiful memory" data-index="6"><img src="photo-7.jpg" alt="Memory 7"></div>
+          <div class="carousel-item" data-caption="Another special moment" data-index="7"><img src="photo-8.jpg" alt="Memory 8"></div>
+          <div class="carousel-item" data-caption="Joyful day together" data-index="8"><img src="photo-9.jpg" alt="Memory 9"></div>
+          <div class="carousel-item" data-caption="Love in every moment" data-index="9"><img src="photo-10.jpg" alt="Memory 10" style="object-position: center 20%;"></div>
+          <div class="carousel-item" data-caption="Forever starts here" data-index="10"><img src="photo-11.jpg" alt="Memory 11"></div>
+          <div class="carousel-item" data-caption="A treasured moment" data-index="11"><img src="photo-12.jpg" alt="Memory 12"></div>
+
+          <div class="carousel-item" data-caption="Our first photo together" data-index="0"><img src="photo-1.jpg" alt="Our first photo together"></div>
+          <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1"><img src="photo-2.jpg" alt="Coffee date"></div>
+          <div class="carousel-item" data-caption="The proposal day" data-index="2"><img src="photo-3.jpg" alt="Proposal"></div>
+          <div class="carousel-item" data-caption="Celebrating with family" data-index="3"><img src="photo-4.jpg" alt="Family"></div>
+          <div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4"><img src="photo-5.jpg" alt="Engagement shoot"></div>
+          <div class="carousel-item" data-caption="A special sunset moment" data-index="5"><img src="photo-6.jpg" alt="Sunset"></div>
+          <div class="carousel-item" data-caption="A beautiful memory" data-index="6"><img src="photo-7.jpg" alt="Memory 7"></div>
+          <div class="carousel-item" data-caption="Another special moment" data-index="7"><img src="photo-8.jpg" alt="Memory 8"></div>
+          <div class="carousel-item" data-caption="Joyful day together" data-index="8"><img src="photo-9.jpg" alt="Memory 9"></div>
+          <div class="carousel-item" data-caption="Love in every moment" data-index="9"><img src="photo-10.jpg" alt="Memory 10" style="object-position: center 20%;"></div>
+          <div class="carousel-item" data-caption="Forever starts here" data-index="10"><img src="photo-11.jpg" alt="Memory 11"></div>
+          <div class="carousel-item" data-caption="A treasured moment" data-index="11"><img src="photo-12.jpg" alt="Memory 12"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close lightbox">×</button>
+        <button class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>
+        <div id="lightbox-image-container">
+          <div class="lightbox-placeholder">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          </div>
+        </div>
+        <button class="lightbox-nav lightbox-next" aria-label="Next image">›</button>
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+      </div>
     </div>
-   </section>
 
-   <!-- COUNTDOWN SECTION -->
-   <section class="countdown-section" aria-labelledby="countdown-title">
-    <h2 id="countdown-title" class="section-title">Counting Down</h2>
-    <div class="section-divider"></div>
-    <div class="countdown-container" role="timer" aria-live="polite">
-     <div class="countdown-item"><div class="countdown-number" id="days">000</div><div class="countdown-label">Days</div></div>
-     <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div>
-     <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Minutes</div></div>
-     <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Seconds</div></div>
-    </div>
-   </section>
+    <section id="travel" class="hotel-section" aria-labelledby="travel-title">
+      <h2 id="travel-title" class="section-title fade-in">Travel &amp; Hotel</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Where to stay during your visit</p>
 
-   <!-- OUR STORY SECTION -->
-   <section id="our-story" aria-labelledby="story-title">
-    <h2 id="story-title" class="section-title fade-in">Our Story</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle fade-in">How two hearts found each other</p>
+      <div class="hotel-grid fade-in">
+        <div class="hotel-info">
+          <h3>The Westin Buffalo</h3>
+          <p class="hotel-address">250 Delaware Ave<br>Buffalo, NY 14202<br>(716) 854-9000</p>
 
-    <div class="stories-grid">
-     <article class="story-card fade-in">
-      <h3>Her Story</h3>
-      <p>
-        It was November 15, 2024 – the height of holiday shopping madness at Target. I was working the register, exhausted from the endless stream of customers.
-        Then Milton walked into my line. The first time, I thought nothing of it. The second time, I noticed his smile. By the third time that week,
-        I realized he was specifically choosing my line just to make me laugh with his terrible dad jokes. What started as eye rolls at his corny humor
-        slowly turned into genuine smiles, then exchanged numbers, then coffee dates, and before I knew it, I had fallen completely in love with the man
-        who made Target's holiday rush the best season of my life.
-      </p>
+          <div class="hotel-details">
+            <div class="hotel-detail-item"><strong>Block Code:</strong> <span>[BLOCK CODE]</span></div>
+            <div class="hotel-detail-item"><strong>Check-in:</strong> <span>[3:00 PM]</span></div>
+            <div class="hotel-detail-item"><strong>Check-out:</strong> <span>[11:00 AM]</span></div>
+            <div class="hotel-detail-item"><strong>Parking:</strong> <span>[Valet available / Self-parking info]</span></div>
+          </div>
 
-      <!-- INSERT PHOTO HERE: Norma early moment / favorite candid -->
-      <div class="photo-slot">
-  <img src="story-norma.jpg" alt="Norma and Milton early moment">
+          <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reserve Your Room</a>
+        </div>
+
+        <div class="hotel-images">
+          <div class="photo-slot">
+  <img src="hotel.jpg" alt="Hotel exterior">
 </div>
-     </article>
-
-     <article class="story-card fade-in">
-      <h3>His Story</h3>
-      <p>
-        He swears he noticed her first… and maybe he did. Milton claims it was love at first sight the moment he walked into Target that November day.
-        "I only needed batteries," he says, "but I kept finding reasons to come back." Three shopping trips in one week? Suspicious.
-        A cart full of random items just to have an excuse to stand in her line? Absolutely. He admits the jokes were a desperate attempt to see her smile.
-        "I knew I had to make her laugh – it was the only way she'd remember me." Well, Milton, mission accomplished. She remembers everything.
-      </p>
-
-      <!-- INSERT PHOTO HERE: Milton early moment / favorite candid -->
-     <div class="photo-slot">
-  <img src="story-milton.jpg" alt="Milton and Norma early moment">
+          <<div class="photo-slot">
+  <img src="room.jpg" alt="Hotel room interior">
 </div>
-     </article>
-    </div>
-
-    <div class="he-said-she-said fade-in">
-     <h3>He Said / She Said</h3>
-     <div class="comparison-grid">
-      <div class="comparison-item">
-       <div class="comparison-question">Who fell first?</div>
-       <div class="comparison-answer"><strong>She says:</strong> "He was a goner by visit number two."</div>
-       <div class="comparison-answer"><strong>He says:</strong> "Guilty as charged. Visit one, actually."</div>
+        </div>
       </div>
-      <div class="comparison-item">
-       <div class="comparison-question">Who was googly-eyed?</div>
-       <div class="comparison-answer"><strong>She says:</strong> "Him. Definitely him. I was professional."</div>
-       <div class="comparison-answer"><strong>He says:</strong> "We were both googly-eyed. She just hid it better."</div>
+    </section>
+
+    <section id="rsvp" class="rsvp-section" aria-labelledby="rsvp-title">
+      <h2 id="rsvp-title" class="section-title">RSVP</h2>
+      <div class="section-divider"></div>
+      <p class="rsvp-text">Your presence means the world to us — please let us know if you’ll be joining the celebration.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScqNrhgaT8Ey1tID1BLy4XOjdyQYDUMBrGFAcF0kbyfYe1iAg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn btn-gold">RSVP Now</a>
+      <p class="rsvp-deadline">Please RSVP by July 15, 2026</p>
+    </section>
+
+    <section id="registry" aria-labelledby="registry-title">
+      <h2 id="registry-title" class="section-title fade-in">Registry</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Your presence is our present</p>
+
+      <div class="registry-content fade-in">
+        <p>Your love and support mean everything to us. If you’d like to honor us with a gift, we’ve created a registry for your convenience.</p>
+        <a href="https://www.amazon.com/wedding/share/normaandmilton" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Registry</a>
+
+        <div class="photo-slot" style="margin-top: 2rem;">
+  <img src="registry.jpg" alt="Norma and Milton registry photo">
+</div>
+
+        <div class="mailing-address">
+          <h4>For Off-Registry Gifts</h4>
+          <address>Norma and Milton Rowe<br>25 Kane Street<br>Buffalo, NY 14204</address>
+        </div>
       </div>
-      <div class="comparison-item">
-       <div class="comparison-question">Who made the first move?</div>
-       <div class="comparison-answer"><strong>She says:</strong> "I wrote my number on his receipt. Bold, I know."</div>
-       <div class="comparison-answer"><strong>He says:</strong> "She did — and I still have that receipt."</div>
+    </section>
+
+    <section id="guestbook" class="guestbook-section" aria-labelledby="guestbook-title">
+      <h2 id="guestbook-title" class="section-title fade-in">Guestbook</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Share your well wishes with us</p>
+
+      <div class="guestbook-content fade-in">
+        <p>Leave us a message — we’d love to hear your thoughts, memories, or advice for our journey together!</p>
+        <a href="https://airtable.com/your-form-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Leave a Well Wish</a>
+        <p class="guestbook-note">Messages may be included in a keepsake book.</p>
+
+        <div class="guestbook-embed">
+          <div class="guestbook-embed-placeholder">
+            <p>Guestbook messages will appear here</p>
+            <p style="font-size: 0.8rem; margin-top: 1rem;">Replace this placeholder with your Airtable Gallery embed iframe</p>
+          </div>
+        </div>
       </div>
-     </div>
-
-     <!-- INSERT PHOTO HERE: shared candid -->
-     <div class="photo-slot" style="margin-top:1.75rem; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08);">
-      <div class="photo-slot-inner" style="color: rgba(255,255,255,0.85);">
-        Optional shared photo here: <strong style="margin-left:6px;">story-shared.jpg</strong>
-      </div>
-     </div>
-    </div>
-   </section>
-
-   <!-- EVENT DETAILS SECTION -->
- <div class="event-card fade-in shared-venue-card">
-  <div class="event-icon">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 3l9 6-9 6-9-6 9-6zm-7 8v7h14v-7" />
-    </svg>
-  </div>
-
-  <h3>Wedding Venue</h3>
-  <p class="venue-name">Ss. Columbia-Brigid Church</p>
-  <p class="venue-address" id="venue-address">75 Hickory Street<br>Buffalo, NY 14204</p>
-
-  <button class="copy-btn" data-address="venue-address" aria-label="Copy venue address">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-    Copy Address
-  </button>
-
-  <div class="shared-venue-details">
-    <div class="shared-venue-item">
-      <strong>Ceremony</strong>
-      <span>Begins at 6:00 PM</span>
-    </div>
-    <div class="shared-venue-item">
-      <strong>Reception</strong>
-      <span>Dinner &amp; dancing to follow at the same location</span>
-    </div>
-  </div>
-
-  <div class="shared-venue-photo">
-    <img src="ceremony.jpg" alt="Ss. Columbia-Brigid Church wedding venue">
-  </div>
-</div>
-
-    <div class="events-grid" style="margin-top: 2rem;">
-     <article class="event-card fade-in">
-      <div class="event-icon">
-       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-      </div>
-      <h3>Dress Code</h3>
-      <p class="venue-address">[Formal / Semi-Formal / Cocktail Attire]</p>
-      <p class="event-note">Thank you for dressing to celebrate with us.</p>
-     </article>
-
-     <article class="event-card fade-in">
-      <div class="event-icon">
-       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4.5h11L19 11H5zm1.5 5.5A1.5 1.5 0 1 1 8 15a1.5 1.5 0 0 1-1.5 1.5zm11 0A1.5 1.5 0 1 1 19 15a1.5 1.5 0 0 1-1.5 1.5zM3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8"/></svg>
-      </div>
-      <h3>Parking</h3>
-      <p class="venue-address">[Parking information and notes go here]</p>
-      <p class="event-note">If valet is available, feel free to use it.</p>
-     </article>
-    </div>
-   </section>
-
-   <!-- IMPORTANT DATES SECTION -->
-   <section id="important-dates" aria-labelledby="dates-title">
-    <h2 id="dates-title" class="section-title fade-in">Important Dates</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle fade-in">Mark your calendars</p>
-
-    <div class="timeline fade-in">
-     <div class="timeline-item">
-      <div class="timeline-date">July 15, 2026</div>
-      <div class="timeline-content"><h4>RSVP Deadline</h4><p>Please let us know if you can make it</p></div>
-      <div class="timeline-action">
-       <a href="https://docs.google.com/forms/d/e/1FAIpQLScqNrhgaT8Ey1tID1BLy4XOjdyQYDUMBrGFAcF0kbyfYe1iAg/viewform?usp=publish-editor" class="btn btn-primary">RSVP Now</a>
-      </div>
-     </div>
-
-     <div class="timeline-item">
-      <div class="timeline-date">August 15, 2026</div>
-      <div class="timeline-content"><h4>Hotel Block Deadline</h4><p>Reserve your room at our discounted rate</p></div>
-      <div class="timeline-action">
-       <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Reserve Your Room</a>
-      </div>
-     </div>
-
-     <div class="timeline-item">
-      <div class="timeline-date">September 11, 2026</div>
-      <div class="timeline-content"><h4>Rehearsal &amp; Welcome Event</h4><p>Join us for drinks and mingling</p></div>
-      <div class="timeline-action">
-       <button class="btn btn-secondary" onclick="addToCalendar('Rehearsal &amp; Welcome Event', '2026-09-11T18:00:00', '2026-09-11T21:00:00', 'Buffalo, NY')">Add to Calendar</button>
-      </div>
-     </div>
-
-     <div class="timeline-item">
-  <div class="timeline-date">September 12, 2026</div>
-  <div class="timeline-content"><h4>Wedding Day</h4><p>The big day! Ceremony at 4:00 PM</p></div>
-  <div class="timeline-action">
-    <button class="btn btn-gold" onclick="addToCalendar('Norma and Milton Wedding', '2026-09-12T16:00:00', '2026-09-12T23:00:00', 'Buffalo, NY')">Add to Calendar</button>
-  </div>
-</div>
-
-<div class="timeline-item">
-  <div class="timeline-date">September 13, 2026</div>
-  <div class="timeline-content"><h4>Post-Wedding Brunch</h4><p>Optional farewell brunch with the newlyweds</p></div>
-  <div class="timeline-action">
-    <button class="btn btn-secondary" onclick="addToCalendar('Post-Wedding Brunch', '2026-09-13T10:00:00', '2026-09-13T13:00:00', 'Buffalo, NY')">Add to Calendar</button>
-  </div>
-</div>
-
-    <p class="timeline-note">* Dates and times may be updated. Please check back for any changes.</p>
-   </section>
-
-   <!-- PHOTO ALBUM SECTION -->
-   <section id="photos" class="album-section" aria-labelledby="photos-title">
-    <h2 id="photos-title" class="section-title fade-in">Photo Album</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle fade-in">Moments we've shared together</p>
-
-    <div class="carousel-container">
-     <div class="carousel-track" id="carousel-track">
-      <!-- Your existing placeholders remain (no surgery). Replace later with <img> tags as noted in your comments. -->
-  <div class="carousel-item" data-caption="Our first photo together" data-index="0">
-  <img src="photo-1.jpg" alt="Our first photo together">
-</div>
-
-<div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1">
-  <img src="photo-2.jpg" alt="Coffee date">
-</div>
-
-<div class="carousel-item" data-caption="The proposal day" data-index="2">
-  <img src="photo-3.jpg" alt="Proposal">
-</div>
-
-<div class="carousel-item" data-caption="Celebrating with family" data-index="3">
-  <img src="photo-4.jpg" alt="Family">
-</div>
-
-<div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4">
-  <img src="photo-5.jpg" alt="Engagement shoot">
-</div>
-
-<div class="carousel-item" data-caption="A special sunset moment" data-index="5">
-  <img src="photo-6.jpg" alt="Sunset">
-</div>
-
-<div class="carousel-item" data-caption="A beautiful memory" data-index="6">
-  <img src="photo-7.jpg" alt="Memory 7">
-</div>
-
-<div class="carousel-item" data-caption="Another special moment" data-index="7">
-  <img src="photo-8.jpg" alt="Memory 8">
-</div>
-
-<div class="carousel-item" data-caption="Joyful day together" data-index="8">
-  <img src="photo-9.jpg" alt="Memory 9">
-</div>
-
-<div class="carousel-item" data-caption="Love in every moment" data-index="9">
-  <img src="photo-10.jpg" alt="Memory 10" style="object-position: center 20%;">
-</div>
-
-<div class="carousel-item" data-caption="Forever starts here" data-index="10">
-  <img src="photo-11.jpg" alt="Memory 11">
-</div>
-
-<div class="carousel-item" data-caption="A treasured moment" data-index="11">
-  <img src="photo-12.jpg" alt="Memory 12">
-</div>
-      <!-- Duplicate items for infinite scroll illusion -->
-      <div class="carousel-item" data-caption="Our first photo together" data-index="0">
-  <img src="photo-1.jpg" alt="Our first photo together">
-</div>
-
-<div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1">
-  <img src="photo-2.jpg" alt="Coffee date">
-</div>
-
-<div class="carousel-item" data-caption="The proposal day" data-index="2">
-  <img src="photo-3.jpg" alt="Proposal">
-</div>
-
-<div class="carousel-item" data-caption="Celebrating with family" data-index="3">
-  <img src="photo-4.jpg" alt="Family">
-</div>
-
-<div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4">
-  <img src="photo-5.jpg" alt="Engagement shoot">
-</div>
-
-<div class="carousel-item" data-caption="A special sunset moment" data-index="5">
-  <img src="photo-6.jpg" alt="Sunset">
-</div>
-
-<div class="carousel-item" data-caption="A beautiful memory" data-index="6">
-  <img src="photo-7.jpg" alt="Memory 7">
-</div>
-
-<div class="carousel-item" data-caption="Another special moment" data-index="7">
-  <img src="photo-8.jpg" alt="Memory 8">
-</div>
-
-<div class="carousel-item" data-caption="Joyful day together" data-index="8">
-  <img src="photo-9.jpg" alt="Memory 9">
-</div>
-
-<div class="carousel-item" data-caption="Love in every moment" data-index="9">
-  <img src="photo-10.jpg" alt="Memory 10" style="object-position: center 20%;">
-</div>
-
-<div class="carousel-item" data-caption="Forever starts here" data-index="10">
-  <img src="photo-11.jpg" alt="Memory 11">
-</div>
-
-<div class="carousel-item" data-caption="A treasured moment" data-index="11">
-  <img src="photo-12.jpg" alt="Memory 12">
-</div>
-    </div>
-   </section>
-
-   <!-- LIGHTBOX MODAL -->
-   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
-    <div class="lightbox-content">
-     <button class="lightbox-close" aria-label="Close lightbox">×</button>
-     <button class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>
-     <div id="lightbox-image-container">
-      <div class="lightbox-placeholder">
-       <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-      </div>
-     </div>
-     <button class="lightbox-nav lightbox-next" aria-label="Next image">›</button>
-     <p class="lightbox-caption" id="lightbox-caption"></p>
-    </div>
-   </div>
-
-   <!-- TRAVEL & HOTEL SECTION -->
-   <section id="travel" class="hotel-section" aria-labelledby="travel-title">
-    <h2 id="travel-title" class="section-title fade-in">Travel &amp; Hotel</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle fade-in">Where to stay during your visit</p>
-
-    <div class="hotel-grid fade-in">
-     <div class="hotel-info">
-      <h3>The Westin Buffalo</h3>
-      <p class="hotel-address">250 Delaware Ave<br>Buffalo, NY 14202<br>(716) 854-9000</p>
-
-      <div class="hotel-details">
-       <div class="hotel-detail-item"><strong>Block Code:</strong> <span>[BLOCK CODE]</span></div>
-       <div class="hotel-detail-item"><strong>Check-in:</strong> <span>[3:00 PM]</span></div>
-       <div class="hotel-detail-item"><strong>Check-out:</strong> <span>[11:00 AM]</span></div>
-       <div class="hotel-detail-item"><strong>Parking:</strong> <span>[Valet available / Self-parking info]</span></div>
-      </div>
-
-      <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reserve Your Room</a>
-     </div>
-
-     <div class="hotel-images">
-      <div class="hotel-image-placeholder">
-       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
-       <span>Hotel Exterior Image</span>
-      </div>
-      <div class="hotel-image-placeholder">
-       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
-       <span>Room Interior Image</span>
-      </div>
-      <!-- INSERT PHOTOS HERE: assets/hotel.jpg and assets/room.jpg -->
-     </div>
-    </div>
-   </section>
-
-   <!-- RSVP SECTION -->
-   <section id="rsvp" class="rsvp-section" aria-labelledby="rsvp-title">
-    <h2 id="rsvp-title" class="section-title">RSVP</h2>
-    <div class="section-divider"></div>
-    <p class="rsvp-text">Your presence means the world to us — please let us know if you’ll be joining the celebration.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScqNrhgaT8Ey1tID1BLy4XOjdyQYDUMBrGFAcF0kbyfYe1iAg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn btn-gold">RSVP Now</a>
-    <p class="rsvp-deadline">Please RSVP by July 15, 2026</p>
-   </section>
-
-   <!-- REGISTRY SECTION -->
-   <section id="registry" aria-labelledby="registry-title">
-    <h2 id="registry-title" class="section-title fade-in">Registry</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle fade-in">Your presence is our present</p>
-
-    <div class="registry-content fade-in">
-     <p>Your love and support mean everything to us. If you’d like to honor us with a gift, we’ve created a registry for your convenience.</p>
-     <a href="https://www.amazon.com/wedding/share/normaandmilton
-" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Registry</a>
-
-     <!-- INSERT PHOTO HERE: registry section optional (nice detail shot, engagement photo, etc.) -->
-     <div class="photo-slot" style="margin-top: 2rem;">
-      <div class="photo-slot-inner">Optional photo here: <strong style="margin-left:6px;">assets/registry.jpg</strong></div>
-     </div>
-
-     <div class="mailing-address">
-      <h4>For Off-Registry Gifts</h4>
-      <address>Norma and Milton Rowe<br>25 Kane Street<br>Buffalo, NY 14204</address>
-     </div>
-    </div>
-   </section>
-
-   <!-- GUESTBOOK SECTION -->
-   <section id="guestbook" class="guestbook-section" aria-labelledby="guestbook-title">
-    <h2 id="guestbook-title" class="section-title fade-in">Guestbook</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle fade-in">Share your well wishes with us</p>
-
-    <div class="guestbook-content fade-in">
-     <p>Leave us a message — we’d love to hear your thoughts, memories, or advice for our journey together!</p>
-     <a href="https://airtable.com/your-form-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Leave a Well Wish</a>
-     <p class="guestbook-note">Messages may be included in a keepsake book.</p>
-
-     <div class="guestbook-embed">
-      <div class="guestbook-embed-placeholder">
-       <p>Guestbook messages will appear here</p>
-       <p style="font-size: 0.8rem; margin-top: 1rem;">Replace this placeholder with your Airtable Gallery embed iframe</p>
-      </div>
-     </div>
-    </div>
-   </section>
-
+    </section>
   </main>
 
-  <!-- FOOTER -->
   <footer role="contentinfo">
-   <p class="footer-names">With love, Norma <span class="ampersand">&amp;</span> Milton</p>
-   <p class="footer-details">Buffalo, New York • September 12, 2026</p>
-   <p class="footer-love">💍</p>
+    <p class="footer-names">With love, Norma <span class="ampersand">&amp;</span> Milton</p>
+    <p class="footer-details">Buffalo, New York • September 12, 2026</p>
+    <p class="footer-love">💍</p>
   </footer>
 
-  <!-- Toast Notification -->
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
-  <!-- MUSIC: audio element (won’t play with sound until user gesture) -->
-  <!-- TODO: add /assets/music.mp3 later -->
   <audio id="bg-music" preload="auto" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Music prompt (first visit) -->
   <button id="music-prompt" class="music-prompt" type="button" aria-label="Tap to play music">
     Tap to play music ♪
   </button>
 
-  <!-- Music toggle -->
   <button id="music-toggle" class="music-toggle" type="button" data-state="off" aria-pressed="false" aria-label="Music toggle">
     <span class="music-dot" aria-hidden="true"></span>
     <span class="music-label">Music: Off</span>
   </button>
 
   <script>
-        // Default configuration
-        const defaultConfig = {
-            bride_name: 'Norma',
-            groom_name: 'Milton',
-            wedding_date: 'September 12, 2026',
-            wedding_location: 'Buffalo, New York',
-            primary_color: '#0d5c4b',
-            secondary_color: '#d4af37',
-            background_color: '#ffffff',
-            text_color: '#2c2c2c',
-            accent_color: '#faf9f7'
-        };
+    const defaultConfig = {
+      bride_name: 'Norma',
+      groom_name: 'Milton',
+      wedding_date: 'September 12, 2026',
+      wedding_location: 'Buffalo, New York',
+      primary_color: '#0d5c4b',
+      secondary_color: '#d4af37',
+      background_color: '#ffffff',
+      text_color: '#2c2c2c',
+      accent_color: '#faf9f7'
+    };
 
-        let config = { ...defaultConfig };
+    let config = { ...defaultConfig };
 
-        // Initialize Element SDK
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange: async (newConfig) => {
-                    config = { ...defaultConfig, ...newConfig };
-                    updateUI();
-                },
-                mapToCapabilities: (cfg) => ({
-                    recolorables: [
-                        { get: () => cfg.background_color || defaultConfig.background_color,
-                          set: (value) => { cfg.background_color = value; window.elementSdk.setConfig({ background_color: value }); } },
-                        { get: () => cfg.accent_color || defaultConfig.accent_color,
-                          set: (value) => { cfg.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); } },
-                        { get: () => cfg.text_color || defaultConfig.text_color,
-                          set: (value) => { cfg.text_color = value; window.elementSdk.setConfig({ text_color: value }); } },
-                        { get: () => cfg.primary_color || defaultConfig.primary_color,
-                          set: (value) => { cfg.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); } },
-                        { get: () => cfg.secondary_color || defaultConfig.secondary_color,
-                          set: (value) => { cfg.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); } }
-                    ],
-                    borderables: [],
-                    fontEditable: undefined,
-                    fontSizeable: undefined
-                }),
-                mapToEditPanelValues: (cfg) => new Map([
-                    ['bride_name', cfg.bride_name || defaultConfig.bride_name],
-                    ['groom_name', cfg.groom_name || defaultConfig.groom_name],
-                    ['wedding_date', cfg.wedding_date || defaultConfig.wedding_date],
-                    ['wedding_location', cfg.wedding_location || defaultConfig.wedding_location]
-                ])
-            });
-        }
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          updateUI();
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            { get: () => cfg.background_color || defaultConfig.background_color,
+              set: (value) => { cfg.background_color = value; window.elementSdk.setConfig({ background_color: value }); } },
+            { get: () => cfg.accent_color || defaultConfig.accent_color,
+              set: (value) => { cfg.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); } },
+            { get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => { cfg.text_color = value; window.elementSdk.setConfig({ text_color: value }); } },
+            { get: () => cfg.primary_color || defaultConfig.primary_color,
+              set: (value) => { cfg.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); } },
+            { get: () => cfg.secondary_color || defaultConfig.secondary_color,
+              set: (value) => { cfg.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); } }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['bride_name', cfg.bride_name || defaultConfig.bride_name],
+          ['groom_name', cfg.groom_name || defaultConfig.groom_name],
+          ['wedding_date', cfg.wedding_date || defaultConfig.wedding_date],
+          ['wedding_location', cfg.wedding_location || defaultConfig.wedding_location]
+        ])
+      });
+    }
 
-        // Update UI based on config
-        function updateUI() {
-            const bride = config.bride_name || defaultConfig.bride_name;
-            const groom = config.groom_name || defaultConfig.groom_name;
-            const date = config.wedding_date || defaultConfig.wedding_date;
-            const location = config.wedding_location || defaultConfig.wedding_location;
+    function updateUI() {
+      const bride = config.bride_name || defaultConfig.bride_name;
+      const groom = config.groom_name || defaultConfig.groom_name;
+      const date = config.wedding_date || defaultConfig.wedding_date;
+      const location = config.wedding_location || defaultConfig.wedding_location;
 
-            // Update hero names
-            const heroNames = document.querySelector('.hero-names');
-            if (heroNames) {
-                heroNames.innerHTML = `${bride} <span class="ampersand">&</span> ${groom}`;
-            }
+      const heroNames = document.querySelector('.hero-names');
+      if (heroNames) heroNames.innerHTML = `${bride} <span class="ampersand">&</span> ${groom}`;
 
-            // Update hero date
-            const heroDate = document.querySelector('.hero-date');
-            if (heroDate) {
-                heroDate.textContent = `${date} • ${location}`;
-            }
+      const heroDate = document.querySelector('.hero-date');
+      if (heroDate) heroDate.textContent = `${date} • ${location}`;
 
-            // Update nav logo
-            const navLogo = document.querySelector('.nav-logo');
-            if (navLogo) {
-                navLogo.textContent = `${bride.charAt(0)} & ${groom.charAt(0)}`;
-            }
+      const navLogo = document.querySelector('.nav-logo');
+      if (navLogo) navLogo.textContent = `${bride.charAt(0)} & ${groom.charAt(0)}`;
 
-            // Update footer
-            const footerNames = document.querySelector('.footer-names');
-            if (footerNames) {
-                footerNames.innerHTML = `With love, ${bride} <span class="ampersand">&</span> ${groom}`;
-            }
+      const footerNames = document.querySelector('.footer-names');
+      if (footerNames) footerNames.innerHTML = `With love, ${bride} <span class="ampersand">&</span> ${groom}`;
 
-            const footerDetails = document.querySelector('.footer-details');
-            if (footerDetails) {
-                footerDetails.textContent = `${location} • ${date}`;
-            }
+      const footerDetails = document.querySelector('.footer-details');
+      if (footerDetails) footerDetails.textContent = `${location} • ${date}`;
 
-            // Update colors
-            document.documentElement.style.setProperty('--emerald', config.primary_color || defaultConfig.primary_color);
-            document.documentElement.style.setProperty('--champagne', config.secondary_color || defaultConfig.secondary_color);
-            document.documentElement.style.setProperty('--white', config.background_color || defaultConfig.background_color);
-            document.documentElement.style.setProperty('--text-dark', config.text_color || defaultConfig.text_color);
-            document.documentElement.style.setProperty('--off-white', config.accent_color || defaultConfig.accent_color);
-        }
+      document.documentElement.style.setProperty('--emerald', config.primary_color || defaultConfig.primary_color);
+      document.documentElement.style.setProperty('--champagne', config.secondary_color || defaultConfig.secondary_color);
+      document.documentElement.style.setProperty('--white', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--text-dark', config.text_color || defaultConfig.text_color);
+      document.documentElement.style.setProperty('--off-white', config.accent_color || defaultConfig.accent_color);
+    }
 
-        // =====================
-        // COUNTDOWN TIMER
-        // =====================
-        const weddingDate = new Date('September 12, 2026 18:00:00').getTime();
+    const weddingDate = new Date('September 12, 2026 18:00:00').getTime();
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
 
-            if (distance < 0) {
-                document.getElementById('days').textContent = '0';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                return;
-            }
+      if (distance < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days.toString().padStart(3, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
+      document.getElementById('days').textContent = days.toString().padStart(3, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-        // =====================
-        // NAVIGATION
-        // =====================
-        const navWrapper = document.querySelector('.nav-wrapper');
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
+    const navWrapper = document.querySelector('.nav-wrapper');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) navWrapper.classList.add('scrolled');
-            else navWrapper.classList.remove('scrolled');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) navWrapper.classList.add('scrolled');
+      else navWrapper.classList.remove('scrolled');
+    });
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isActive = mobileMenu.classList.toggle('active');
+      mobileMenuBtn.setAttribute('aria-expanded', isActive);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const addressId = btn.dataset.address;
+        const addressEl = document.getElementById(addressId);
+        const address = addressEl.textContent.replace(/\s+/g, ' ').trim();
+
+        navigator.clipboard.writeText(address).then(() => {
+          showToast('Address copied to clipboard!');
+        }).catch(() => {
+          showToast('Failed to copy address');
         });
+      });
+    });
 
-        mobileMenuBtn.addEventListener('click', () => {
-            const isActive = mobileMenu.classList.toggle('active');
-            mobileMenuBtn.setAttribute('aria-expanded', isActive);
-        });
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            });
-        });
+    function addToCalendar(title, start, end, location) {
+      const startDate = start.replace(/[-:]/g, '').replace('T', 'T');
+      const endDate = end.replace(/[-:]/g, '').replace('T', 'T');
 
-        // =====================
-        // FADE-IN ANIMATION
-        // =====================
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate.replace(/[-:]/g, '')}/${endDate.replace(/[-:]/g, '')}&location=${encodeURIComponent(location)}`;
 
-        fadeElements.forEach(el => fadeObserver.observe(el));
+      window.open(googleUrl, '_blank', 'noopener,noreferrer');
+    }
 
-        // =====================
-        // COPY ADDRESS
-        // =====================
-        document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const addressId = btn.dataset.address;
-                const addressEl = document.getElementById(addressId);
-                const address = addressEl.textContent.replace(/\s+/g, ' ').trim();
+    const lightbox = document.getElementById('lightbox');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    let currentImageIndex = 0;
 
-                navigator.clipboard.writeText(address).then(() => {
-                    showToast('Address copied to clipboard!');
-                }).catch(() => {
-                    showToast('Failed to copy address');
-                });
-            });
-        });
+    const captions = [];
+    carouselItems.forEach((item, index) => { if (index < 12) captions.push(item.dataset.caption); });
 
-        // =====================
-        // TOAST NOTIFICATION
-        // =====================
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
+    carouselItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        currentImageIndex = parseInt(item.dataset.index);
+        openLightbox();
+      });
+    });
 
-        // =====================
-        // ADD TO CALENDAR
-        // =====================
-        function addToCalendar(title, start, end, location) {
-            const startDate = start.replace(/[-:]/g, '').replace('T', 'T');
-            const endDate = end.replace(/[-:]/g, '').replace('T', 'T');
+    function openLightbox() {
+      lightbox.classList.add('active');
+      updateLightboxContent();
+      document.body.style.overflow = 'hidden';
+    }
 
-            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate.replace(/[-:]/g, '')}/${endDate.replace(/[-:]/g, '')}&location=${encodeURIComponent(location)}`;
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
-            window.open(googleUrl, '_blank', 'noopener,noreferrer');
-        }
+    function updateLightboxContent() {
+      lightboxCaption.textContent = captions[currentImageIndex] || '';
+    }
 
-        // =====================
-        // LIGHTBOX
-        // =====================
-        const lightbox = document.getElementById('lightbox');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        let currentImageIndex = 0;
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    document.querySelector('.lightbox-prev').addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex - 1 + captions.length) % captions.length;
+      updateLightboxContent();
+    });
+    document.querySelector('.lightbox-next').addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % captions.length;
+      updateLightboxContent();
+    });
 
-        const captions = [];
-        carouselItems.forEach((item, index) => { if (index < 12) captions.push(item.dataset.caption); });
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') {
+        currentImageIndex = (currentImageIndex - 1 + captions.length) % captions.length;
+        updateLightboxContent();
+      } else if (e.key === 'ArrowRight') {
+        currentImageIndex = (currentImageIndex + 1) % captions.length;
+        updateLightboxContent();
+      }
+    });
 
-        carouselItems.forEach((item) => {
-            item.addEventListener('click', () => {
-                currentImageIndex = parseInt(item.dataset.index);
-                openLightbox();
-            });
-        });
+    const music = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+    const musicPrompt = document.getElementById('music-prompt');
 
-        function openLightbox() {
-            lightbox.classList.add('active');
-            updateLightboxContent();
-            document.body.style.overflow = 'hidden';
-        }
+    function setMusicUI(on) {
+      musicToggle.dataset.state = on ? 'on' : 'off';
+      musicToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      musicToggle.querySelector('.music-label').textContent = on ? 'Music: On' : 'Music: Off';
+    }
 
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function updateLightboxContent() {
-            lightboxCaption.textContent = captions[currentImageIndex] || '';
-        }
-
-        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-        document.querySelector('.lightbox-prev').addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex - 1 + captions.length) % captions.length;
-            updateLightboxContent();
-        });
-        document.querySelector('.lightbox-next').addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex + 1) % captions.length;
-            updateLightboxContent();
-        });
-
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            else if (e.key === 'ArrowLeft') {
-                currentImageIndex = (currentImageIndex - 1 + captions.length) % captions.length;
-                updateLightboxContent();
-            } else if (e.key === 'ArrowRight') {
-                currentImageIndex = (currentImageIndex + 1) % captions.length;
-                updateLightboxContent();
-            }
-        });
-
-        // =====================
-        // MUSIC (tap-to-enable + toggle)
-        // =====================
-        const music = document.getElementById('bg-music');
-        const musicToggle = document.getElementById('music-toggle');
-        const musicPrompt = document.getElementById('music-prompt');
-
-        function setMusicUI(on) {
-            musicToggle.dataset.state = on ? 'on' : 'off';
-            musicToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-            musicToggle.querySelector('.music-label').textContent = on ? 'Music: On' : 'Music: Off';
-        }
-
-        async function tryPlayMusic() {
-            try {
-                // A user gesture is required by most browsers before this will succeed.
-                await music.play();
-                setMusicUI(true);
-                musicPrompt.classList.add('hidden');
-                localStorage.setItem('music_enabled', 'true');
-            } catch (err) {
-                // If blocked, keep prompt visible.
-                setMusicUI(false);
-            }
-        }
-
-        function pauseMusic() {
-            music.pause();
-            setMusicUI(false);
-            localStorage.setItem('music_enabled', 'false');
-        }
-
-        // First load: show prompt. If they previously enabled, still require gesture on many devices,
-        // but we can attempt after first user interaction.
-        const saved = localStorage.getItem('music_enabled');
+    async function tryPlayMusic() {
+      try {
+        await music.play();
+        setMusicUI(true);
+        musicPrompt.classList.add('hidden');
+        localStorage.setItem('music_enabled', 'true');
+      } catch (err) {
         setMusicUI(false);
+      }
+    }
 
-        // Prompt click = user gesture
-        musicPrompt.addEventListener('click', () => {
-            tryPlayMusic();
-        });
+    function pauseMusic() {
+      music.pause();
+      setMusicUI(false);
+      localStorage.setItem('music_enabled', 'false');
+    }
 
-        // Toggle button
-        musicToggle.addEventListener('click', async () => {
-            if (music.paused) {
-                await tryPlayMusic();
-            } else {
-                pauseMusic();
-            }
-        });
+    const saved = localStorage.getItem('music_enabled');
+    setMusicUI(false);
 
-        // If previously enabled, keep prompt visible but smaller behavior:
-        // first click anywhere will attempt to start (nice “auto” feeling)
-        if (saved === 'true') {
-            const oneTime = async () => {
-                await tryPlayMusic();
-                window.removeEventListener('click', oneTime);
-                window.removeEventListener('touchstart', oneTime);
-            };
-            window.addEventListener('click', oneTime, { once: true });
-            window.addEventListener('touchstart', oneTime, { once: true });
-        }
+    musicPrompt.addEventListener('click', () => {
+      tryPlayMusic();
+    });
 
-        // Initialize UI
-        updateUI();
-    </script>
+    musicToggle.addEventListener('click', async () => {
+      if (music.paused) {
+        await tryPlayMusic();
+      } else {
+        pauseMusic();
+      }
+    });
+
+    if (saved === 'true') {
+      const oneTime = async () => {
+        await tryPlayMusic();
+        window.removeEventListener('click', oneTime);
+        window.removeEventListener('touchstart', oneTime);
+      };
+      window.addEventListener('click', oneTime, { once: true });
+      window.addEventListener('touchstart', oneTime, { once: true });
+    }
+
+    updateUI();
+  </script>
 
   <script>
     (function(){
@@ -1806,6 +1569,5 @@
       }
     })();
   </script>
-
- </body>
+</body>
 </html>
