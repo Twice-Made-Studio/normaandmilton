@@ -767,17 +767,57 @@
     .guestbook-content { text-align: center; }
     .guestbook-content p { color: var(--text-light); margin-bottom: 2rem; }
 
-    .guestbook-embed {
-      margin-top: 3rem;
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--divider);
-    }
-    .guestbook-embed iframe { width: 100%; min-height: 500px; border: none; }
-    .guestbook-embed-placeholder { padding: 4rem 2rem; text-align: center; color: var(--text-light); }
-    .guestbook-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.5rem; font-style: italic; }
+   .guestbook-section {
+  background: var(--off-white);
+}
 
+.guestbook-content {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.guestbook-content p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+
+.guestbook-note {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 1.25rem;
+  font-style: italic;
+}
+
+.guestbook-embed {
+  margin-top: 2.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--divider);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  padding: 0.75rem;
+}
+
+.guestbook-embed iframe {
+  width: 100%;
+  height: 700px;
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .guestbook-embed {
+    padding: 0.4rem;
+    border-radius: 16px;
+  }
+
+  .guestbook-embed iframe {
+    height: 620px;
+    border-radius: 12px;
+  }
+}
     footer {
       background: var(--text-dark);
       color: var(--white);
@@ -1235,15 +1275,18 @@
 
       <div class="guestbook-content fade-in">
         <p>Leave us a message — we’d love to hear your thoughts, memories, or advice for our journey together!</p>
-        <a href="https://airtable.com/your-form-link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Leave a Well Wish</a>
+        <a href="https://airtable.com/appKESt2i5osDVpr9/shr0ijr69fbMmyfhL" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Leave a Well Wish</a>
         <p class="guestbook-note">Messages may be included in a keepsake book.</p>
 
-        <div class="guestbook-embed">
-          <div class="guestbook-embed-placeholder">
-            <p>Guestbook messages will appear here</p>
-            <p style="font-size: 0.8rem; margin-top: 1rem;">Replace this placeholder with your Airtable Gallery embed iframe</p>
-          </div>
-        </div>
+       <div class="guestbook-embed">
+  <iframe class="airtable-embed"
+    src="https://airtable.com/embed/appKESt2i5osDVpr9/shrgSyTlwPc09fmt7?layout=card&viewControls=off"
+    frameborder="0"
+    width="100%"
+    height="700"
+    style="background: transparent; border: 0;">
+  </iframe>
+</div>
       </div>
     </section>
   </main>
