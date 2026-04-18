@@ -642,7 +642,7 @@
         .carousel-track {
             display: flex;
             gap: 1.5rem;
-            animation: scroll 30s linear infinite;
+            animation: scroll 45s linear infinite;
             width: max-content;
         }
         .carousel-track:hover { animation-play-state: paused; }
@@ -1221,7 +1221,7 @@
     <div class="carousel-container">
      <div class="carousel-track" id="carousel-track">
       <!-- Your existing placeholders remain (no surgery). Replace later with <img> tags as noted in your comments. -->
-   <div class="carousel-item" data-caption="Our first photo together" data-index="0">
+  <div class="carousel-item" data-caption="Our first photo together" data-index="0">
   <img src="photo-1.jpg" alt="Our first photo together">
 </div>
 
@@ -1258,21 +1258,64 @@
 </div>
 
 <div class="carousel-item" data-caption="Love in every moment" data-index="9">
-  <img src="photo-10.jpg" alt="Memory 10">
+  <img src="photo-10.jpg" alt="Memory 10" style="object-position: center 20%;">
 </div>
 
 <div class="carousel-item" data-caption="Forever starts here" data-index="10">
   <img src="photo-11.jpg" alt="Memory 11">
 </div>
 
+<div class="carousel-item" data-caption="A treasured moment" data-index="11">
+  <img src="photo-12.jpg" alt="Memory 12">
+</div>
       <!-- Duplicate items for infinite scroll illusion -->
-      <div class="carousel-item" data-caption="Our first photo together" data-index="0"><div class="carousel-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo 1</span></div></div>
-      <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1"><div class="carousel-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo 2</span></div></div>
-      <div class="carousel-item" data-caption="The proposal day" data-index="2"><div class="carousel-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo 3</span></div></div>
-      <div class="carousel-item" data-caption="Celebrating with family" data-index="3"><div class="carousel-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo 4</span></div></div>
-      <div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4"><div class="carousel-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo 5</span></div></div>
-      <div class="carousel-item" data-caption="A special sunset moment" data-index="5"><div class="carousel-placeholder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Photo 6</span></div></div>
-     </div>
+      <div class="carousel-item" data-caption="Our first photo together" data-index="0">
+  <img src="photo-1.jpg" alt="Our first photo together">
+</div>
+
+<div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1">
+  <img src="photo-2.jpg" alt="Coffee date">
+</div>
+
+<div class="carousel-item" data-caption="The proposal day" data-index="2">
+  <img src="photo-3.jpg" alt="Proposal">
+</div>
+
+<div class="carousel-item" data-caption="Celebrating with family" data-index="3">
+  <img src="photo-4.jpg" alt="Family">
+</div>
+
+<div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4">
+  <img src="photo-5.jpg" alt="Engagement shoot">
+</div>
+
+<div class="carousel-item" data-caption="A special sunset moment" data-index="5">
+  <img src="photo-6.jpg" alt="Sunset">
+</div>
+
+<div class="carousel-item" data-caption="A beautiful memory" data-index="6">
+  <img src="photo-7.jpg" alt="Memory 7">
+</div>
+
+<div class="carousel-item" data-caption="Another special moment" data-index="7">
+  <img src="photo-8.jpg" alt="Memory 8">
+</div>
+
+<div class="carousel-item" data-caption="Joyful day together" data-index="8">
+  <img src="photo-9.jpg" alt="Memory 9">
+</div>
+
+<div class="carousel-item" data-caption="Love in every moment" data-index="9">
+  <img src="photo-10.jpg" alt="Memory 10" style="object-position: center 20%;">
+</div>
+
+<div class="carousel-item" data-caption="Forever starts here" data-index="10">
+  <img src="photo-11.jpg" alt="Memory 11">
+</div>
+
+<div class="carousel-item" data-caption="A treasured moment" data-index="11">
+  <img src="photo-12.jpg" alt="Memory 12">
+</div>
     </div>
    </section>
 
@@ -1614,7 +1657,7 @@
         let currentImageIndex = 0;
 
         const captions = [];
-        carouselItems.forEach((item, index) => { if (index < 11) captions.push(item.dataset.caption); });
+        carouselItems.forEach((item, index) => { if (index < 12) captions.push(item.dataset.caption); });
 
         carouselItems.forEach((item) => {
             item.addEventListener('click', () => {
