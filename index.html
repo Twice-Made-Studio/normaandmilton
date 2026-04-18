@@ -474,6 +474,59 @@
         }
 
         /* Event Details */
+.shared-venue-card {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.shared-venue-details {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.shared-venue-item {
+    padding: 1rem 1.25rem;
+    background: var(--off-white);
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+}
+
+.shared-venue-item strong {
+    display: block;
+    color: var(--emerald);
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.shared-venue-item span {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.shared-venue-photo {
+    margin-top: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--divider);
+    background: var(--off-white);
+}
+
+.shared-venue-photo img {
+    display: block;
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+@media (max-width: 768px) {
+    .shared-venue-photo img {
+        height: 240px;
+    }
+}
+   
         .events-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -1053,53 +1106,40 @@
    </section>
 
    <!-- EVENT DETAILS SECTION -->
-   <section id="event-details" aria-labelledby="details-title">
-    <h2 id="details-title" class="section-title fade-in">Event Details</h2>
-    <div class="section-divider"></div>
-    <p class="section-subtitle fade-in">Everything you need for a smooth, joyful day</p>
+ <div class="event-card fade-in shared-venue-card">
+  <div class="event-icon">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 3l9 6-9 6-9-6 9-6zm-7 8v7h14v-7" />
+    </svg>
+  </div>
 
-    <div class="events-grid">
-     <article class="event-card fade-in">
-      <div class="event-icon">
-       <!-- simplified icon -->
-       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l9 6-9 6-9-6 9-6zm-7 8v7h14v-7" /></svg>
-      </div>
-      <h3>Ceremony</h3>
-      <p class="venue-name">Ss. Columbia-Brigid Church</p>
-      <p class="venue-address" id="ceremony-address">75 Hickory Street<br>Buffalo, NY 14204</p>
-      <button class="copy-btn" data-address="ceremony-address" aria-label="Copy ceremony address">
-       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
-       Copy Address
-      </button>
-      <p class="event-note">Ceremony begins at 6:00 PM</p>
+  <h3>Wedding Venue</h3>
+  <p class="venue-name">Ss. Columbia-Brigid Church</p>
+  <p class="venue-address" id="venue-address">75 Hickory Street<br>Buffalo, NY 14204</p>
 
-      <!-- INSERT PHOTO HERE: ceremony venue photo -->
-      <div class="venue-photo" aria-hidden="true">
-        <div class="venue-photo">
-  <img src="ceremony.jpg" alt="Ss. Columbia-Brigid Church ceremony venue">
-</div>
-     </article>
+  <button class="copy-btn" data-address="venue-address" aria-label="Copy venue address">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+    </svg>
+    Copy Address
+  </button>
 
-     <article class="event-card fade-in">
-      <div class="event-icon">
-       <!-- simplified icon -->
-       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 22h10M9 2h6l-1 10H10L9 2zm1 12h4l1 8H9l1-8z"/></svg>
-      </div>
-      <h3>Reception</h3>
-      <p class="venue-name">[Reception Venue Name]</p>
-      <p class="venue-address" id="reception-address">[Street Address]<br>Buffalo, NY [ZIP]</p>
-      <button class="copy-btn" data-address="reception-address" aria-label="Copy reception address">
-       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
-       Copy Address
-      </button>
-      <p class="event-note">Dinner &amp; dancing to follow</p>
-
-      <!-- INSERT PHOTO HERE: reception venue photo -->
-      <div class="venue-photo" aria-hidden="true">
-        <div class="venue-photo-inner">Optional photo here: <strong style="margin-left:6px;">assets/reception.jpg</strong></div>
-      </div>
-     </article>
+  <div class="shared-venue-details">
+    <div class="shared-venue-item">
+      <strong>Ceremony</strong>
+      <span>Begins at 6:00 PM</span>
     </div>
+    <div class="shared-venue-item">
+      <strong>Reception</strong>
+      <span>Dinner &amp; dancing to follow at the same location</span>
+    </div>
+  </div>
+
+  <div class="shared-venue-photo">
+    <img src="ceremony.jpg" alt="Ss. Columbia-Brigid Church wedding venue">
+  </div>
+</div>
 
     <div class="events-grid" style="margin-top: 2rem;">
      <article class="event-card fade-in">
@@ -1133,7 +1173,7 @@
       <div class="timeline-date">July 15, 2026</div>
       <div class="timeline-content"><h4>RSVP Deadline</h4><p>Please let us know if you can make it</p></div>
       <div class="timeline-action">
-       <a href="https://forms.google.com/your-rsvp-form" target="_blank" rel="noopener noreferrer" class="btn btn-primary">RSVP Now</a>
+       <a href="https://www.amazon.com/wedding/share/normaandmilton" target="_blank" rel="noopener noreferrer" class="btn btn-primary">RSVP Now</a>
       </div>
      </div>
 
