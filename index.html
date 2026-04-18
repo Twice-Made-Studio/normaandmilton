@@ -408,8 +408,13 @@
             border: 1px dashed rgba(13, 92, 75, 0.25);
             background: rgba(255, 255, 255, 0.6);
         }
-        .photo-slot .photo-slot-inner {
-            height: 220px;
+       .photo-slot {
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px dashed rgba(13, 92, 75, 0.25);
+    background: rgba(255, 255, 255, 0.6);
+}
             display: flex;
             align-items: center;
             justify-content: center;
@@ -419,11 +424,11 @@
             font-size: 0.85rem;
             letter-spacing: 0.5px;
         }
-        .photo-slot img {
+    .photo-slot img {
     width: 100%;
-    height: 220px;
+    aspect-ratio: 3 / 4;  /* portrait frame */
     object-fit: cover;
-    object-position: center center;
+    object-position: center top;
 }
 
         /* He Said She Said */
