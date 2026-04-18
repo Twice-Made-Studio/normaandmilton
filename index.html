@@ -175,6 +175,92 @@
     }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+    .hero {
+      min-height: calc(100% - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 50%, var(--off-white) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 1.5rem;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: var(--hero-image);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+      filter: saturate(1.05) contrast(1.02);
+      pointer-events: none;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+      animation: rotate 45s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-names {
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      font-weight: 500;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+    }
+    .hero-names .ampersand { color: var(--champagne); font-weight: 600; }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: none;
+    }
+    .hero-date {
+      font-size: 1rem;
+      color: var(--champagne);
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-message {
+      max-width: 780px;
+      margin: 0 auto 2.25rem;
+      font-size: 1.02rem;
+      color: var(--text-light);
+      line-height: 1.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -215,7 +301,452 @@
       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
     }
 
-    /* ===== GUESTBOOK STYLES ===== */
+    .countdown-section {
+      background: var(--emerald);
+      color: var(--white);
+      padding: 4rem 1.5rem;
+      max-width: 100%;
+    }
+    .countdown-section .section-title { color: var(--white); }
+    .countdown-section .section-divider {
+      background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .countdown-item { text-align: center; min-width: 100px; }
+    .countdown-number {
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--champagne);
+      line-height: 1;
+    }
+    .countdown-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      align-items: stretch;
+    }
+    @media (min-width: 768px) {
+      .stories-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .story-card {
+      background: var(--off-white);
+      padding: 2.5rem;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--champagne), var(--emerald));
+      border-radius: 3px 3px 0 0;
+    }
+
+    .story-card h3 {
+      font-size: 1.35rem;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .story-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .story-card .photo-slot {
+      margin-top: auto;
+      padding-top: 1.5rem;
+    }
+
+    .photo-slot {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px dashed rgba(13, 92, 75, 0.25);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .photo-slot img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .he-said-she-said {
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+      color: var(--white);
+      padding: 2.5rem;
+      border-radius: 12px;
+    }
+    .he-said-she-said h3 {
+      text-align: center;
+      font-size: 1.6rem;
+      font-family: var(--font-elegant);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--champagne);
+    }
+
+    .comparison-grid { display: grid; gap: 1.5rem; }
+    .comparison-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .comparison-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .comparison-question {
+      grid-column: 1 / -1;
+      font-weight: 500;
+      font-size: 0.875rem;
+      opacity: 0.9;
+      letter-spacing: 1px;
+    }
+    .comparison-answer {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 0.875rem;
+    }
+    .comparison-answer strong {
+      display: block;
+      color: var(--champagne);
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .shared-venue-card {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .shared-venue-details {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .shared-venue-item {
+      padding: 1rem 1.25rem;
+      background: var(--off-white);
+      border: 1px solid var(--divider);
+      border-radius: 12px;
+    }
+
+    .shared-venue-item strong {
+      display: block;
+      color: var(--emerald);
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .shared-venue-item span {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .shared-venue-photo {
+      margin-top: 2rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      background: var(--off-white);
+    }
+
+    .shared-venue-photo img {
+      display: block;
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    @media (max-width: 768px) {
+      .shared-venue-photo img { height: 240px; }
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .events-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .event-card {
+      background: var(--white);
+      border: 1px solid var(--divider);
+      padding: 2.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+    .event-card:hover { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); }
+
+    .event-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(212, 175, 55, 0.10);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .event-icon svg { width: 24px; height: 24px; fill: var(--emerald); opacity: 0.95; }
+
+    .event-card h3 {
+      font-size: 1.35rem;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .event-card .venue-name { font-weight: 500; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .event-card .venue-address { color: var(--text-light); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .event-card .event-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1rem; font-style: italic; }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--off-white);
+      border: 1px solid var(--divider);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: var(--font-body);
+    }
+    .copy-btn:hover, .copy-btn:focus { background: var(--champagne); border-color: var(--champagne); }
+    .copy-btn svg { width: 14px; height: 14px; }
+
+    .timeline { max-width: 800px; margin: 0 auto; }
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-date { min-width: 140px; font-weight: 500; color: var(--emerald); font-size: 0.9rem; }
+    .timeline-content { flex: 1; min-width: 200px; }
+    .timeline-content h4 { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem; }
+    .timeline-content p { font-size: 0.85rem; color: var(--text-light); }
+    .timeline-action { flex-shrink: 0; }
+    .timeline-note { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 2rem; font-style: italic; }
+
+    .album-section {
+      background: var(--off-white);
+      padding: 4rem 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .album-section .section-title,
+    .album-section .section-divider,
+    .album-section .section-subtitle { padding: 0 1.5rem; }
+
+    .carousel-container { position: relative; overflow: hidden; padding: 1rem 0; }
+    .carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: scroll 60s linear infinite;
+      width: max-content;
+    }
+    .carousel-track:hover { animation-play-state: paused; }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .carousel-item {
+      flex-shrink: 0;
+      width: 300px;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .carousel-item:hover { transform: scale(1.02); }
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
+    .lightbox-image {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      object-fit: contain;
+      object-position: center center;
+    }
+    .lightbox-caption { text-align: center; color: var(--white); margin-top: 1rem; font-size: 0.95rem; }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    .lightbox-nav:hover { background: rgba(255, 255, 255, 0.2); }
+    .lightbox-prev { left: -60px; }
+    .lightbox-next { right: -60px; }
+    @media (max-width: 768px) {
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+    }
+
+    .hotel-section { background: var(--off-white); }
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .hotel-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .hotel-info {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--divider);
+    }
+    .hotel-info h3 {
+      font-size: 1.6rem;
+      font-family: var(--font-elegant);
+      color: var(--emerald);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .hotel-address { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+
+    .hotel-details { margin-bottom: 2rem; }
+    .hotel-detail-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--divider);
+    }
+    .hotel-detail-item:last-child { border-bottom: none; }
+    .hotel-detail-item strong {
+      min-width: 100px;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .hotel-detail-item span { color: var(--text-light); font-size: 0.9rem; }
+
+    .hotel-images { display: grid; gap: 1rem; }
+
+    .rsvp-section {
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+      text-align: center;
+      padding: 5rem 1.5rem;
+      max-width: 100%;
+    }
+    .rsvp-section .section-title { color: var(--white); }
+    .rsvp-section .section-divider { background: linear-gradient(90deg, transparent, var(--champagne), transparent); }
+    .rsvp-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+    .rsvp-deadline { color: var(--champagne); font-size: 0.9rem; margin-top: 1.5rem; }
+
+    .registry-content { text-align: center; max-width: 600px; margin: 0 auto; }
+    .registry-content p { color: var(--text-light); margin-bottom: 2rem; }
+
+    .mailing-address {
+      background: var(--off-white);
+      padding: 2rem;
+      border-radius: 12px;
+      margin-top: 3rem;
+      border: 1px solid var(--divider);
+    }
+    .mailing-address h4 {
+      color: var(--emerald);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .mailing-address address { font-style: normal; color: var(--text-dark); line-height: 1.8; }
+
+    /* ===== CUSTOM GUESTBOOK STYLES ===== */
     .guestbook-section { background: var(--off-white); }
     .guestbook-content { text-align: center; max-width: 900px; margin: 0 auto; }
     .guestbook-content > p { color: var(--text-light); margin-bottom: 2rem; }
@@ -464,6 +995,13 @@
     <nav role="navigation" aria-label="Main navigation">
       <a href="#hero" class="nav-logo">N &amp; M</a>
       <ul class="nav-links">
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#event-details">Details</a></li>
+        <li><a href="#important-dates">Dates</a></li>
+        <li><a href="#photos">Photos</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#registry">Registry</a></li>
         <li><a href="#guestbook">Guestbook</a></li>
       </ul>
       <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -472,11 +1010,345 @@
     </nav>
 
     <div class="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <a href="#our-story">Our Story</a>
+      <a href="#event-details">Details</a>
+      <a href="#important-dates">Important Dates</a>
+      <a href="#photos">Photos</a>
+      <a href="#travel">Travel &amp; Hotel</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#registry">Registry</a>
       <a href="#guestbook">Guestbook</a>
     </div>
   </header>
 
   <main id="main-content">
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero-content fade-in">
+        <h1 id="hero-title" class="hero-names">Norma <span class="ampersand">&amp;</span> Milton</h1>
+        <p class="hero-tagline">Together with our families, we invite you to celebrate our wedding.</p>
+        <p class="hero-date">September 12, 2026 • Buffalo, New York</p>
+
+        <p class="hero-message">
+          We're so grateful for the love that has carried us here. We can't wait to share a day of heartfelt vows,
+          joyful laughter, and the people who mean the most.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#rsvp" class="btn btn-primary">RSVP</a>
+          <a href="#important-dates" class="btn btn-secondary">Important Dates</a>
+          <a href="#travel" class="btn btn-secondary">Travel</a>
+          <a href="#guestbook" class="btn btn-gold">Guestbook</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown-section" aria-labelledby="countdown-title">
+      <h2 id="countdown-title" class="section-title">Counting Down</h2>
+      <div class="section-divider"></div>
+      <div class="countdown-container" role="timer" aria-live="polite">
+        <div class="countdown-item"><div class="countdown-number" id="days">000</div><div class="countdown-label">Days</div></div>
+        <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Hours</div></div>
+        <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">Minutes</div></div>
+        <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Seconds</div></div>
+      </div>
+    </section>
+
+    <section id="our-story" aria-labelledby="story-title">
+      <h2 id="story-title" class="section-title fade-in">Our Story</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">How two hearts found each other</p>
+
+      <div class="stories-grid">
+        <article class="story-card fade-in">
+          <h3>Her Story</h3>
+          <p>
+            It was November 15, 2024 – the height of holiday shopping madness at Target. I was working the register, exhausted from the endless stream of customers.
+            Then Milton walked into my line. The first time, I thought nothing of it. The second time, I noticed his smile. By the third time that week,
+            I realized he was specifically choosing my line just to make me laugh with his terrible dad jokes. What started as eye rolls at his corny humor
+            slowly turned into genuine smiles, then exchanged numbers, then coffee dates, and before I knew it, I had fallen completely in love with the man
+            who made Target's holiday rush the best season of my life.
+          </p>
+
+          <div class="photo-slot">
+            <img src="story-norma.jpg" alt="Norma and Milton early moment">
+          </div>
+        </article>
+
+        <article class="story-card fade-in">
+          <h3>His Story</h3>
+          <p>
+            He swears he noticed her first… and maybe he did. Milton claims it was love at first sight the moment he walked into Target that November day.
+            "I only needed batteries," he says, "but I kept finding reasons to come back." Three shopping trips in one week? Suspicious.
+            A cart full of random items just to have an excuse to stand in her line? Absolutely. He admits the jokes were a desperate attempt to see her smile.
+            "I knew I had to make her laugh – it was the only way she'd remember me." Well, Milton, mission accomplished. She remembers everything.
+          </p>
+
+          <div class="photo-slot">
+            <img src="story-milton.jpg" alt="Milton and Norma early moment">
+          </div>
+        </article>
+      </div>
+
+      <div class="he-said-she-said fade-in">
+        <h3>He Said / She Said</h3>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <div class="comparison-question">Who fell first?</div>
+            <div class="comparison-answer"><strong>She says:</strong> "He was a goner by visit number two."</div>
+            <div class="comparison-answer"><strong>He says:</strong> "Guilty as charged. Visit one, actually."</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-question">Who was googly-eyed?</div>
+            <div class="comparison-answer"><strong>She says:</strong> "Him. Definitely him. I was professional."</div>
+            <div class="comparison-answer"><strong>He says:</strong> "We were both googly-eyed. She just hid it better."</div>
+          </div>
+          <div class="comparison-item">
+            <div class="comparison-question">Who made the first move?</div>
+            <div class="comparison-answer"><strong>She says:</strong> "I wrote my number on his receipt. Bold, I know."</div>
+            <div class="comparison-answer"><strong>He says:</strong> "She did — and I still have that receipt."</div>
+          </div>
+        </div>
+
+        <div class="photo-slot" style="margin-top:1.75rem; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08);">
+          <img src="story-shared.jpg" alt="Norma and Milton together">
+        </div>
+      </div>
+    </section>
+
+    <section id="event-details" aria-labelledby="details-title">
+      <h2 id="details-title" class="section-title fade-in">Event Details</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Everything you need for a smooth, joyful day</p>
+
+      <div class="event-card fade-in shared-venue-card">
+        <div class="event-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l9 6-9 6-9-6 9-6zm-7 8v7h14v-7" />
+          </svg>
+        </div>
+
+        <h3>Wedding Venue</h3>
+        <p class="venue-name">Ss. Columbia-Brigid Church</p>
+        <p class="venue-address" id="venue-address">75 Hickory Street<br>Buffalo, NY 14204</p>
+
+        <button class="copy-btn" data-address="venue-address" aria-label="Copy venue address">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+          </svg>
+          Copy Address
+        </button>
+
+        <div class="shared-venue-details">
+          <div class="shared-venue-item">
+            <strong>Ceremony</strong>
+            <span>Begins at 6:00 PM</span>
+          </div>
+          <div class="shared-venue-item">
+            <strong>Reception</strong>
+            <span>Dinner &amp; dancing to follow at the same location</span>
+          </div>
+        </div>
+
+        <div class="shared-venue-photo">
+          <img src="ceremony.jpg" alt="Ss. Columbia-Brigid Church wedding venue">
+        </div>
+      </div>
+
+      <div class="events-grid" style="margin-top: 2rem;">
+        <article class="event-card fade-in">
+          <div class="event-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h3>Dress Code</h3>
+          <p class="venue-address">[Formal / Semi-Formal / Cocktail Attire]</p>
+          <p class="event-note">Thank you for dressing to celebrate with us.</p>
+        </article>
+
+        <article class="event-card fade-in">
+          <div class="event-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 11l1.5-4.5h11L19 11H5zm1.5 5.5A1.5 1.5 0 1 1 8 15a1.5 1.5 0 0 1-1.5 1.5zm11 0A1.5 1.5 0 1 1 19 15a1.5 1.5 0 0 1-1.5 1.5zM3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8"/></svg>
+          </div>
+          <h3>Parking</h3>
+          <p class="venue-address">[Parking information and notes go here]</p>
+          <p class="event-note">If valet is available, feel free to use it.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="important-dates" aria-labelledby="dates-title">
+      <h2 id="dates-title" class="section-title fade-in">Important Dates</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Mark your calendars</p>
+
+      <div class="timeline fade-in">
+        <div class="timeline-item">
+          <div class="timeline-date">July 15, 2026</div>
+          <div class="timeline-content"><h4>RSVP Deadline</h4><p>Please let us know if you can make it</p></div>
+          <div class="timeline-action">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScqNrhgaT8Ey1tID1BLy4XOjdyQYDUMBrGFAcF0kbyfYe1iAg/viewform?usp=publish-editor" class="btn btn-primary" target="_blank" rel="noopener">RSVP Now</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">August 15, 2026</div>
+          <div class="timeline-content"><h4>Hotel Block Deadline</h4><p>Reserve your room at our discounted rate</p></div>
+          <div class="timeline-action">
+            <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Reserve Your Room</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">September 11, 2026</div>
+          <div class="timeline-content"><h4>Rehearsal &amp; Welcome Event</h4><p>Join us for drinks and mingling</p></div>
+          <div class="timeline-action">
+            <button class="btn btn-secondary" onclick="addToCalendar('Rehearsal &amp; Welcome Event', '2026-09-11T18:00:00', '2026-09-11T21:00:00', 'Buffalo, NY')">Add to Calendar</button>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">September 12, 2026</div>
+          <div class="timeline-content"><h4>Wedding Day</h4><p>The big day! Ceremony at 6:00 PM</p></div>
+          <div class="timeline-action">
+            <button class="btn btn-gold" onclick="addToCalendar('Norma and Milton Wedding', '2026-09-12T18:00:00', '2026-09-12T23:00:00', 'Buffalo, NY')">Add to Calendar</button>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">September 13, 2026</div>
+          <div class="timeline-content"><h4>Post-Wedding Brunch</h4><p>Optional farewell brunch with the newlyweds</p></div>
+          <div class="timeline-action">
+            <button class="btn btn-secondary" onclick="addToCalendar('Post-Wedding Brunch', '2026-09-13T10:00:00', '2026-09-13T13:00:00', 'Buffalo, NY')">Add to Calendar</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="timeline-note">* Dates and times may be updated. Please check back for any changes.</p>
+    </section>
+
+    <section id="photos" class="album-section" aria-labelledby="photos-title">
+      <h2 id="photos-title" class="section-title fade-in">Photo Album</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Moments we've shared together</p>
+
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel-track">
+          <!-- UPDATE: Replace photo-1.jpg through photo-20.jpg with your actual images -->
+          <div class="carousel-item" data-caption="Our first photo together" data-index="0"><img src="photo-1.jpg" alt="Photo 1"></div>
+          <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1"><img src="photo-2.jpg" alt="Photo 2"></div>
+          <div class="carousel-item" data-caption="The proposal day" data-index="2"><img src="photo-3.jpg" alt="Photo 3"></div>
+          <div class="carousel-item" data-caption="Celebrating with family" data-index="3"><img src="photo-4.jpg" alt="Photo 4"></div>
+          <div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4"><img src="photo-5.jpg" alt="Photo 5"></div>
+          <div class="carousel-item" data-caption="A special sunset moment" data-index="5"><img src="photo-6.jpg" alt="Photo 6"></div>
+          <div class="carousel-item" data-caption="A beautiful memory" data-index="6"><img src="photo-7.jpg" alt="Photo 7"></div>
+          <div class="carousel-item" data-caption="Another special moment" data-index="7"><img src="photo-8.jpg" alt="Photo 8"></div>
+          <div class="carousel-item" data-caption="Joyful day together" data-index="8"><img src="photo-9.jpg" alt="Photo 9"></div>
+          <div class="carousel-item" data-caption="Love in every moment" data-index="9"><img src="photo-10.jpg" alt="Photo 10"></div>
+          <div class="carousel-item" data-caption="Forever starts here" data-index="10"><img src="photo-11.jpg" alt="Photo 11"></div>
+          <div class="carousel-item" data-caption="A treasured moment" data-index="11"><img src="photo-12.jpg" alt="Photo 12"></div>
+          <div class="carousel-item" data-caption="Making memories" data-index="12"><img src="photo-13.jpg" alt="Photo 13"></div>
+          <div class="carousel-item" data-caption="Laughing together" data-index="13"><img src="photo-14.jpg" alt="Photo 14"></div>
+          <div class="carousel-item" data-caption="Adventure awaits" data-index="14"><img src="photo-15.jpg" alt="Photo 15"></div>
+          <div class="carousel-item" data-caption="Sweet moments" data-index="15"><img src="photo-16.jpg" alt="Photo 16"></div>
+          <div class="carousel-item" data-caption="Together forever" data-index="16"><img src="photo-17.jpg" alt="Photo 17"></div>
+          <div class="carousel-item" data-caption="Cherished times" data-index="17"><img src="photo-18.jpg" alt="Photo 18"></div>
+          <div class="carousel-item" data-caption="Our love story" data-index="18"><img src="photo-19.jpg" alt="Photo 19"></div>
+          <div class="carousel-item" data-caption="The journey begins" data-index="19"><img src="photo-20.jpg" alt="Photo 20"></div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="carousel-item" data-caption="Our first photo together" data-index="0"><img src="photo-1.jpg" alt="Photo 1"></div>
+          <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1"><img src="photo-2.jpg" alt="Photo 2"></div>
+          <div class="carousel-item" data-caption="The proposal day" data-index="2"><img src="photo-3.jpg" alt="Photo 3"></div>
+          <div class="carousel-item" data-caption="Celebrating with family" data-index="3"><img src="photo-4.jpg" alt="Photo 4"></div>
+          <div class="carousel-item" data-caption="Our engagement photoshoot" data-index="4"><img src="photo-5.jpg" alt="Photo 5"></div>
+          <div class="carousel-item" data-caption="A special sunset moment" data-index="5"><img src="photo-6.jpg" alt="Photo 6"></div>
+          <div class="carousel-item" data-caption="A beautiful memory" data-index="6"><img src="photo-7.jpg" alt="Photo 7"></div>
+          <div class="carousel-item" data-caption="Another special moment" data-index="7"><img src="photo-8.jpg" alt="Photo 8"></div>
+          <div class="carousel-item" data-caption="Joyful day together" data-index="8"><img src="photo-9.jpg" alt="Photo 9"></div>
+          <div class="carousel-item" data-caption="Love in every moment" data-index="9"><img src="photo-10.jpg" alt="Photo 10"></div>
+          <div class="carousel-item" data-caption="Forever starts here" data-index="10"><img src="photo-11.jpg" alt="Photo 11"></div>
+          <div class="carousel-item" data-caption="A treasured moment" data-index="11"><img src="photo-12.jpg" alt="Photo 12"></div>
+          <div class="carousel-item" data-caption="Making memories" data-index="12"><img src="photo-13.jpg" alt="Photo 13"></div>
+          <div class="carousel-item" data-caption="Laughing together" data-index="13"><img src="photo-14.jpg" alt="Photo 14"></div>
+          <div class="carousel-item" data-caption="Adventure awaits" data-index="14"><img src="photo-15.jpg" alt="Photo 15"></div>
+          <div class="carousel-item" data-caption="Sweet moments" data-index="15"><img src="photo-16.jpg" alt="Photo 16"></div>
+          <div class="carousel-item" data-caption="Together forever" data-index="16"><img src="photo-17.jpg" alt="Photo 17"></div>
+          <div class="carousel-item" data-caption="Cherished times" data-index="17"><img src="photo-18.jpg" alt="Photo 18"></div>
+          <div class="carousel-item" data-caption="Our love story" data-index="18"><img src="photo-19.jpg" alt="Photo 19"></div>
+          <div class="carousel-item" data-caption="The journey begins" data-index="19"><img src="photo-20.jpg" alt="Photo 20"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close lightbox">×</button>
+        <button class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>
+        <img id="lightbox-image" class="lightbox-image" src="" alt="">
+        <button class="lightbox-nav lightbox-next" aria-label="Next image">›</button>
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+      </div>
+    </div>
+
+    <section id="travel" class="hotel-section" aria-labelledby="travel-title">
+      <h2 id="travel-title" class="section-title fade-in">Travel &amp; Hotel</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Where to stay during your visit</p>
+
+      <div class="hotel-grid fade-in">
+        <div class="hotel-info">
+          <h3>The Westin Buffalo</h3>
+          <p class="hotel-address">250 Delaware Ave<br>Buffalo, NY 14202<br>(716) 854-9000</p>
+
+          <div class="hotel-details">
+            <div class="hotel-detail-item"><strong>Block Code:</strong> <span>[BLOCK CODE]</span></div>
+            <div class="hotel-detail-item"><strong>Check-in:</strong> <span>[3:00 PM]</span></div>
+            <div class="hotel-detail-item"><strong>Check-out:</strong> <span>[11:00 AM]</span></div>
+            <div class="hotel-detail-item"><strong>Parking:</strong> <span>[Valet available / Self-parking info]</span></div>
+          </div>
+
+          <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reserve Your Room</a>
+        </div>
+
+        <div class="hotel-images">
+          <div class="photo-slot">
+            <img src="hotel.jpg" alt="Hotel exterior">
+          </div>
+          <div class="photo-slot">
+            <img src="room.jpg" alt="Hotel room interior">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="rsvp-section" aria-labelledby="rsvp-title">
+      <h2 id="rsvp-title" class="section-title">RSVP</h2>
+      <div class="section-divider"></div>
+      <p class="rsvp-text">Your presence means the world to us — please let us know if you'll be joining the celebration.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScqNrhgaT8Ey1tID1BLy4XOjdyQYDUMBrGFAcF0kbyfYe1iAg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn btn-gold">RSVP Now</a>
+      <p class="rsvp-deadline">Please RSVP by July 15, 2026</p>
+    </section>
+
+    <section id="registry" aria-labelledby="registry-title">
+      <h2 id="registry-title" class="section-title fade-in">Registry</h2>
+      <div class="section-divider"></div>
+      <p class="section-subtitle fade-in">Your presence is our present</p>
+
+      <div class="registry-content fade-in">
+        <p>Your love and support mean everything to us. If you'd like to honor us with a gift, we've created a registry for your convenience.</p>
+        <a href="https://www.amazon.com/wedding/share/normaandmilton" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Registry</a>
+
+        <div class="photo-slot" style="margin-top: 2rem;">
+          <img src="registry.jpg" alt="Norma and Milton registry photo">
+        </div>
+
+        <div class="mailing-address">
+          <h4>For Off-Registry Gifts</h4>
+          <address>Norma and Milton Rowe<br>25 Kane Street<br>Buffalo, NY 14204</address>
+        </div>
+      </div>
+    </section>
+
     <section id="guestbook" class="guestbook-section" aria-labelledby="guestbook-title">
       <h2 id="guestbook-title" class="section-title fade-in">Guestbook</h2>
       <div class="section-divider"></div>
@@ -523,13 +1395,13 @@
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
   <script>
-    // ===== CONFIGURATION =====
-    // TODO: Replace these with your actual Airtable credentials
-  const AIRTABLE_CONFIG = {
-  personalAccessToken: 'patRdRpZ7hZurLqCd',
-  baseId: 'appKESt2i5osDVpr9',
-  tableName: 'Guestbook Entries'
-};
+    // ===== AIRTABLE CONFIGURATION =====
+    const AIRTABLE_CONFIG = {
+      personalAccessToken: 'patRdRpZ7hZurLqCd',
+      baseId: 'appKESt2i5osDVpr9',
+      tableName: 'Guestbook Entries'
+    };
+
     // ===== NAVIGATION =====
     const navWrapper = document.querySelector('.nav-wrapper');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -552,12 +1424,57 @@
       });
     });
 
+    // ===== COUNTDOWN TIMER =====
+    const weddingDate = new Date('September 12, 2026 18:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days.toString().padStart(3, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== FADE IN ANIMATIONS =====
     const fadeElements = document.querySelectorAll('.fade-in');
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     fadeElements.forEach(el => fadeObserver.observe(el));
+
+    // ===== COPY ADDRESS =====
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const addressId = btn.dataset.address;
+        const addressEl = document.getElementById(addressId);
+        const address = addressEl.textContent.replace(/\s+/g, ' ').trim();
+
+        navigator.clipboard.writeText(address).then(() => {
+          showToast('Address copied to clipboard!');
+        }).catch(() => {
+          showToast('Failed to copy address');
+        });
+      });
+    });
 
     function showToast(message) {
       const toast = document.getElementById('toast');
@@ -566,7 +1483,80 @@
       setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
-    // ===== AIRTABLE GUESTBOOK =====
+    // ===== ADD TO CALENDAR =====
+    function addToCalendar(title, start, end, location) {
+      const startDate = start.replace(/[-:]/g, '').replace('T', 'T');
+      const endDate = end.replace(/[-:]/g, '').replace('T', 'T');
+
+      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate.replace(/[-:]/g, '')}/${endDate.replace(/[-:]/g, '')}&location=${encodeURIComponent(location)}`;
+
+      window.open(googleUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // ===== PHOTO CAROUSEL & LIGHTBOX =====
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    let currentImageIndex = 0;
+
+    const photos = [];
+    carouselItems.forEach((item, index) => { 
+      if (index < 20) {
+        photos.push({
+          src: item.querySelector('img').src,
+          caption: item.dataset.caption
+        });
+      }
+    });
+
+    carouselItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        currentImageIndex = parseInt(item.dataset.index);
+        openLightbox();
+      });
+    });
+
+    function openLightbox() {
+      lightbox.classList.add('active');
+      updateLightboxContent();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightboxContent() {
+      lightboxImage.src = photos[currentImageIndex].src;
+      lightboxCaption.textContent = photos[currentImageIndex].caption;
+    }
+
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+    document.querySelector('.lightbox-prev').addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex - 1 + photos.length) % photos.length;
+      updateLightboxContent();
+    });
+    document.querySelector('.lightbox-next').addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % photos.length;
+      updateLightboxContent();
+    });
+
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') {
+        currentImageIndex = (currentImageIndex - 1 + photos.length) % photos.length;
+        updateLightboxContent();
+      } else if (e.key === 'ArrowRight') {
+        currentImageIndex = (currentImageIndex + 1) % photos.length;
+        updateLightboxContent();
+      }
+    });
+
+    // ===== GUESTBOOK WITH AIRTABLE =====
     
     function escapeHtml(text) {
       const div = document.createElement('div');
@@ -578,7 +1568,6 @@
       const container = document.getElementById('guestbook-messages');
       
       try {
-        // Fetch approved messages from Airtable
         const response = await fetch(
           `https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${encodeURIComponent(AIRTABLE_CONFIG.tableName)}?filterByFormula={Approved}=1&sort[0][field]=Created Time&sort[0][direction]=desc`,
           {
@@ -600,7 +1589,6 @@
           return;
         }
 
-        // Display messages
         const messagesHTML = messages.map(record => {
           const fields = record.fields;
           const name = fields['Guest Name'] || 'Anonymous';
@@ -632,7 +1620,6 @@
       }
     }
 
-    // Handle form submission
     document.getElementById('guestbook-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -651,7 +1638,6 @@
       submitBtn.textContent = 'Sending...';
 
       try {
-        // Submit to Airtable
         const response = await fetch(
           `https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${encodeURIComponent(AIRTABLE_CONFIG.tableName)}`,
           {
@@ -686,10 +1672,7 @@
       }
     });
 
-    // Load messages on page load
     loadGuestbookMessages();
-
-    // Refresh messages every 30 seconds to show newly approved messages
     setInterval(loadGuestbookMessages, 30000);
   </script>
 </body>
