@@ -863,93 +863,77 @@
     .mailing-address address { font-style: normal; color: var(--text-dark); line-height: 1.8; }
 
     /* ===== GUESTBOOK STYLES ===== */
-    .guestbook-section { background: var(--off-white); }
-    .guestbook-content { text-align: center; max-width: 900px; margin: 0 auto; }
-    .guestbook-content > p { color: var(--text-light); margin-bottom: 2rem; }
+.guestbook-section { background: var(--off-white); }
+.guestbook-content { text-align: center; max-width: 900px; margin: 0 auto; }
+.guestbook-content > p { color: var(--text-light); margin-bottom: 2rem; }
 
-    .guestbook-cta {
-      max-width: 600px;
-      margin: 0 auto 3rem;
-      background: var(--white);
-      padding: 2.5rem;
-      border-radius: 16px;
-      border: 1px solid var(--divider);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
+.guestbook-cta {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--divider);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
 
-    .guestbook-cta p {
-      color: var(--text-light);
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-    }
+.guestbook-cta p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
 
-    .guestbook-messages {
-      margin-top: 3rem;
-    }
+.guestbook-messages {
+  margin-top: 3rem;
+}
 
-    .guestbook-loading {
-      text-align: center;
-      color: var(--text-light);
-      font-style: italic;
-      padding: 3rem;
-    }
+.guestbook-loading {
+  text-align: center;
+  color: var(--text-light);
+  font-style: italic;
+  padding: 3rem;
+}
 
-    .guestbook-empty {
-      text-align: center;
-      color: var(--text-light);
-      font-style: italic;
-      padding: 3rem;
-      background: var(--white);
-      border-radius: 12px;
-      border: 1px solid var(--divider);
-    }
+.guestbook-empty {
+  text-align: center;
+  color: var(--text-light);
+  font-style: italic;
+  padding: 3rem;
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid var(--divider);
+}
 
-    .messages-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
+.messages-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
 
-    @media (min-width: 768px) {
-      .messages-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+@media (min-width: 768px) {
+  .messages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    .message-card {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 12px;
-      border: 1px solid var(--divider);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
-      text-align: left;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .message-card::before {
-      content: '"';
-      position: absolute;
-      top: 1rem;
-      left: 1.5rem;
-      font-size: 4rem;
-      font-family: var(--font-elegant);
-      color: rgba(212, 175, 55, 0.15);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .message-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      border-color: var(--champagne);
-    }
-
-    .message-card {
+.message-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--divider);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 0.6s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .message-card:nth-child(1) { animation-delay: 0.1s; }
@@ -963,7 +947,26 @@
   }
 }
 
-    .message-text {
+.message-card::before {
+  content: '"';
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  font-size: 4rem;
+  font-family: var(--font-elegant);
+  color: rgba(212, 175, 55, 0.15);
+  opacity: 0.08;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.message-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(13, 92, 75, 0.12);
+  border-color: var(--champagne);
+}
+
+.message-text {
   font-size: 1.05rem;
   line-height: 1.9;
   color: var(--text-dark);
@@ -974,43 +977,49 @@
   font-family: var(--font-elegant);
 }
 
-    .message-author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--divider);
-    }
+.message-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--divider);
+}
 
-    .message-author-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--emerald) 0%, var(--champagne) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-weight: 600;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
+.message-author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--champagne) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
 
-    .message-author-info {
-      flex: 1;
-    }
+.message-author-info {
+  flex: 1;
+}
 
-    .message-author-name {
-      font-weight: 600;
-      color: var(--emerald);
-      font-size: 0.95rem;
-      font-family: var(--font-elegant);
-    }
+.message-author-name {
+  font-weight: 600;
+  color: var(--emerald);
+  font-size: 0.95rem;
+  font-family: var(--font-elegant);
+}
 
-    .message-date {
-      font-size: 0.8rem;
-      color: var(--text-light);
-    }
+.message-relationship {
+  font-size: 0.8rem;
+  color: var(--champagne);
+  font-style: italic;
+}
+
+.message-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
 
     footer {
       background: var(--text-dark);
@@ -1685,8 +1694,8 @@ const GUESTBOOK_API_URL = 'https://script.google.com/macros/s/AKfycbzBH7YyKpXvuc
     });
 
     // ===== GUESTBOOK - DISPLAY APPROVED MESSAGES =====
-    
- function escapeHtml(text) {
+
+function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text || '';
   return div.innerHTML;
@@ -1705,11 +1714,11 @@ async function loadGuestbookMessages() {
 
     if (!messages.length) {
       container.innerHTML = `
-  <div class="guestbook-empty">
-    Your words will become part of our love story 💛<br><br>
-    Be the first to leave us a beautiful message.
-  </div>
-`;
+        <div class="guestbook-empty">
+          Your words will become part of our love story 💛<br><br>
+          Be the first to leave us a beautiful message.
+        </div>
+      `;
       return;
     }
 
@@ -1719,7 +1728,12 @@ async function loadGuestbookMessages() {
 
         <div class="message-author">
           <div class="message-author-avatar">
-            ${(msg.guestName || 'A').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
+            ${(msg.guestName || 'A')
+              .split(' ')
+              .map(n => n[0])
+              .join('')
+              .substring(0, 2)
+              .toUpperCase()}
           </div>
 
           <div class="message-author-info">
@@ -1727,11 +1741,11 @@ async function loadGuestbookMessages() {
               ${escapeHtml(msg.guestName || 'Anonymous')}
             </div>
 
-       ${msg.relationship ? `
-  <div class="message-date">
-    ${escapeHtml(msg.relationship)}
-  </div>
-` : ''}
+            ${msg.relationship ? `
+              <div class="message-relationship">
+                ${escapeHtml(msg.relationship)}
+              </div>
+            ` : ''}
 
             <div class="message-date">
               ${msg.createdTime ? new Date(msg.createdTime).toLocaleDateString() : ''}
