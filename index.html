@@ -306,9 +306,10 @@
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      width: 56px;
+      min-width: 56px;
       height: 56px;
-      border-radius: 50%;
+      padding: 0 1.25rem;
+      border-radius: 50px;
       background: var(--emerald);
       border: none;
       cursor: pointer;
@@ -317,19 +318,35 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
       transition: all 0.3s ease;
+      color: var(--white);
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
     }
     .music-toggle:hover {
       background: var(--emerald-light);
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
     .music-toggle svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       fill: var(--white);
+      flex-shrink: 0;
     }
     .music-toggle.paused {
       background: var(--champagne);
+      color: var(--text-dark);
+    }
+    .music-toggle.paused svg {
+      fill: var(--text-dark);
+    }
+    .music-label {
+      display: none;
+    }
+    @media (min-width: 640px) {
+      .music-label { display: inline; }
     }
 
     .countdown-section {
@@ -1038,13 +1055,14 @@
   </audio>
 
   <!-- MUSIC TOGGLE BUTTON -->
-  <button class="music-toggle" id="music-toggle" aria-label="Toggle music">
+  <button class="music-toggle paused" id="music-toggle" aria-label="Toggle music">
     <svg id="play-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M8 5v14l11-7z"/>
     </svg>
     <svg id="pause-icon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
     </svg>
+    <span class="music-label" id="music-label">Play Music</span>
   </button>
 
   <header class="nav-wrapper" role="banner">
@@ -1459,6 +1477,7 @@
     const musicToggle = document.getElementById('music-toggle');
     const playIcon = document.getElementById('play-icon');
     const pauseIcon = document.getElementById('pause-icon');
+    const musicLabel = document.getElementById('music-label');
     let musicPlaying = false;
 
     // Auto-play music on user interaction
@@ -1468,6 +1487,7 @@
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
         musicToggle.classList.remove('paused');
+        if (musicLabel) musicLabel.textContent = 'Pause Music';
       }).catch(() => {
         // Auto-play blocked by browser, user needs to click
         musicPlaying = false;
@@ -1486,12 +1506,14 @@
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
         musicToggle.classList.add('paused');
+        if (musicLabel) musicLabel.textContent = 'Play Music';
       } else {
         bgMusic.play();
         musicPlaying = true;
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
         musicToggle.classList.remove('paused');
+        if (musicLabel) musicLabel.textContent = 'Pause Music';
       }
     });
 
@@ -1661,8 +1683,10 @@
       const container = document.getElementById('guestbook-messages');
       
       try {
+        // Fetch from the "Approved Messages" view directly
+        const viewId = 'shrgSyTlwPc09fmt7'; // Approved Messages view
         const CORS_PROXY = 'https://corsproxy.io/?';
-        const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${encodeURIComponent(AIRTABLE_CONFIG.tableName)}?filterByFormula={Approved}=1&sort[0][field]=Created Time&sort[0][direction]=desc`;
+        const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${encodeURIComponent(AIRTABLE_CONFIG.tableName)}?view=${viewId}&sort[0][field]=Created Time&sort[0][direction]=desc`;
         
         const response = await fetch(CORS_PROXY + encodeURIComponent(airtableUrl), {
           headers: {
