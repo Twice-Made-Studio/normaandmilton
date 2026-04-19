@@ -1466,9 +1466,7 @@
 
   <script>
     // ===== AIRTABLE CONFIGURATION =====
-   const GUESTBOOK_API_URL = 'https://script.google.com/macros/s/AKfycbzBH7YyKpXvucBRo-TwzSPN_eu3aBnZIxPEHW2ygIjfImTdlczO3TGQ9U30YQxD0vhd/exec
-';
-
+const GUESTBOOK_API_URL = 'https://script.google.com/macros/s/AKfycbzBH7YyKpXvucBRo-TwzSPN_eu3aBnZIxPEHW2ygIjfImTdlczO3TGQ9U30YQxD0vhd/exec';
     // ===== BACKGROUND MUSIC =====
     const bgMusic = document.getElementById('background-music');
     const musicToggle = document.getElementById('music-toggle');
@@ -1670,7 +1668,13 @@
 
     // ===== GUESTBOOK - DISPLAY APPROVED MESSAGES =====
     
-  async function loadGuestbookMessages() {
+ function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text || '';
+  return div.innerHTML;
+}
+
+async function loadGuestbookMessages() {
   const container = document.getElementById('guestbook-messages');
 
   try {
@@ -1679,7 +1683,7 @@
 
     if (!data.ok) throw new Error('API error');
 
-    const messages = data.records;
+    const messages = data.records || [];
 
     if (!messages.length) {
       container.innerHTML = `
@@ -1695,35 +1699,30 @@
         <p class="message-text">“${escapeHtml(msg.message)}”</p>
 
         <div class="message-author">
-          <div class="message-avatar">
-            ${(msg.guestName || 'A').split(' ').map(n => n[0]).join('').substring(0,2)}
+          <div class="message-author-avatar">
+            ${(msg.guestName || 'A').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
           </div>
 
-          <div class="message-meta">
-            <div class="message-name">
-              ${escapeHtml(msg.guestName)}
+          <div class="message-author-info">
+            <div class="message-author-name">
+              ${escapeHtml(msg.guestName || 'Anonymous')}
             </div>
 
-            <div class="message-relationship">
+            <div class="message-date">
               ${escapeHtml(msg.relationship || '')}
             </div>
 
             <div class="message-date">
-              ${new Date(msg.createdTime).toLocaleDateString()}
+              ${msg.createdTime ? new Date(msg.createdTime).toLocaleDateString() : ''}
             </div>
           </div>
         </div>
       </div>
     `).join('');
 
-    container.innerHTML = `
-      <div class="messages-grid">
-        ${html}
-      </div>
-    `;
-
+    container.innerHTML = `<div class="messages-grid">${html}</div>`;
   } catch (error) {
-    console.error(error);
+    console.error('Guestbook load error:', error);
     container.innerHTML = `
       <div class="guestbook-empty">
         Unable to load messages. Please try again later.
@@ -1733,3 +1732,8 @@
 }
 
 loadGuestbookMessages();
+setInterval(loadGuestbookMessages, 30000);
+
+    </script>
+</body>
+</html>
