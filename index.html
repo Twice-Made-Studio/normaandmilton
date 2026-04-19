@@ -301,6 +301,37 @@
       box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
     }
 
+    /* MUSIC TOGGLE BUTTON */
+    .music-toggle {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--emerald);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .music-toggle:hover {
+      background: var(--emerald-light);
+      transform: scale(1.1);
+    }
+    .music-toggle svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--white);
+    }
+    .music-toggle.paused {
+      background: var(--champagne);
+    }
+
     .countdown-section {
       background: var(--emerald);
       color: var(--white);
@@ -394,7 +425,7 @@
 
     .photo-slot img {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      height: auto;
       object-fit: cover;
       object-position: center center;
       display: block;
@@ -444,6 +475,23 @@
       margin-bottom: 0.25rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    /* SHARED STORY PHOTO - SQUARED */
+    .he-said-she-said .photo-slot {
+      margin-top: 1.75rem;
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.08);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .he-said-she-said .photo-slot img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center center;
     }
 
     .shared-venue-card {
@@ -668,49 +716,100 @@
       .lightbox-next { right: 10px; }
     }
 
+    /* HOTEL SECTION - REDESIGNED */
     .hotel-section { background: var(--off-white); }
-    .hotel-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-items: start;
-    }
-    @media (min-width: 768px) {
-      .hotel-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    .hotel-info {
+    
+    .hotel-card {
       background: var(--white);
       padding: 2.5rem;
       border-radius: 12px;
       border: 1px solid var(--divider);
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .hotel-info h3 {
-      font-size: 1.6rem;
+
+    .hotel-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hotel-header h3 {
+      font-size: 1.8rem;
       font-family: var(--font-elegant);
       color: var(--emerald);
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-weight: 600;
     }
-    .hotel-address { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
 
-    .hotel-details { margin-bottom: 2rem; }
-    .hotel-detail-item {
-      display: flex;
-      gap: 1rem;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--divider);
+    .hotel-header .hotel-address {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
-    .hotel-detail-item:last-child { border-bottom: none; }
+
+    .hotel-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hotel-detail-item {
+      padding: 1rem;
+      background: var(--off-white);
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      text-align: center;
+    }
+
     .hotel-detail-item strong {
-      min-width: 100px;
+      display: block;
+      color: var(--emerald);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hotel-detail-item span {
       color: var(--text-dark);
-      font-weight: 500;
       font-size: 0.9rem;
     }
-    .hotel-detail-item span { color: var(--text-light); font-size: 0.9rem; }
 
-    .hotel-images { display: grid; gap: 1rem; }
+    .hotel-images-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .hotel-images-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .hotel-image-square {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--divider);
+      background: var(--off-white);
+      aspect-ratio: 1 / 1;
+    }
+
+    .hotel-image-square img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    .hotel-cta {
+      text-align: center;
+    }
 
     .rsvp-section {
       background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
@@ -746,12 +845,12 @@
     }
     .mailing-address address { font-style: normal; color: var(--text-dark); line-height: 1.8; }
 
-    /* ===== CUSTOM GUESTBOOK STYLES ===== */
+    /* ===== GUESTBOOK STYLES ===== */
     .guestbook-section { background: var(--off-white); }
     .guestbook-content { text-align: center; max-width: 900px; margin: 0 auto; }
     .guestbook-content > p { color: var(--text-light); margin-bottom: 2rem; }
 
-    .guestbook-form-container {
+    .guestbook-cta {
       max-width: 600px;
       margin: 0 auto 3rem;
       background: var(--white);
@@ -761,68 +860,10 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
 
-    .guestbook-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 640px) {
-      .form-row {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      text-align: left;
-    }
-
-    .form-group label {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--emerald);
-      letter-spacing: 0.5px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      padding: 0.875rem 1rem;
-      border: 1px solid var(--divider);
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      transition: all 0.3s ease;
-      background: var(--white);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--champagne);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-      line-height: 1.6;
-    }
-
-    .guestbook-note {
-      font-size: 0.9rem;
+    .guestbook-cta p {
       color: var(--text-light);
-      margin: 1.5rem 0 2.5rem;
-      font-style: italic;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
     }
 
     .guestbook-messages {
@@ -991,6 +1032,21 @@
 <body class="h-full">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- BACKGROUND MUSIC -->
+  <audio id="background-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- MUSIC TOGGLE BUTTON -->
+  <button class="music-toggle" id="music-toggle" aria-label="Toggle music">
+    <svg id="play-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <svg id="pause-icon" style="display:none;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+    </svg>
+  </button>
+
   <header class="nav-wrapper" role="banner">
     <nav role="navigation" aria-label="Main navigation">
       <a href="#hero" class="nav-logo">N &amp; M</a>
@@ -1109,7 +1165,7 @@
           </div>
         </div>
 
-        <div class="photo-slot" style="margin-top:1.75rem; border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08);">
+        <div class="photo-slot">
           <img src="story-shared.jpg" alt="Norma and Milton together">
         </div>
       </div>
@@ -1233,7 +1289,6 @@
 
       <div class="carousel-container">
         <div class="carousel-track" id="carousel-track">
-          <!-- UPDATE: Replace photo-1.jpg through photo-20.jpg with your actual images -->
           <div class="carousel-item" data-caption="Our first photo together" data-index="0"><img src="photo-1.jpg" alt="Photo 1"></div>
           <div class="carousel-item" data-caption="At our favorite coffee shop" data-index="1"><img src="photo-2.jpg" alt="Photo 2"></div>
           <div class="carousel-item" data-caption="The proposal day" data-index="2"><img src="photo-3.jpg" alt="Photo 3"></div>
@@ -1295,28 +1350,42 @@
       <div class="section-divider"></div>
       <p class="section-subtitle fade-in">Where to stay during your visit</p>
 
-      <div class="hotel-grid fade-in">
-        <div class="hotel-info">
+      <div class="hotel-card fade-in">
+        <div class="hotel-header">
           <h3>The Westin Buffalo</h3>
           <p class="hotel-address">250 Delaware Ave<br>Buffalo, NY 14202<br>(716) 854-9000</p>
-
-          <div class="hotel-details">
-            <div class="hotel-detail-item"><strong>Block Code:</strong> <span>[BLOCK CODE]</span></div>
-            <div class="hotel-detail-item"><strong>Check-in:</strong> <span>[3:00 PM]</span></div>
-            <div class="hotel-detail-item"><strong>Check-out:</strong> <span>[11:00 AM]</span></div>
-            <div class="hotel-detail-item"><strong>Parking:</strong> <span>[Valet available / Self-parking info]</span></div>
-          </div>
-
-          <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reserve Your Room</a>
         </div>
 
-        <div class="hotel-images">
-          <div class="photo-slot">
-            <img src="hotel.jpg" alt="Hotel exterior">
+        <div class="hotel-details-grid">
+          <div class="hotel-detail-item">
+            <strong>Block Code</strong>
+            <span>[BLOCK CODE]</span>
           </div>
-          <div class="photo-slot">
+          <div class="hotel-detail-item">
+            <strong>Check-in</strong>
+            <span>3:00 PM</span>
+          </div>
+          <div class="hotel-detail-item">
+            <strong>Check-out</strong>
+            <span>11:00 AM</span>
+          </div>
+          <div class="hotel-detail-item">
+            <strong>Parking</strong>
+            <span>Valet Available</span>
+          </div>
+        </div>
+
+        <div class="hotel-images-grid">
+          <div class="hotel-image-square">
+            <img src="hotel.jpg" alt="The Westin Buffalo exterior">
+          </div>
+          <div class="hotel-image-square">
             <img src="room.jpg" alt="Hotel room interior">
           </div>
+        </div>
+
+        <div class="hotel-cta">
+          <a href="https://hotel-booking-link.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reserve Your Room</a>
         </div>
       </div>
     </section>
@@ -1357,27 +1426,10 @@
       <div class="guestbook-content fade-in">
         <p>Leave us a message — we'd love to hear your thoughts, memories, or advice for our journey together!</p>
         
-        <div class="guestbook-form-container">
-          <form id="guestbook-form" class="guestbook-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="guest-name">Your Name *</label>
-                <input type="text" id="guest-name" name="name" required placeholder="Jane & John Doe">
-              </div>
-              <div class="form-group">
-                <label for="guest-relationship">Relationship (optional)</label>
-                <input type="text" id="guest-relationship" name="relationship" placeholder="College friends">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="guest-message">Your Message *</label>
-              <textarea id="guest-message" name="message" required rows="4" placeholder="Share your well wishes, favorite memories, or advice for the happy couple..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Your Wishes</button>
-          </form>
+        <div class="guestbook-cta">
+          <p>Click below to share your well wishes in our guestbook:</p>
+          <a href="https://airtable.com/appKESt2i5osDVpr9/shr0ijr69fbMmyfhL" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Leave a Message</a>
         </div>
-
-        <p class="guestbook-note">Messages may be included in a keepsake book.</p>
 
         <div id="guestbook-messages" class="guestbook-messages">
           <div class="guestbook-loading">Loading messages...</div>
@@ -1401,6 +1453,47 @@
       baseId: 'appKESt2i5osDVpr9',
       tableName: 'Guestbook Entries'
     };
+
+    // ===== BACKGROUND MUSIC =====
+    const bgMusic = document.getElementById('background-music');
+    const musicToggle = document.getElementById('music-toggle');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+    let musicPlaying = false;
+
+    // Auto-play music on user interaction
+    function attemptAutoPlay() {
+      bgMusic.play().then(() => {
+        musicPlaying = true;
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        musicToggle.classList.remove('paused');
+      }).catch(() => {
+        // Auto-play blocked by browser, user needs to click
+        musicPlaying = false;
+      });
+    }
+
+    // Try to auto-play on first user interaction
+    document.addEventListener('click', attemptAutoPlay, { once: true });
+    document.addEventListener('scroll', attemptAutoPlay, { once: true });
+
+    musicToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (musicPlaying) {
+        bgMusic.pause();
+        musicPlaying = false;
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        musicToggle.classList.add('paused');
+      } else {
+        bgMusic.play();
+        musicPlaying = true;
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        musicToggle.classList.remove('paused');
+      }
+    });
 
     // ===== NAVIGATION =====
     const navWrapper = document.querySelector('.nav-wrapper');
@@ -1556,10 +1649,7 @@
       }
     });
 
-    // ===== GUESTBOOK WITH AIRTABLE (CORS PROXY) =====
-    
-    // CORS proxy to allow browser access to Airtable API
-    const CORS_PROXY = 'https://corsproxy.io/?';
+    // ===== GUESTBOOK - DISPLAY APPROVED MESSAGES =====
     
     function escapeHtml(text) {
       const div = document.createElement('div');
@@ -1571,6 +1661,7 @@
       const container = document.getElementById('guestbook-messages');
       
       try {
+        const CORS_PROXY = 'https://corsproxy.io/?';
         const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${encodeURIComponent(AIRTABLE_CONFIG.tableName)}?filterByFormula={Approved}=1&sort[0][field]=Created Time&sort[0][direction]=desc`;
         
         const response = await fetch(CORS_PROXY + encodeURIComponent(airtableUrl), {
@@ -1622,57 +1713,6 @@
         container.innerHTML = '<div class="guestbook-empty">Unable to load messages. Please refresh the page or try again later.</div>';
       }
     }
-
-    document.getElementById('guestbook-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(e.target);
-      const name = formData.get('name').trim();
-      const relationship = formData.get('relationship').trim();
-      const message = formData.get('message').trim();
-
-      if (!name || !message) {
-        showToast('Please fill in your name and message');
-        return;
-      }
-
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-
-      try {
-        const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_CONFIG.baseId}/${encodeURIComponent(AIRTABLE_CONFIG.tableName)}`;
-        
-        const response = await fetch(CORS_PROXY + encodeURIComponent(airtableUrl), {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${AIRTABLE_CONFIG.personalAccessToken}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            fields: {
-              'Guest Name': name,
-              'Relationship': relationship || '',
-              'Message': message
-            }
-          })
-        });
-
-        if (!response.ok) {
-          throw new Error(`Airtable API error: ${response.status}`);
-        }
-
-        showToast('Thank you for your wishes! Your message will appear after approval. ❤️');
-        e.target.reset();
-        
-      } catch (err) {
-        console.error('Error submitting message:', err);
-        showToast('Sorry, there was an error. Please try again or check your internet connection.');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Your Wishes';
-      }
-    });
 
     loadGuestbookMessages();
     setInterval(loadGuestbookMessages, 30000);
