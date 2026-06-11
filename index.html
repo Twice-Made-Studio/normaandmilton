@@ -730,99 +730,65 @@
     }
 
     /* HOTEL SECTION - REDESIGNED */
-    .hotel-section { background: var(--off-white); }
-    
-    .hotel-card {
-      background: var(--white);
-      padding: 2.5rem;
-      border-radius: 12px;
-      border: 1px solid var(--divider);
-      max-width: 900px;
-      margin: 0 auto;
-    }
+.hotel-section { background: var(--off-white); }
 
-    .hotel-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+.hotel-options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
-    .hotel-header h3 {
-      font-size: 1.8rem;
-      font-family: var(--font-elegant);
-      color: var(--emerald);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
+@media (min-width: 768px) {
+  .hotel-options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    .hotel-header .hotel-address {
-      color: var(--text-light);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
+.hotel-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--divider);
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+}
 
-    .hotel-details-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
+.hotel-card h3 {
+  font-size: 1.45rem;
+  font-family: var(--font-elegant);
+  color: var(--emerald);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
 
-    .hotel-detail-item {
-      padding: 1rem;
-      background: var(--off-white);
-      border: 1px solid var(--divider);
-      border-radius: 8px;
-      text-align: center;
-    }
+.hotel-address {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
 
-    .hotel-detail-item strong {
-      display: block;
-      color: var(--emerald);
-      font-weight: 600;
-      font-size: 0.85rem;
-      margin-bottom: 0.35rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+.hotel-times {
+  background: var(--off-white);
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
 
-    .hotel-detail-item span {
-      color: var(--text-dark);
-      font-size: 0.9rem;
-    }
-
-    .hotel-images-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 640px) {
-      .hotel-images-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .hotel-image-square {
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--divider);
-      background: var(--off-white);
-      aspect-ratio: 1 / 1;
-    }
-
-    .hotel-image-square img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-    }
-
-    .hotel-cta {
-      text-align: center;
-    }
+.hotel-note {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--text-light);
+  font-style: italic;
+  line-height: 1.8;
+}
 
     .rsvp-section {
       background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
@@ -1377,50 +1343,77 @@ Adequate Parking is available at the venue.
       </div>
     </div>
 
-    <section id="travel" class="hotel-section" aria-labelledby="travel-title">
-      <h2 id="travel-title" class="section-title fade-in">Travel &amp; Hotel</h2>
-      <div class="section-divider"></div>
-      <p class="section-subtitle fade-in">Where to stay during your visit</p>
+   <section id="travel" class="hotel-section" aria-labelledby="travel-title">
+  <h2 id="travel-title" class="section-title fade-in">Travel &amp; Hotel</h2>
+  <div class="section-divider"></div>
+  <p class="section-subtitle fade-in">Nearby places to stay during your visit</p>
 
-      <div class="hotel-card fade-in">
-        <div class="hotel-header">
-          <h3>Comfort Inn & Suites Medina</h3>
-          <p class="hotel-address">11591 Maple Ridge Rd<br>Medina, NY 14103<br>(585) 798-6777</p>
-        </div>
+  <p class="hotel-note fade-in">
+    A hotel block has not been reserved. Guests are welcome to book directly with any of the nearby lodging options below.
+  </p>
 
-        <div class="hotel-details-grid">
-          <div class="hotel-detail-item">
-            <strong>Block Code</strong>
-            <span>[BLOCK CODE]</span>
-          </div>
-          <div class="hotel-detail-item">
-            <strong>Check-in</strong>
-            <span>3:00 PM</span>
-          </div>
-          <div class="hotel-detail-item">
-            <strong>Check-out</strong>
-            <span>11:00 AM</span>
-          </div>
-          <div class="hotel-detail-item">
-            <strong>Parking</strong>
-            <span>Valet Available</span>
-          </div>
-        </div>
-
-        <div class="hotel-images-grid">
-          <div class="hotel-image-square">
-            <img src="hotel1.jpg" alt="Comfort Inn & Suites Medina exterior">
-          </div>
-          <div class="hotel-image-square">
-            <img src="room.jpg" alt="Hotel room interior">
-          </div>
-        </div>
-
-        <div class="hotel-cta">
-          <a href="https://www.choicehotels.com/new-york/medina/comfort-inn-hotels/ny876?mc=llgoxxpx" rel="noopener noreferrer" class="btn btn-primary">Reserve Your Room</a>
-        </div>
+  <div class="hotel-options-grid">
+    <article class="hotel-card fade-in">
+      <h3>Fairhaven Inn</h3>
+      <p class="hotel-address">
+        14359 Ridge Rd W<br>
+        Albion, NY 14411
+      </p>
+      <div class="hotel-times">
+        <strong>Check-in:</strong> 4:00 PM<br>
+        <strong>Check-out:</strong> 11:00 AM
       </div>
-    </section>
+      <a href="https://www.fairhavenvenue.com/stay" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        View Hotel
+      </a>
+    </article>
+
+    <article class="hotel-card fade-in">
+      <h3>Bent's Opera House Boutique Hotel</h3>
+      <p class="hotel-address">
+        444 Main St.<br>
+        Medina, NY 14103
+      </p>
+      <div class="hotel-times">
+        <strong>Check-in:</strong> 4:00 PM<br>
+        <strong>Check-out:</strong> 11:00 AM
+      </div>
+      <a href="https://www.bentsoperahouse.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        View Hotel
+      </a>
+    </article>
+
+    <article class="hotel-card fade-in">
+      <h3>Hart House Hotel</h3>
+      <p class="hotel-address">
+        113 W Center St<br>
+        Medina, NY 14103
+      </p>
+      <div class="hotel-times">
+        <strong>Check-in:</strong> 4:00 PM<br>
+        <strong>Check-out:</strong> 11:00 AM
+      </div>
+      <a href="https://www.harthousehotel.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        View Hotel
+      </a>
+    </article>
+
+    <article class="hotel-card fade-in">
+      <h3>Comfort Inn &amp; Suites Medina</h3>
+      <p class="hotel-address">
+        11591 Maple Ridge Rd<br>
+        Medina, NY 14103
+      </p>
+      <div class="hotel-times">
+        <strong>Check-in:</strong> 3:00 PM<br>
+        <strong>Check-out:</strong> 11:00 AM
+      </div>
+      <a href="https://www.choicehotels.com/new-york/medina/comfort-inn-hotels/ny876" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        View Hotel
+      </a>
+    </article>
+  </div>
+</section>
 
     <section id="rsvp" class="rsvp-section" aria-labelledby="rsvp-title">
       <h2 id="rsvp-title" class="section-title">RSVP</h2>
@@ -1754,7 +1747,6 @@ async function loadGuestbookMessages() {
 }
 
 loadGuestbookMessages();
-setInterval(loadGuestbookMessages, 30000);
 
     </script>
 </body>
